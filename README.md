@@ -7,6 +7,9 @@
 
 ---
 ## Membre de la Team :
+BOUDIN Vivien
+MEUNIER (tu dors ?) Valentin
+PREVOT Pierre
 VILLEDIEU DE TORCY Mathieu    
 
 ---
