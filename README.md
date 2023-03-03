@@ -9,15 +9,15 @@
 
 ---
 ## Membre de la Team :
-BOUDIN Vivien
-MEUNIER (tu dors ?) Valentin
-PREVOT Pierre
+BOUDIN Vivien  
+MEUNIER (tu dors ?) Valentin  
+PREVOT Pierre  
 VILLEDIEU DE TORCY Mathieu    
 
 ---
 ## Code
 
-**Compilation :**  
+**Compilation :**   
 
 ---  
 ## Pitch du jeu 
