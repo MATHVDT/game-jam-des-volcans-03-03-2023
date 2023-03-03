@@ -3,14 +3,13 @@
 
 
 **Date :** 03-05 mars 2023   
-**Thème :** 
+**Thème :** Construire pour détruire !
 **Nom du jeu :**  
 **Type de jeu :** 
 
 ---
 ## Membre de la Team :
-BOUDIN Vivien  
-MEUNIER (tu dors ?) Valentin  
+MEUNIER Valentin  
 PREVOT Pierre  
 VILLEDIEU DE TORCY Mathieu    
 
