@@ -16,7 +16,7 @@ VILLEDIEU DE TORCY Mathieu
 ---
 ## Code
 
-**Compilation :**   
+**Compilation :** cmake . && make && ./prog  
 
 ---  
 ## Pitch du jeu 
