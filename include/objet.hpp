@@ -1,34 +1,42 @@
 #ifndef __OBJET_HPP__
 #define __OBJET_HPP__
 #include "enum_type.hpp"
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/RenderStates.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/System/Vector2.hpp>
-#include <algorithm>
-#include <filesystem>
-#include <fstream>
-#include <iostream>
+#include <vector>
+
+#include "../include/Affichable.hpp"
+
 #include <map>
 #include <string>
-#include <vector>
-class Objet {
-		private:
-				std::string name;
-				bool visible;
-				sf::Rect<int> rectangle;
-				sf::Sprite sprite;
-				static std::map<std::string, sf::Texture> textureMap;
+#include <filesystem>
 
-		public:
-				static void initialisationTexture();
-				Objet(std::string name);
-				virtual bool estIphone() = 0;
-				virtual void clic() = 0;
-				const sf::Rect<int>& obtenirRectangle() const;
-				void definirRectangle(int gauche, int haut);
-				void definirRectangle(int gauche, int haut, int largeur, int hauteur);
+class Objet
+{
+private:
+    bool _visible;
+    sf::Rect<float> _rectangle;
+    static std::map<std::string, sf::Texture> textureMap;
+
+    Affichable* _affichable;
+
+public:
+    Objet(sf::Vector2f position,
+          sf::Vector2f scale,
+          sf::Texture &texture,
+          uint couche,
+          bool visible);
+    virtual ~Objet();
+
+    static void initialisationTexture();
+    virtual bool estIphone() = 0;
+    virtual void clic() = 0;
+    const sf::Rect<float> &obtenirRectangle() const;
+    void definirRectangle(float gauche, float haut);
+    void definirRectangle(float gauche, float haut,
+                          float largeur, float hauteur);
+
+    sf::Sprite *obtenirSprite() const;
 };
+
+inline sf::Sprite *Objet::obtenirSprite() const { return _affichable->obtenirSprite(); }
 
 #endif

@@ -2,22 +2,43 @@
 
 std::map<std::string, sf::Texture> Objet::textureMap = {};
 
-const sf::Rect<int>& Objet::obtenirRectangle() const
+Objet::Objet(sf::Vector2f position,
+		sf::Vector2f scale,
+		sf::Texture& texture,
+		uint couche,
+		bool visible)
+		: _visible(visible)
+		, _rectangle()
+		, _affichable(new Affichable())
 {
-				return rectangle;
+				_affichable->definirTexture(texture);
+				_affichable->definirCouche(couche);
+				_affichable->definirSpritePosition(position);
+
+				definirRectangle(position.x, position.y);
 }
 
-void Objet::definirRectangle(int gauche, int haut)
+Objet::~Objet() { }
+
+const sf::Rect<float>& Objet::obtenirRectangle() const
 {
-				rectangle.left = gauche;
-				rectangle.top = haut;
+				return _rectangle;
 }
 
-void Objet::definirRectangle(int gauche, int haut, int largeur, int hauteur)
+void Objet::definirRectangle(float gauche, float haut)
+{
+				_rectangle.left = gauche;
+				_rectangle.top = haut;
+}
+
+void Objet::definirRectangle(float gauche,
+		float haut,
+		float largeur,
+		float hauteur)
 {
 				definirRectangle(gauche, haut);
-				rectangle.width = largeur;
-				rectangle.height = hauteur;
+				_rectangle.width = largeur;
+				_rectangle.height = hauteur;
 }
 
 void Objet::initialisationTexture()
@@ -26,7 +47,7 @@ void Objet::initialisationTexture()
 				for (auto& file : std::filesystem::directory_iterator { chemin }) // loop through the current folder
 				{
 								sf::Texture texture;
-								texture.loadFromFile( file.path());
+								texture.loadFromFile(file.path());
 								textureMap.insert(std::make_pair(file.path().string(), texture));
 				}
 }

@@ -7,6 +7,7 @@
 #include "../include/objet.hpp"
 #include "../include/bougeable.hpp"
 #include "../include/fixe.hpp"
+#include "../include/armoire.hpp"
 
 
 class Gestionnaire

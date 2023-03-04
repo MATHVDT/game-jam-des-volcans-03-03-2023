@@ -1,6 +1,43 @@
 #include "../include/Affichable.hpp"
 
-bool compareAffichables(const Affichable_t &r1, const Affichable_t &r2)
+Affichable::Affichable()
+    : _sprite{new sf::Sprite()},
+      _couche(0) {}
+
+Affichable::~Affichable()
 {
-    return r1.couche < r2.couche;
+    delete _sprite;
+}
+
+/// @brief Comparateur static
+/// @param a1
+/// @param a2
+/// @return
+bool Affichable::compare(const Affichable &a1, const Affichable &a2)
+{
+    return a1.obtenirCouche() < a2.obtenirCouche();
+}
+
+/***************************************************/
+/*               Fonctions Operateurs              */
+/***************************************************/
+bool operator<(const Affichable &r1, const Affichable &r2)
+{
+    return r1.obtenirCouche() < r2.obtenirCouche();
+}
+bool operator>(const Affichable &r1, const Affichable &r2)
+{
+    return r1.obtenirCouche() > r2.obtenirCouche();
+}
+bool operator==(const Affichable &r1, const Affichable &r2)
+{
+    return r1.obtenirCouche() == r2.obtenirCouche();
+}
+bool operator<=(const Affichable &r1, const Affichable &r2)
+{
+    return r1 < r2 || r1 == r2;
+}
+bool operator>=(const Affichable &r1, const Affichable &r2)
+{
+    return r1 > r2 || r1 == r2;
 }
