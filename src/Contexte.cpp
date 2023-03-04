@@ -1,14 +1,17 @@
 #include "../include/Context.hpp"
 
-Context *Context::_instance = nullptr;
+Contexte *Contexte::_instance = nullptr;
 
-Context::Context()
+Contexte::Contexte()
 {
     _largeurFenetre = 1300.0f;
     _hauteurFenetre = 900.0f;
 
     _jeuEnCours = true;
 
+    _objetBougeableSelectionne = nullptr;
+    _objetEnInteractionAvecObjetBougeableSelectionne = nullptr;
+    
     _window.create(sf::VideoMode(_largeurFenetre,
                                  _hauteurFenetre),
                    "SFML works!",
@@ -18,35 +21,35 @@ Context::Context()
     _window.setPosition(sf::Vector2i(50, 50));
 }
 
-Context::~Context()
+Contexte::~Contexte()
 {
     _window.close();
 }
 
-Context *Context::obtenirInstance()
+Contexte *Contexte::obtenirInstance()
 {
-    if (Context::_instance == nullptr)
+    if (Contexte::_instance == nullptr)
     {
-        Context::_instance = new Context();
-        if (Context::_instance == nullptr)
+        Contexte::_instance = new Contexte();
+        if (Contexte::_instance == nullptr)
         {
             std::cerr << "Erreur de new\n";
             return nullptr;
         }
         else
         {
-            return Context::_instance;
+            return Contexte::_instance;
         }
     }
 }
 
-bool Context::obtenirPollEvent()
+bool Contexte::obtenirSonderEvenement()
 {
     return _window.pollEvent(_event);
 }
 
 /// @brief Dessine tous les objets
-void Context::dessiner()
+void Contexte::dessiner()
 {
     for (auto &scene : _tousLesObjets)
     { // Pour chaque scene
@@ -57,13 +60,13 @@ void Context::dessiner()
     }
 }
 
-void Context::dessiner(sf::Drawable *dessinable)
+void Contexte::dessiner(sf::Drawable *dessinable)
 {
     _window.draw(*dessinable);
 }
 
 /// @brief Affiche la fenetre.
-void Context::afficherFenetre()
+void Contexte::afficherFenetre()
 {
     _window.display();
     _window.clear();
@@ -72,7 +75,7 @@ void Context::afficherFenetre()
 /// @brief Ajoute un objet a la liste de tous les objets.
 /// @param scene
 /// @param affichable
-void Context::ajouterAffichable(int scene,
+void Contexte::ajouterAffichable(int scene,
                                 const Affichable_t &&affichable)
 {
     _tousLesObjets[scene].emplace(affichable);

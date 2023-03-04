@@ -5,25 +5,26 @@
 
 #include "../include/Context.hpp"
 
-class Manager
+class Gestionnaire
 {
 private:
     /* data */
-    Context *context;
+    Contexte *context;
 
 private: // Static
-    static Manager *_instance;
+    static Gestionnaire *_instance;
 
 public: // Static
-    static Manager *obtenirInstance();
+    static Gestionnaire *obtenirInstance();
 
 public:
-    Manager();
-    ~Manager();
+    Gestionnaire();
+    ~Gestionnaire();
 
     void run();
+    void initScene();
 
-    void checkEvent(const sf::Event& event);
+    void checkEvenment(const sf::Event& evenement);
     
 };
 

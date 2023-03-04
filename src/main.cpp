@@ -6,7 +6,7 @@
 int main()
 {
 
-    Manager *manager = Manager::obtenirInstance();
+    Gestionnaire *manager = Gestionnaire::obtenirInstance();
 
     manager->run();
 

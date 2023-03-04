@@ -8,8 +8,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "../include/Affichable.hpp"
+#include "../include/objet.hpp"
+#include "../include/bougeable.hpp"
 
-class Context
+
+class Contexte
 {
 private:
     sf::RenderWindow _window;
@@ -19,20 +22,22 @@ private:
     std::vector<std::set<Affichable_t, CompareAffichables>> _tousLesObjets;
 
     bool _jeuEnCours;
-
     sf::Event _event;
 
+    Bougeable *_objetBougeableSelectionne;
+    Objet *_objetEnInteractionAvecObjetBougeableSelectionne;
+
 private: // Static
-    static Context *_instance;
+    static Contexte *_instance;
 
 public:
-    static Context *obtenirInstance();
+    static Contexte *obtenirInstance();
 
 public:
-    Context(/* args */);
-    ~Context();
+    Contexte(/* args */);
+    ~Contexte();
 
-    bool obtenirPollEvent();
+    bool obtenirSonderEvenement();
     void dessiner(sf::Drawable *dessinable);
     void dessiner();
 
@@ -43,7 +48,7 @@ public:
 
     // Getter
     bool obtenirJeuEnCours() const;
-    const sf::Event &obtenirEvent() const;
+    const sf::Event &obtenirEvenement() const;
 
     // Setter
     void definirJeuEnCours(bool valeur = false);
@@ -54,10 +59,10 @@ public:
 /***************************************************/
 
 // Getter
-inline bool Context::obtenirJeuEnCours() const { return _jeuEnCours; }
-inline const sf::Event &Context::obtenirEvent() const { return _event; }
+inline bool Contexte::obtenirJeuEnCours() const { return _jeuEnCours; }
+inline const sf::Event &Contexte::obtenirEvenement() const { return _event; }
 
 // Setter
-inline void Context::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
+inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
 
 #endif

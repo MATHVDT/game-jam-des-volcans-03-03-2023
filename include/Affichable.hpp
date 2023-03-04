@@ -6,7 +6,7 @@
 typedef struct Affichable
 {
     sf::Sprite *sprite;
-    uint layer;
+    uint couche;
 } Affichable_t;
 
 bool compareAffichables(const Affichable_t &r1, const Affichable_t &r2);
@@ -15,7 +15,7 @@ struct CompareAffichables
 {
     bool operator()(const Affichable_t &a, const Affichable_t &b) const
     {
-        return a.layer < b.layer;
+        return a.couche < b.couche;
     }
 };
 

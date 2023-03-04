@@ -1,52 +1,54 @@
 #include "../include/Manager.hpp"
 
-Manager *Manager::_instance = nullptr;
+Gestionnaire *Gestionnaire::_instance = nullptr;
 
-Manager::Manager(/* args */)
+Gestionnaire::Gestionnaire(/* args */)
 {
-    context = Context::obtenirInstance();
+    context = Contexte::obtenirInstance();
 }
 
-Manager::~Manager()
+Gestionnaire::~Gestionnaire()
 {
     delete context;
 }
 
-Manager *Manager::obtenirInstance()
+Gestionnaire *Gestionnaire::obtenirInstance()
 {
-    if (Manager::_instance == nullptr)
+    if (Gestionnaire::_instance == nullptr)
     {
-        Manager::_instance = new Manager();
-        if (Manager::_instance == nullptr)
+        Gestionnaire::_instance = new Gestionnaire();
+        if (Gestionnaire::_instance == nullptr)
         {
             std::cerr << "Erreur de new\n";
             return nullptr;
         }
         else
         {
-            return Manager::_instance;
+            return Gestionnaire::_instance;
         }
     }
 }
 
-void Manager::run()
+void Gestionnaire::run()
 {
     sf::Event event;
 
     while (context->obtenirJeuEnCours())
     {
 
-        while (context->obtenirPollEvent())
+        while (context->obtenirSonderEvenement())
         { // Actualise le contexte seulement quand il ya une evenement
-            checkEvent(context->obtenirEvent());
+            checkEvenment(context->obtenirEvenement());
         }
         context->afficherFenetre();
     }
 }
 
-void Manager::checkEvent(const sf::Event &event)
+/// @brief Lance les actions suivant les evenements
+/// @param evenement
+void Gestionnaire::checkEvenment(const sf::Event &evenement)
 {
-    switch (event.type)
+    switch (evenement.type)
     {
     case sf::Event::Closed:
         context->definirJeuEnCours(false);
