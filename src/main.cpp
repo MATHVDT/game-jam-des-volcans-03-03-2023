@@ -1,7 +1,7 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../include/fixe.hpp"
 #include "../include/bougeable.hpp"
+#include <iostream> 
 
 int main()
 {
@@ -25,3 +25,4 @@ int main()
 
     return 0;
 }
+
