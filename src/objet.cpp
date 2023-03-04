@@ -1,8 +1,6 @@
 #include "../include/objet.hpp"
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/RenderStates.hpp>
 
-//std::map<std::string, sf::Texture> Objet::texture = {};
+std::map<std::string, sf::Texture> Objet::textureMap = {};
 
 const sf::Rect<int>& Objet::obtenirRectangle() const
 {
@@ -22,9 +20,13 @@ void Objet::definirRectangle(int gauche, int haut, int largeur, int hauteur)
 				rectangle.height = hauteur;
 }
 
-/*void static Objet::initialisationTexture()
+void Objet::initialisationTexture()
 {
 				const std::filesystem::path chemin { "../ressources/" };
 				for (auto& file : std::filesystem::directory_iterator { chemin }) // loop through the current folder
-				{ }
-}*/
+				{
+								sf::Texture texture;
+								texture.loadFromFile( file.path());
+								textureMap.insert(std::make_pair(file.path().string(), texture));
+				}
+}

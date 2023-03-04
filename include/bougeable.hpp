@@ -4,11 +4,11 @@
 
 class Bougeable : public Objet
 {
-public:
+private:
 	bool selectionnee;
 	sf::Vector2<int> position_initiale;
 
-private:
+public:
 	bool estIphone() override;
 	void remettrePosition();
 	void definirPosition(int haut, int gauche);
