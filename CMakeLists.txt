@@ -60,5 +60,5 @@ add_executable ( Prog
                  ${ZZ3_SOURCES}
                )
 # Build #-------------------------------------------------------------------------------------------
-set_target_properties ( Prog PROPERTIES LINKER_LANGUAGE C )
-target_link_libraries ( Prog ${CMAKE_SFML_LIBS_INIT})
+set_target_properties ( Prog PROPERTIES LINKER_LANGUAGE CXX )
+target_link_libraries( Prog sfml-graphics sfml-audio)
