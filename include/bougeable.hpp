@@ -8,9 +8,10 @@ class Bougeable : public Objet {
 								sf::Vector2<int> position_initiale;
 				private:
 								bool estIphone() override;
-								void reset_position();
+								void remettrePosition();
+								void definirPosition(int haut, int gauche);
 								void relache();
-								bool clic() override;
+								void clic() override;
 };
 
 

@@ -6,7 +6,7 @@ class Fixe : public Objet {
 				private:
 								bool cassee;
 				public:
-								bool clic() override;
+								void clic() override;
 };
 
 
