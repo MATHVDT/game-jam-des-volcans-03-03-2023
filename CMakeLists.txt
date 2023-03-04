@@ -37,8 +37,8 @@ message ( STATUS "Compiler flags: ${CMAKE_CXX_FLAGS}" )
 
 # Sources #-----------------------------------------------------------------------------------------
 set ( ZZ3_HEADERS
-      include/Manager.hpp
-      include/Context.hpp
+      include/Gestionnaire.hpp
+      include/Contexte.hpp
       ./include/objet.hpp
       ./include/fixe.hpp
       ./include/bougeable.hpp
@@ -46,8 +46,8 @@ set ( ZZ3_HEADERS
 
 set ( ZZ3_SOURCES
       src/main.cpp
-      src/Manager.cpp
-      src/Context.cpp
+      src/Gestionnaire.cpp
+      src/Contexte.cpp
       
       src/objet.cpp
       src/fixe.cpp

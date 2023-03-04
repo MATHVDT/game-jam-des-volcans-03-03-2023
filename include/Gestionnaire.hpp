@@ -3,13 +3,17 @@
 
 #include <iostream>
 
-#include "../include/Context.hpp"
+#include "../include/Contexte.hpp"
+#include "../include/objet.hpp"
+#include "../include/bougeable.hpp"
+#include "../include/fixe.hpp"
+
 
 class Gestionnaire
 {
 private:
     /* data */
-    Contexte *context;
+    Contexte *contexte;
 
 private: // Static
     static Gestionnaire *_instance;

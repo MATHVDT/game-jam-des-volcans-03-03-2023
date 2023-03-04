@@ -1,7 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-#include "../include/Manager.hpp"
+#include "../include/Gestionnaire.hpp"
 
 int main()
 {

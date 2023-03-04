@@ -5,7 +5,7 @@
 
 typedef struct Affichable
 {
-    sf::Sprite *sprite;
+    sf::Sprite sprite;
     uint couche;
 } Affichable_t;
 

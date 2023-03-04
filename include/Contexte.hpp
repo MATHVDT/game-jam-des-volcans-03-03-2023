@@ -11,7 +11,6 @@
 #include "../include/objet.hpp"
 #include "../include/bougeable.hpp"
 
-
 class Contexte
 {
 private:
@@ -38,7 +37,8 @@ public:
     ~Contexte();
 
     bool obtenirSonderEvenement();
-    void dessiner(sf::Drawable *dessinable);
+    void dessiner(const sf::Drawable &dessinable);
+    void dessiner(const sf::Drawable *dessinable);
     void dessiner();
 
     void afficherFenetre();

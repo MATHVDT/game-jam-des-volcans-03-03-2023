@@ -1,4 +1,4 @@
-#include "../include/Context.hpp"
+#include "../include/Contexte.hpp"
 
 Contexte *Contexte::_instance = nullptr;
 
@@ -11,7 +11,7 @@ Contexte::Contexte()
 
     _objetBougeableSelectionne = nullptr;
     _objetEnInteractionAvecObjetBougeableSelectionne = nullptr;
-    
+
     _window.create(sf::VideoMode(_largeurFenetre,
                                  _hauteurFenetre),
                    "SFML works!",
@@ -55,12 +55,18 @@ void Contexte::dessiner()
     { // Pour chaque scene
         for (auto &o : scene)
         { // Pour chaque objet
-            dessiner(o.sprite);
+            const sf::Sprite &s = o.sprite;
+            dessiner(s);
         }
     }
 }
 
-void Contexte::dessiner(sf::Drawable *dessinable)
+void Contexte::dessiner(const sf::Drawable &dessinable)
+{
+    _window.draw(dessinable);
+}
+
+void Contexte::dessiner(const sf::Drawable *dessinable)
 {
     _window.draw(*dessinable);
 }
@@ -76,7 +82,7 @@ void Contexte::afficherFenetre()
 /// @param scene
 /// @param affichable
 void Contexte::ajouterAffichable(int scene,
-                                const Affichable_t &&affichable)
+                                 const Affichable_t &&affichable)
 {
     _tousLesObjets[scene].emplace(affichable);
 }

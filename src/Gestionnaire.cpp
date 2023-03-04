@@ -1,15 +1,15 @@
-#include "../include/Manager.hpp"
+#include "../include/Gestionnaire.hpp"
 
 Gestionnaire *Gestionnaire::_instance = nullptr;
 
 Gestionnaire::Gestionnaire(/* args */)
 {
-    context = Contexte::obtenirInstance();
+    contexte = Contexte::obtenirInstance();
 }
 
 Gestionnaire::~Gestionnaire()
 {
-    delete context;
+    delete contexte;
 }
 
 Gestionnaire *Gestionnaire::obtenirInstance()
@@ -33,14 +33,14 @@ void Gestionnaire::run()
 {
     sf::Event event;
 
-    while (context->obtenirJeuEnCours())
+    while (contexte->obtenirJeuEnCours())
     {
 
-        while (context->obtenirSonderEvenement())
+        while (contexte->obtenirSonderEvenement())
         { // Actualise le contexte seulement quand il ya une evenement
-            checkEvenment(context->obtenirEvenement());
+            checkEvenment(contexte->obtenirEvenement());
         }
-        context->afficherFenetre();
+        contexte->afficherFenetre();
     }
 }
 
@@ -51,7 +51,7 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
     switch (evenement.type)
     {
     case sf::Event::Closed:
-        context->definirJeuEnCours(false);
+        contexte->definirJeuEnCours(false);
         break;
 
     case sf::Event::MouseMoved:
@@ -69,4 +69,16 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
     default:
         break;
     }
+}
+
+void Gestionnaire::initScene()
+{
+    uint scene = 0;
+    std::string img = "ressources/prise.png";
+    sf::Texture *t = new sf::Texture();
+    t->loadFromFile(img);
+    Affichable_t a = Affichable();
+    a.couche = 0;
+    a.sprite.setTexture(*t);
+    // contexte->ajouterAffichable(scene, a);
 }
