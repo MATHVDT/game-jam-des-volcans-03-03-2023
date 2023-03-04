@@ -2,10 +2,10 @@
 
 Ciseaux::Ciseaux(sf::Vector2f position,
              sf::Vector2f scale,
-             sf::Texture &texture,
              uint couche,
              bool visible)
-    : Bougeable(position, scale, texture, couche, visible)
+    : Bougeable(position, scale, couche, visible)
 {
 				_materiaux.push_back(metal);
+				_affichable.definirTexture(*textureMap["ressources/prise.png"]);
 }

@@ -11,7 +11,6 @@ private:
 public:
     Corbeille(sf::Vector2f position,
             sf::Vector2f scale,
-            sf::Texture &texture,
             uint couche,
             bool visible);
     virtual ~Corbeille() override;

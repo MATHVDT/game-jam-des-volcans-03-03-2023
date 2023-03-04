@@ -4,13 +4,11 @@ std::map<std::string, sf::Texture *> Objet::textureMap = {};
 
 Objet::Objet(sf::Vector2f position,
 			 sf::Vector2f scale,
-			 sf::Texture &texture,
 			 uint couche,
 			 bool visible)
 	: _visible(visible),
 	  _rectangle(), _materiaux({})
 {
-	_affichable.definirTexture(texture);
 	_affichable.definirCouche(couche);
 	_affichable.definirSpritePosition(position);
 

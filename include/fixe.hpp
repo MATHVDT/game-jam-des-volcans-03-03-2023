@@ -10,7 +10,6 @@ private:
 public:
     Fixe(sf::Vector2f position,
           sf::Vector2f scale,
-          sf::Texture &texture,
           uint couche,
           bool visible);
     virtual ~Fixe() override;

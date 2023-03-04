@@ -5,7 +5,7 @@
 class Ciseaux : public Bougeable {
 
 		public:
-				Ciseaux(sf::Vector2f position, sf::Vector2f scale, sf::Texture& texture, uint couche, bool visible);
+				Ciseaux(sf::Vector2f position, sf::Vector2f scale,  uint couche, bool visible);
 
 				virtual ~Ciseaux() override {};
 				void clic() override {};

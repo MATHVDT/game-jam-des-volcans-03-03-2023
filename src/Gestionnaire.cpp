@@ -91,7 +91,7 @@ void Gestionnaire::initScene()
  */ sf::Texture *ta = Objet::obtenirTextureMap()["ressources/armoire_ferme.png"];
     Objet *o = new Armoire(sf::Vector2f(0.0f, 0.0f),
                            sf::Vector2f(1.0f, 1.0f),
-                           *Objet::obtenirTextureMap()["ressources/armoire_ferme.png"], 0, true);
+                            0, true);
 
     contexte->ajouterAffichable(scene, o);
 }
