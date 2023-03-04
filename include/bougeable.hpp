@@ -1,11 +1,11 @@
 #ifndef __BOUGEABLE_HPP__
 #define __BOUGEABLE_HPP__
-#include <objet.hpp>
+#include "objet.hpp"
 
-class Bougeable public : Bougeable {
+class Bougeable : public Objet {
 				public :
 								bool selectionnee;
-								sf::Vector2<int> position initiale;
+								sf::Vector2<int> position_initiale;
 				private:
 								bool estIphone() override;
 								void reset_position();
