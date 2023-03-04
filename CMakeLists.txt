@@ -37,20 +37,25 @@ message ( STATUS "Compiler flags: ${CMAKE_CXX_FLAGS}" )
 
 # Sources #-----------------------------------------------------------------------------------------
 set ( ZZ3_HEADERS
+      include/Manager.hpp
+      include/Context.hpp
     )
 
 set ( ZZ3_SOURCES
       src/main.cpp
+      src/Manager.cpp
+      src/Context.cpp
     )
 
 include_directories ( src/ )
 
 # Executables #-------------------------------------------------------------------------------------
-add_executable ( Prog
+add_executable ( prog
 		src/main.cpp
                  ${ZZ3_HEADERS}
                  ${ZZ3_SOURCES}
                )
 # Build #-------------------------------------------------------------------------------------------
-set_target_properties ( Prog PROPERTIES LINKER_LANGUAGE C )
-target_link_libraries ( Prog ${CMAKE_THREAD_LIBS_INIT})
+set_target_properties ( prog PROPERTIES LINKER_LANGUAGE C )
+target_link_libraries ( prog ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(prog  -lsfml-graphics -lsfml-window -lsfml-system)

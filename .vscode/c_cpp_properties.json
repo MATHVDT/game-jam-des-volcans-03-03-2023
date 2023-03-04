@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/usr/lib/gcc/",
+                "/usr/lib",
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/*",
+                "/home/mathvdt/game-jam-des-volcans-03-03-2023/include"
+                "/home/mathvdt/game-jam-des-volcans-03-03-2023/*"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
