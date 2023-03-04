@@ -19,7 +19,7 @@ protected:
     bool _visible;
     sf::Rect<float> _rectangle;
     Affichable _affichable;
-    std::vector<Type > _materiaux;
+    std::vector<Type> _materiaux;
 
     static std::map<std::string, sf::Texture *> textureMap;
 
@@ -55,5 +55,6 @@ protected:
 /*                 Méthodes inline                 */
 /***************************************************/
 inline sf::Sprite *Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
+inline bool Objet::obtenirVisible() const { return _visible; }
 
 #endif

@@ -22,7 +22,6 @@ public:
 	void relache();
 	void definirPosition(const sf::Vector2f &position);
 	void clic() override;
-	void remettrePosition();
 };
 
 #endif
