@@ -16,13 +16,13 @@ endif ()
 # C++14 #-------------------------------------------------------------------------------------------
 include ( CheckCXXCompilerFlag )
 
-check_cxx_compiler_flag ( "-std=gnu++14" COMPILER_SUPPORTS_CPP14 )
+check_cxx_compiler_flag ( "-std=gnu++17" COMPILER_SUPPORTS_CPP17 )
 check_cxx_compiler_flag ( "-std=gnu++1y" COMPILER_SUPPORTS_CPP1Y )
 check_cxx_compiler_flag ( "-std=gnu++11" COMPILER_SUPPORTS_CPP11 )
 check_cxx_compiler_flag ( "-std=gnu++0x" COMPILER_SUPPORTS_CPP0X )
 
-if ( COMPILER_SUPPORTS_CPP14 )
- set ( CMAKE_CXX_FLAGS "-std=gnu++14 ${CMAKE_CXX_FLAGS}" )
+if ( COMPILER_SUPPORTS_CPP17 )
+ set ( CMAKE_CXX_FLAGS "-std=gnu++17 ${CMAKE_CXX_FLAGS}" )
 elseif ( COMPILER_SUPPORTS_CPP1Y )
  set ( CMAKE_CXX_FLAGS "-std=gnu++1y ${CMAKE_CXX_FLAGS}" )
 elseif ( COMPILER_SUPPORTS_CPP11 )
@@ -44,6 +44,7 @@ set ( ZZ3_HEADERS
       include/armoire.hpp
       include/enum_type.hpp
       include/Gestionnaire.hpp
+      include/Affichable.hpp
       include/Contexte.hpp
     )
 
@@ -51,6 +52,7 @@ set ( ZZ3_SOURCES
       src/main.cpp
       src/Gestionnaire.cpp
       src/Contexte.cpp
+      src/Affichable.cpp
       
       src/objet.cpp
       src/fixe.cpp
@@ -68,5 +70,5 @@ add_executable ( prog
                  ${ZZ3_SOURCES}
                )
 # Build #-------------------------------------------------------------------------------------------
-set_target_properties ( prog PROPERTIES LINKER_LANGUAGE C )
+set_target_properties ( prog PROPERTIES LINKER_LANGUAGE CXX )
 target_link_libraries(prog  -lsfml-graphics -lsfml-window -lsfml-system)

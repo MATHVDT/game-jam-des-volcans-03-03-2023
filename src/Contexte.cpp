@@ -19,10 +19,20 @@ Contexte::Contexte()
 
     _window.setActive();
     _window.setPosition(sf::Vector2i(50, 50));
+		for (int k=0; k<6;k++){
+						_tousLesObjets.push_back(std::set<Objet*> {} );
+		}
 }
 
 Contexte::~Contexte()
 {
+      for (auto &scene : _tousLesObjets)
+    { // Pour chaque scene
+        for (auto &o : scene)
+        { // Pour chaque objet
+            delete o;
+        }
+    }
     _window.close();
 }
 
@@ -55,8 +65,7 @@ void Contexte::dessiner()
     { // Pour chaque scene
         for (auto &o : scene)
         { // Pour chaque objet
-            const sf::Sprite &s = o.sprite;
-            dessiner(s);
+            dessiner(o->obtenirSprite());
         }
     }
 }
@@ -82,7 +91,7 @@ void Contexte::afficherFenetre()
 /// @param scene
 /// @param affichable
 void Contexte::ajouterAffichable(int scene,
-                                 const Affichable_t &&affichable)
+                                 Objet *o)
 {
-    _tousLesObjets[scene].emplace(affichable);
+    _tousLesObjets[scene].emplace(o);
 }
