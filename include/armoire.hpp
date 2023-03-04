@@ -8,6 +8,7 @@ class Armoire : public Fixe {
 								bool estOuvert;
 				public :
 								void clic() override;
+								bool estIphone() override {return true;};
 };
 
 #endif

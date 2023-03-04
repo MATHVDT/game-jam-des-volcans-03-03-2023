@@ -6,7 +6,8 @@ class Fixe : public Objet {
 				private:
 								bool cassee;
 				public:
-								void clic() override;
+								void clic() override = 0;
+								bool estIphone() override = 0;
 };
 
 

@@ -16,7 +16,7 @@ endif ()
 # C++14 #-------------------------------------------------------------------------------------------
 include ( CheckCXXCompilerFlag )
 
-check_cxx_compiler_flag ( "-std=gnu++14" COMPILER_SUPPORTS_CPP14 )
+check_cxx_compiler_flag ( "-std=gnu++17" COMPILER_SUPPORTS_CPP17 )
 check_cxx_compiler_flag ( "-std=gnu++1y" COMPILER_SUPPORTS_CPP1Y )
 check_cxx_compiler_flag ( "-std=gnu++11" COMPILER_SUPPORTS_CPP11 )
 check_cxx_compiler_flag ( "-std=gnu++0x" COMPILER_SUPPORTS_CPP0X )
@@ -68,5 +68,5 @@ add_executable ( prog
                  ${ZZ3_SOURCES}
                )
 # Build #-------------------------------------------------------------------------------------------
-set_target_properties ( prog PROPERTIES LINKER_LANGUAGE C )
+set_target_properties ( prog PROPERTIES LINKER_LANGUAGE CXX )
 target_link_libraries(prog  -lsfml-graphics -lsfml-window -lsfml-system)

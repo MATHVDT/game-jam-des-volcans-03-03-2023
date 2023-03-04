@@ -5,6 +5,9 @@
 #include "enum_type.hpp"
 
 class Prise : public Fixe {
+				public:
+								void clic() override {};
+								bool estIphone() override {return true;};
 };
 
 #endif
