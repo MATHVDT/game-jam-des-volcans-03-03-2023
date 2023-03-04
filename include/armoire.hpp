@@ -6,18 +6,18 @@
 class Armoire : public Fixe
 {
 private:
-	bool estOuvert;
+    bool estOuvert;
 
 public:
     Armoire(sf::Vector2f position,
-          sf::Vector2f scale,
-          sf::Texture &texture,
-          uint couche,
-          bool visible);
+            sf::Vector2f scale,
+            sf::Texture &texture,
+            uint couche,
+            bool visible);
     virtual ~Armoire() override;
 
-	void clic() override;
-	bool estIphone() override { return true; };
+    void clic() override;
+    bool estIphone() override { return true; };
 };
 
 #endif

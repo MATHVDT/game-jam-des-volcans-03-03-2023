@@ -81,13 +81,18 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
 void Gestionnaire::initScene()
 {
     uint scene = 0;
-    std::string img = "ressources/prise.png";
-    sf::Texture *t = new sf::Texture();
-    std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
+    // std::string img = "ressources/prise.png";
+    // sf::Texture *t = new sf::Texture();
+    // t->loadFromFile(img);
+    //  Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
+    //                           sf::Vector2f(1.0f, 1.0f),
+    //                           *t, 0, true);
 
+    sf::Texture *ta = Objet::obtenirTextureMap()["ressources/armoire_ferme.png"];
     Objet *o = new Armoire(sf::Vector2f(0.0f, 0.0f),
                            sf::Vector2f(1.0f, 1.0f),
-                           *t, 0, true);
+                           *Objet::obtenirTextureMap()["ressources/armoire_ferme.png"],
+                           0, true);
 
     contexte->ajouterAffichable(scene, o);
 }
@@ -123,4 +128,11 @@ bool Gestionnaire::checkSourisSurObjet()
 
     objetTouche->clic();
     return true;
+}
+const sf::Vector2f Gestionnaire::getMousePos(sf::RenderWindow &window) const
+{
+    // récupération de la position de la souris dans la fenêtre
+    sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
+    // conversion en coordonnées "monde"
+    return window.mapPixelToCoords(pixelPos);
 }
