@@ -4,7 +4,7 @@ Manager *Manager::_instance = nullptr;
 
 Manager::Manager(/* args */)
 {
-    context = Context::getInstance();
+    context = Context::obtenirInstance();
 }
 
 Manager::~Manager()
@@ -12,7 +12,7 @@ Manager::~Manager()
     delete context;
 }
 
-Manager *Manager::getInstance()
+Manager *Manager::obtenirInstance()
 {
     if (Manager::_instance == nullptr)
     {
@@ -31,21 +31,27 @@ Manager *Manager::getInstance()
 
 void Manager::run()
 {
+    sf::Event event;
 
-    while (1)
+    while (context->obtenirJeuEnCours())
     {
-        while (context->getPollEvent())
-        { // Actualise le contexte seulement quand il ya une evenement
 
-        // context.
+        while (context->obtenirPollEvent())
+        { // Actualise le contexte seulement quand il ya une evenement
+            checkEvent(context->obtenirEvent());
         }
+        context->afficherFenetre();
     }
 }
 
-void checkEvent(sf::Event &event)
+void Manager::checkEvent(const sf::Event &event)
 {
     switch (event.type)
     {
+    case sf::Event::Closed:
+        context->definirJeuEnCours(false);
+        break;
+
     case sf::Event::MouseMoved:
         // Souris bougee
         break;
@@ -53,7 +59,6 @@ void checkEvent(sf::Event &event)
     case sf::Event::MouseButtonPressed:
         // bouton pressed
         break;
-
 
     case sf::Event::MouseButtonReleased:
         // bouton relache

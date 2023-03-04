@@ -15,7 +15,7 @@ private: // Static
     static Manager *_instance;
 
 public: // Static
-    static Manager *getInstance();
+    static Manager *obtenirInstance();
 
 public:
     Manager();
@@ -23,7 +23,8 @@ public:
 
     void run();
 
-    void checkEvent(sf::Event& event);
+    void checkEvent(const sf::Event& event);
+    
 };
 
 /***************************************************/

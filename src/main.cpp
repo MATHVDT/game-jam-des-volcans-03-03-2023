@@ -6,7 +6,10 @@
 int main()
 {
 
-    Manager *manager = Manager::getInstance();
+    Manager *manager = Manager::obtenirInstance();
+
+    manager->run();
+
 
     // sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     // sf::CircleShape shape(100.f);
@@ -25,7 +28,6 @@ int main()
     //     window.draw(shape);
     //     window.display();
     // }
-
 
     delete manager;
 
