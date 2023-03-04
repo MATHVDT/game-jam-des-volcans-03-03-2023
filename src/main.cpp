@@ -8,6 +8,8 @@ int main()
 {
 
     Gestionnaire *manager = Gestionnaire::obtenirInstance();
+    
+    manager->initScene();
 
     manager->run();
 

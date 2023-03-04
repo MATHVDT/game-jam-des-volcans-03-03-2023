@@ -13,7 +13,6 @@
 
 #define NB_SCENES 6
 
-
 class Contexte
 {
 private:
@@ -21,7 +20,7 @@ private:
     float _largeurFenetre;
     float _hauteurFenetre;
 
-    std::vector<std::set<Objet*>> _tousLesObjets;
+    std::vector<std::set<Objet *>> _tousLesObjets;
     uint _sceneChargee;
 
     bool _jeuEnCours;
@@ -52,6 +51,7 @@ public:
 
     // Getter
     bool obtenirJeuEnCours() const;
+    std::set<Objet *> &obtenirObjetSceneChargee() ;
     const sf::Event &obtenirEvenement() const;
 
     // Setter
@@ -65,6 +65,7 @@ public:
 // Getter
 inline bool Contexte::obtenirJeuEnCours() const { return _jeuEnCours; }
 inline const sf::Event &Contexte::obtenirEvenement() const { return _event; }
+inline std::set<Objet *> &Contexte::obtenirObjetSceneChargee()  { return _tousLesObjets[_sceneChargee]; }
 
 // Setter
 inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }

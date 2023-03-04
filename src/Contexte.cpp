@@ -91,7 +91,7 @@ void Contexte::dessiner(const sf::Drawable *dessinable)
 void Contexte::afficherFenetre()
 {
     _window.display();
-    // _window.clear();
+    _window.clear();
 }
 
 /// @brief Ajoute un objet a la liste de tous les objets.

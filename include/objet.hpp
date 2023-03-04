@@ -36,9 +36,11 @@ public:
     void definirRectangle(float gauche, float haut,
                           float largeur, float hauteur);
 
+    bool obtenirVisible() const;
     sf::Sprite *obtenirSprite() const;
 };
 
 inline sf::Sprite *Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
+inline bool Objet::obtenirVisible() const { return _visible; }
 
 #endif

@@ -31,6 +31,7 @@ public:
     void initScene();
 
     void checkEvenment(const sf::Event& evenement);
+    bool checkSourisSurObjet();
     
 };
 
