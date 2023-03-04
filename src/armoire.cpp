@@ -14,6 +14,10 @@ Armoire::~Armoire() {}
 
 void Armoire::clic()
 {
+
 	estOuvert = !estOuvert;
-	// changer le srpite
+	if (estOuvert)
+		_affichable.definirTexture(*textureMap["ressources/armoire_ouvert.png"]);
+	else
+		_affichable.definirTexture(*textureMap["ressources/armoire_ferme.png"]);
 }

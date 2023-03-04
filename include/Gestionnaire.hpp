@@ -10,7 +10,6 @@
 #include "../include/armoire.hpp"
 #include "../include/prise.hpp"
 
-
 class Gestionnaire
 {
 private:
@@ -30,9 +29,9 @@ public:
     void run();
     void initScene();
 
-    void checkEvenment(const sf::Event& evenement);
+    void checkEvenment(const sf::Event &evenement);
     bool checkSourisSurObjet();
-    
+    const sf::Vector2f getMousePos(sf::RenderWindow &window) const;
 };
 
 /***************************************************/

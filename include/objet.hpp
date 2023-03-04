@@ -1,6 +1,7 @@
 #ifndef __OBJET_HPP__
 #define __OBJET_HPP__
 #include "enum_type.hpp"
+#include <SFML/Graphics/Texture.hpp>
 #include <vector>
 
 #include "Affichable.hpp"
@@ -13,12 +14,14 @@
 
 class Objet
 {
-private:
+protected:
     bool _visible;
     sf::Rect<float> _rectangle;
-    static std::map<std::string, sf::Texture> textureMap;
-
+    // static std::map<std::string, sf::Texture> textureMap;
     Affichable _affichable;
+
+    static std::map<std::string, sf::Texture*> textureMap;
+    // Affichable* _affichable;
 
 public:
     Objet(sf::Vector2f position,
@@ -28,16 +31,18 @@ public:
           bool visible);
     virtual ~Objet();
 
-    // static void initialisationTexture();
+    static void initialisationTexture();
     virtual bool estIphone() = 0;
     virtual void clic() = 0;
-    const sf::Rect<float> &obtenirRectangle() const;
+    const sf::Rect<float> &obtenirRectangle();
     void definirRectangle(float gauche, float haut);
     void definirRectangle(float gauche, float haut,
                           float largeur, float hauteur);
 
     bool obtenirVisible() const;
     sf::Sprite *obtenirSprite() const;
+		static std::map<std::string, sf::Texture*> obtenirTextureMap() ; 
+
 };
 
 inline sf::Sprite *Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
