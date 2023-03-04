@@ -14,7 +14,7 @@ public: // Static
 
 public:
     Affichable();
-        ~Affichable();
+    ~Affichable();
 
     // Getter
     uint obtenirCouche() const;
