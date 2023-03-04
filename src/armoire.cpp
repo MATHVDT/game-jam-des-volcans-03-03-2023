@@ -2,12 +2,12 @@
 
 Armoire::Armoire(sf::Vector2f position,
 				 sf::Vector2f scale,
-				 sf::Texture &texture,
 				 uint couche,
 				 bool visible)
-	: Fixe(position, scale, texture, couche, visible),
+	: Fixe(position, scale, couche, visible),
 	estOuvert(false)
 {
+		_affichable.definirTexture(*textureMap["ressources/armoire_ferme.png"]);
 }
 
 Armoire::~Armoire() {}

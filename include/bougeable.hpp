@@ -13,7 +13,6 @@ protected:
 public:
 	Bougeable(sf::Vector2f position,
 			  sf::Vector2f scale,
-			  sf::Texture &texture,
 			  uint couche,
 			  bool visible);
 	virtual ~Bougeable() override;
@@ -23,7 +22,7 @@ public:
 	void relache();
 	void definirPosition(const sf::Vector2f &position);
 	void clic() override;
-
+	void remettrePosition();
 };
 
 #endif

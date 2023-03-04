@@ -7,11 +7,11 @@
 #include "Affichable.hpp"
 
 #include <SFML/Graphics.hpp>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <string>
-#include <filesystem>
 
 class Objet
 {
@@ -19,6 +19,7 @@ protected:
     bool _visible;
     sf::Rect<float> _rectangle;
     Affichable _affichable;
+    std::vector<Type > _materiaux;
 
     static std::map<std::string, sf::Texture *> textureMap;
 
@@ -28,7 +29,6 @@ public: // Static
 public:
     Objet(sf::Vector2f position,
           sf::Vector2f scale,
-          sf::Texture &texture,
           uint couche,
           bool visible);
     virtual ~Objet();
@@ -55,7 +55,5 @@ protected:
 /*                 Méthodes inline                 */
 /***************************************************/
 inline sf::Sprite *Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
-inline bool Objet::obtenirVisible() const { return _visible; }
-inline const sf::Vector2f &Objet::obtenirPosition() const { return _affichable.obtenirSpritePosition(); }
 
 #endif
