@@ -11,6 +11,9 @@
 #include "../include/objet.hpp"
 #include "../include/bougeable.hpp"
 
+#define NB_SCENES 6
+
+
 class Contexte
 {
 private:
@@ -19,6 +22,7 @@ private:
     float _hauteurFenetre;
 
     std::vector<std::set<Objet*>> _tousLesObjets;
+    uint _sceneChargee;
 
     bool _jeuEnCours;
     sf::Event _event;

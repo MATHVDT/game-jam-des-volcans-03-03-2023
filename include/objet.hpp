@@ -20,7 +20,7 @@ private:
     sf::Rect<float> _rectangle;
     //	static std::map<std::string, sf::Texture> texture;
 
-    Affichable* _affichable;
+    Affichable _affichable;
 
 public:
     Objet(sf::Vector2f position,
@@ -30,7 +30,7 @@ public:
           bool visible);
     virtual ~Objet();
 
-    static void initialisationTexture();
+    // static void initialisationTexture();
     virtual bool estIphone() = 0;
     virtual void clic() = 0;
     const sf::Rect<float> &obtenirRectangle() const;
@@ -41,6 +41,6 @@ public:
     sf::Sprite *obtenirSprite() const;
 };
 
-inline sf::Sprite *Objet::obtenirSprite() const { return _affichable->obtenirSprite(); }
+inline sf::Sprite *Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
 
 #endif

@@ -10,12 +10,11 @@ Objet::Objet(sf::Vector2f position,
 			 uint couche,
 			 bool visible)
 	: _visible(visible),
-	  _rectangle(),
-	  _affichable(new Affichable())
+	  _rectangle()
 {
-	_affichable->definirTexture(texture);
-	_affichable->definirCouche(couche);
-	_affichable->definirSpritePosition(position);
+	_affichable.definirTexture(texture);
+	_affichable.definirCouche(couche);
+	_affichable.definirSpritePosition(position);
 
 	definirRectangle(position.x, position.y);
 }

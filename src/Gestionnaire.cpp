@@ -40,6 +40,7 @@ void Gestionnaire::run()
         { // Actualise le contexte seulement quand il ya une evenement
             checkEvenment(contexte->obtenirEvenement());
         }
+        contexte->dessiner();
         contexte->afficherFenetre();
     }
 }
@@ -76,10 +77,11 @@ void Gestionnaire::initScene()
     uint scene = 0;
     std::string img = "ressources/prise.png";
     sf::Texture *t = new sf::Texture();
-    t->loadFromFile(img);
-    Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
+    std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
+
+    Objet *o = new Armoire(sf::Vector2f(0.0f, 0.0f),
                              sf::Vector2f(1.0f, 1.0f),
-                             *t, 0, false);
+                             *t, 0, true);
 
     contexte->ajouterAffichable(scene, o);
 }

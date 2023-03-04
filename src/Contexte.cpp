@@ -7,6 +7,12 @@ Contexte::Contexte()
     _largeurFenetre = 1300.0f;
     _hauteurFenetre = 900.0f;
 
+    _sceneChargee = 0;
+    for (int k = 0; k < NB_SCENES; ++k)
+    {
+        _tousLesObjets.push_back(std::set<Objet *>{});
+    }
+
     _jeuEnCours = true;
 
     _objetBougeableSelectionne = nullptr;
@@ -23,7 +29,7 @@ Contexte::Contexte()
 
 Contexte::~Contexte()
 {
-      for (auto &scene : _tousLesObjets)
+    for (auto &scene : _tousLesObjets)
     { // Pour chaque scene
         for (auto &o : scene)
         { // Pour chaque objet
@@ -60,6 +66,7 @@ void Contexte::dessiner()
 {
     for (auto &scene : _tousLesObjets)
     { // Pour chaque scene
+        // auto &scene = _tousLesObjets[_sceneChargee];
         for (auto &o : scene)
         { // Pour chaque objet
             dessiner(o->obtenirSprite());
@@ -81,7 +88,7 @@ void Contexte::dessiner(const sf::Drawable *dessinable)
 void Contexte::afficherFenetre()
 {
     _window.display();
-    _window.clear();
+    // _window.clear();
 }
 
 /// @brief Ajoute un objet a la liste de tous les objets.
