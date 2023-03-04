@@ -51,6 +51,18 @@ Boison :
 * Jus de pomme
 
 #### Repas du midi 
+* Salade de pattes (jambon, mozza,tomate cerise, tomates séchées, pesto)
+* Salade de pattes (jambon, mozza,tomate tomates séchées)
+* Tranches de jambon
+* Quiche épinard/chèvre
+* Cake tomates séchées
+* Cake ...
+
+* Muffin banana bread
+* Banana bread
+
+* Fromages (st-nectaire, cantal, ...)
+* Pain
 
 #### Repas du soir
 
