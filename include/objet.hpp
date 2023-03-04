@@ -3,8 +3,10 @@
 #include "enum_type.hpp"
 #include <vector>
 
-#include "../include/Affichable.hpp"
-
+#include "Affichable.hpp"
+#include <SFML/Graphics.hpp>
+#include <fstream>
+#include <iostream>
 #include <map>
 #include <string>
 #include <filesystem>

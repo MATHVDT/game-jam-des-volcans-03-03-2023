@@ -43,7 +43,7 @@ void Objet::definirRectangle(float gauche,
 
 void Objet::initialisationTexture()
 {
-				const std::filesystem::path chemin { "../ressources/" };
+				const std::filesystem::path chemin { "ressources/" };
 				for (auto& file : std::filesystem::directory_iterator { chemin }) // loop through the current folder
 				{
 								sf::Texture texture;
