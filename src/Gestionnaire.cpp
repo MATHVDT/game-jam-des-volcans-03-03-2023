@@ -116,10 +116,12 @@ bool Gestionnaire::checkSourisSurObjet()
     Objet *objetTouche = nullptr;
     for (Objet *x : scene)
     {
-        objetTouche = x;
-        if (objetTouche->obtenirVisible() &&
-            objetTouche->obtenirRectangle().contains(sourisPosition))
+        if (x->obtenirVisible() &&
+            x->obtenirRectangle().contains(sourisPosition))
+        {
+            objetTouche = x;
             break;
+        }
     }
 
     if (objetTouche == nullptr)
