@@ -53,6 +53,7 @@ set ( ZZ3_SOURCES
       src/fixe.cpp
       src/bougeable.cpp
       src/prise.cpp
+			src/armoire.cpp
     )
 
 include_directories ( src/ )
