@@ -38,9 +38,12 @@ message ( STATUS "Compiler flags: ${CMAKE_CXX_FLAGS}" )
 
 # Sources #-----------------------------------------------------------------------------------------
 set ( ZZ3_HEADERS
-      ./include/objet.hpp
-      ./include/fixe.hpp
-      ./include/bougeable.hpp
+      include/objet.hpp
+      include/fixe.hpp
+      include/bougeable.hpp
+      include/prise.hpp
+      include/armoire.hpp
+      include/enum_type.hpp
     )
 
 set ( ZZ3_SOURCES
@@ -49,6 +52,7 @@ set ( ZZ3_SOURCES
       src/objet.cpp
       src/fixe.cpp
       src/bougeable.cpp
+      src/prise.cpp
     )
 
 include_directories ( src/ )
