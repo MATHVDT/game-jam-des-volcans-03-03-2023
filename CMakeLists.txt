@@ -46,6 +46,7 @@ set ( ZZ3_HEADERS
       include/Gestionnaire.hpp
       include/Affichable.hpp
       include/Contexte.hpp
+			include/ciseaux.hpp
     )
 
 set ( ZZ3_SOURCES
@@ -59,6 +60,7 @@ set ( ZZ3_SOURCES
       src/bougeable.cpp
       src/prise.cpp
 			src/armoire.cpp
+			src/ciseaux.cpp
     )
 
 include_directories ( src/ )

@@ -1,5 +1,4 @@
 #include "../include/Gestionnaire.hpp"
-#include <SFML/Graphics/Texture.hpp>
 
 Gestionnaire *Gestionnaire::_instance = nullptr;
 
@@ -41,7 +40,7 @@ void Gestionnaire::run()
         { // Actualise le contexte seulement quand il ya une evenement
             checkEvenment(contexte->obtenirEvenement());
         }
-				contexte->dessiner();
+        contexte->dessiner();
         contexte->afficherFenetre();
     }
 }
@@ -62,7 +61,13 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
 
     case sf::Event::MouseButtonPressed:
         // bouton pressed
+        checkSourisSurObjet();
         break;
+
+        // case sf::Event:: :
+        //     // bouton pressed
+
+        //     break;
 
     case sf::Event::MouseButtonReleased:
         // bouton relache
@@ -78,19 +83,53 @@ void Gestionnaire::initScene()
     uint scene = 0;
     std::string img = "ressources/prise.png";
     sf::Texture *t = new sf::Texture();
-    t->loadFromFile(img);
-   /* Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
-                             sf::Vector2f(1.0f, 1.0f),
-                             *t, 0, true);
-*/		sf::Texture *ta = Objet::obtenirTextureMap()["ressources/armoire_ferme.png"];
+    std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
+
+    /* Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
+                              sf::Vector2f(1.0f, 1.0f),
+                              *t, 0, true);
+ */ sf::Texture *ta = Objet::obtenirTextureMap()["ressources/armoire_ferme.png"];
     Objet *o = new Armoire(sf::Vector2f(0.0f, 0.0f),
-                             sf::Vector2f(1.0f, 1.0f),
-                              *Objet::obtenirTextureMap()["ressources/armoire_ferme.png"]
-, 0, true);
+                           sf::Vector2f(1.0f, 1.0f),
+                           *Objet::obtenirTextureMap()["ressources/armoire_ferme.png"], 0, true);
 
     contexte->ajouterAffichable(scene, o);
 }
 
+/// @brief Lance le clic sur l'objet sur lequel la souris est.
+/// @return true si un objet est cliquee
+bool Gestionnaire::checkSourisSurObjet()
+{
+    // Pas le bouton gauche appuye
+    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+    {
+        return false;
+    }
+
+    // Recup position souris
+    sf::Vector2f sourisPosition = (sf::Vector2f)sf::Mouse::getPosition();
+
+    // Recup tous les objets de la scene chargee
+    std::set<Objet *> &scene = contexte->obtenirObjetSceneChargee();
+
+    // Parcours tous les objets pour savoir si la souris est dedans
+    Objet *objetTouche = nullptr;
+    for (Objet *x : scene)
+    {
+        if (x->obtenirVisible() &&
+            x->obtenirRectangle().contains(sourisPosition))
+        {
+            objetTouche = x;
+            break;
+        }
+    }
+
+    if (objetTouche == nullptr)
+        return false;
+
+    objetTouche->clic();
+    return true;
+}
 const sf::Vector2f Gestionnaire::getMousePos(sf::RenderWindow &window) const
 {
     // récupération de la position de la souris dans la fenêtre
@@ -98,4 +137,3 @@ const sf::Vector2f Gestionnaire::getMousePos(sf::RenderWindow &window) const
     // conversion en coordonnées "monde"
     return window.mapPixelToCoords(pixelPos);
 }
-

@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include <SFML/Graphics/Texture.hpp>
+
 #include "../include/Contexte.hpp"
 #include "../include/armoire.hpp"
 #include "../include/bougeable.hpp"
@@ -25,11 +27,12 @@ class Gestionnaire {
 				Gestionnaire();
 				~Gestionnaire();
 
-				void run();
-				void initScene();
+    void run();
+    void initScene();
 
-				void checkEvenment(const sf::Event& evenement);
-				const sf::Vector2f getMousePos(sf::RenderWindow& window) const;
+    void checkEvenment(const sf::Event &evenement);
+    bool checkSourisSurObjet();
+    const sf::Vector2f getMousePos(sf::RenderWindow &window) const;
 };
 
 /***************************************************/
