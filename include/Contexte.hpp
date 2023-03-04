@@ -11,6 +11,9 @@
 #include "../include/objet.hpp"
 #include "../include/bougeable.hpp"
 
+class Bougeable;
+class Objet;
+
 #define NB_SCENES 6
 
 class Contexte
@@ -51,11 +54,18 @@ public:
 
     // Getter
     bool obtenirJeuEnCours() const;
-    std::set<Objet *> &obtenirObjetSceneChargee() ;
+    std::set<Objet *> &obtenirObjetSceneChargee();
     const sf::Event &obtenirEvenement() const;
+    Bougeable *obtenirObjetBougeableSelectionne() const;
+    Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const;
+    const sf::Vector2f obtenirSourisPosition(sf::RenderWindow &window) const;
+
+
 
     // Setter
     void definirJeuEnCours(bool valeur = false);
+    void definirObjetBougeableSelectionne(Bougeable *o);
+    void definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o);
 };
 
 /***************************************************/
@@ -65,9 +75,13 @@ public:
 // Getter
 inline bool Contexte::obtenirJeuEnCours() const { return _jeuEnCours; }
 inline const sf::Event &Contexte::obtenirEvenement() const { return _event; }
-inline std::set<Objet *> &Contexte::obtenirObjetSceneChargee()  { return _tousLesObjets[_sceneChargee]; }
+inline std::set<Objet *> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
+inline Bougeable *Contexte::obtenirObjetBougeableSelectionne() const { return _objetBougeableSelectionne; }
+inline Objet *Contexte::obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const { return _objetEnInteractionAvecObjetBougeableSelectionne; }
 
 // Setter
 inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
+inline void Contexte::definirObjetBougeableSelectionne(Bougeable *o) { _objetBougeableSelectionne = o; }
+inline void Contexte::definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o) { _objetEnInteractionAvecObjetBougeableSelectionne = o; }
 
 #endif

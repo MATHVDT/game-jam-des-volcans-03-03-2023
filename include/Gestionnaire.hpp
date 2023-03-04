@@ -31,9 +31,9 @@ public:
     void run();
     void initScene();
 
+    bool miseAJour();
     void checkEvenment(const sf::Event &evenement);
     bool checkSourisSurObjet();
-    const sf::Vector2f getMousePos(sf::RenderWindow &window) const;
 };
 
 /***************************************************/

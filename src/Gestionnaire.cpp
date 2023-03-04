@@ -130,10 +130,12 @@ bool Gestionnaire::checkSourisSurObjet()
     objetTouche->clic();
     return true;
 }
-const sf::Vector2f Gestionnaire::getMousePos(sf::RenderWindow &window) const
+
+bool Gestionnaire::miseAJour()
 {
-    // récupération de la position de la souris dans la fenêtre
-    sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
-    // conversion en coordonnées "monde"
-    return window.mapPixelToCoords(pixelPos);
+    Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
+    if (objetSelectionne != nullptr)
+    {
+        objetSelectionne->definirPosition((sf::Vector2f)sf::Mouse::getPosition());
+    }
 }
