@@ -8,7 +8,7 @@ class Ciseaux : public Bougeable {
 				Ciseaux(sf::Vector2f position, sf::Vector2f scale,  uint couche, bool visible);
 
 				virtual ~Ciseaux() override {};
-				void clic() override {};
+				// void clic() override ;
 				bool estIphone() override {return true;};
 };
 

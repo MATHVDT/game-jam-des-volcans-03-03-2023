@@ -11,6 +11,7 @@
 #include "../include/fixe.hpp"
 #include "../include/objet.hpp"
 #include "../include/prise.hpp"
+#include "ciseaux.hpp"
 
 class Gestionnaire {
 		private:

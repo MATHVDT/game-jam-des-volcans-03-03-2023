@@ -4,8 +4,8 @@ Contexte *Contexte::_instance = nullptr;
 
 Contexte::Contexte()
 {
-    _largeurFenetre = 1300.0f;
-    _hauteurFenetre = 900.0f;
+    _largeurFenetre = 1422.0f;
+    _hauteurFenetre = 800.0f;
 
     _sceneChargee = 0;
     for (int k = 0; k < NB_SCENES; ++k)

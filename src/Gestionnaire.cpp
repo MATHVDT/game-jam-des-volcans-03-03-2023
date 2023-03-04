@@ -39,6 +39,7 @@ void Gestionnaire::run()
         while (contexte->obtenirSonderEvenement())
         { // Actualise le contexte seulement quand il ya une evenement
             checkEvenment(contexte->obtenirEvenement());
+            miseAJour();
         }
         contexte->dessiner();
         contexte->afficherFenetre();
@@ -88,12 +89,17 @@ void Gestionnaire::initScene()
     /* Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
                               sf::Vector2f(1.0f, 1.0f),
                               *t, 0, true);
- */ sf::Texture *ta = Objet::obtenirTextureMap()["ressources/armoire_ferme.png"];
-    Objet *o = new Armoire(sf::Vector2f(0.0f, 0.0f),
+ */
+    Objet *o = new Ciseaux(sf::Vector2f(0.0f, 0.0f),
                            sf::Vector2f(1.0f, 1.0f),
-                            0, true);
+                           0, true);
+
+    Objet *a = new Armoire(sf::Vector2f(20.0f, 0.0f),
+                           sf::Vector2f(1.0f, 1.0f),
+                           0, true);
 
     contexte->ajouterAffichable(scene, o);
+    contexte->ajouterAffichable(scene, a);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.
