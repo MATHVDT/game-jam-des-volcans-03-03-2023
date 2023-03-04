@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include <SFML/Graphics/Texture.hpp>
+
 #include "../include/Contexte.hpp"
 #include "../include/objet.hpp"
 #include "../include/bougeable.hpp"
