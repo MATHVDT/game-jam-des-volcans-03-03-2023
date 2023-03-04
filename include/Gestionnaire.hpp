@@ -31,6 +31,7 @@ public:
     void initScene();
 
     void checkEvenment(const sf::Event& evenement);
+				const sf::Vector2f getMousePos(sf::RenderWindow &window) const
     
 };
 

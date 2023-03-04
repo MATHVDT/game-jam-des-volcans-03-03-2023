@@ -6,6 +6,8 @@
 
 class Prise : public Fixe
 {
+private:
+				bool iphone;
 public:
     Prise(sf::Vector2f position,
           sf::Vector2f scale,
@@ -15,7 +17,7 @@ public:
     virtual ~Prise() override;
 
 	void clic() override{};
-	bool estIphone() override { return true; };
+	bool estIphone() override;
 };
 
 #endif

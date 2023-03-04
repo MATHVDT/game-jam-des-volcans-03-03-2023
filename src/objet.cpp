@@ -1,6 +1,6 @@
 #include "../include/objet.hpp"
 
-std::map<std::string, sf::Texture> Objet::textureMap = {};
+std::map<std::string, sf::Texture*> Objet::textureMap = {};
 
 Objet::Objet(sf::Vector2f position,
 		sf::Vector2f scale,
@@ -20,8 +20,13 @@ Objet::Objet(sf::Vector2f position,
 
 Objet::~Objet() { }
 
-const sf::Rect<float>& Objet::obtenirRectangle() const
+const sf::Rect<float>& Objet::obtenirRectangle() 
 {
+				float haut = _affichable->obtenirSprite()->getGlobalBounds().top;
+				float gauche = _affichable->obtenirSprite()->getGlobalBounds().left;
+				float hauteur = _affichable->obtenirSprite()->getGlobalBounds().height;
+				float largeur = _affichable->obtenirSprite()->getGlobalBounds().width;
+				definirRectangle(gauche, haut,hauteur, largeur);
 				return _rectangle;
 }
 
@@ -46,8 +51,13 @@ void Objet::initialisationTexture()
 				const std::filesystem::path chemin { "ressources/" };
 				for (auto& file : std::filesystem::directory_iterator { chemin }) // loop through the current folder
 				{
-								sf::Texture texture;
-								texture.loadFromFile(file.path());
+								sf::Texture *texture= new sf::Texture();
+								texture->loadFromFile(file.path());
 								textureMap.insert(std::make_pair(file.path().string(), texture));
 				}
+}
+
+
+std::map<std::string, sf::Texture*> Objet::obtenirTextureMap() {
+				return textureMap;
 }

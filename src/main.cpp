@@ -7,8 +7,9 @@
 int main()
 {
 
-    Gestionnaire *manager = Gestionnaire::obtenirInstance();
 		Objet::initialisationTexture();
+    Gestionnaire *manager = Gestionnaire::obtenirInstance();
+		manager->initScene();
     manager->run();
 
     // sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
