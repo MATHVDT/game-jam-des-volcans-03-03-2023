@@ -43,10 +43,14 @@ set ( ZZ3_HEADERS
       include/prise.hpp
       include/armoire.hpp
       include/enum_type.hpp
+      include/Gestionnaire.hpp
+      include/Contexte.hpp
     )
 
 set ( ZZ3_SOURCES
       src/main.cpp
+      src/Gestionnaire.cpp
+      src/Contexte.cpp
       
       src/objet.cpp
       src/fixe.cpp
@@ -58,11 +62,11 @@ set ( ZZ3_SOURCES
 include_directories ( src/ )
 
 # Executables #-------------------------------------------------------------------------------------
-add_executable ( Prog
-    src/main.cpp
+add_executable ( prog
+		src/main.cpp
                  ${ZZ3_HEADERS}
                  ${ZZ3_SOURCES}
                )
 # Build #-------------------------------------------------------------------------------------------
-set_target_properties ( Prog PROPERTIES LINKER_LANGUAGE CXX )
-target_link_libraries( Prog sfml-graphics sfml-audio)
+set_target_properties ( prog PROPERTIES LINKER_LANGUAGE C )
+target_link_libraries(prog  -lsfml-graphics -lsfml-window -lsfml-system)

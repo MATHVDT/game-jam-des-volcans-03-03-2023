@@ -6,19 +6,19 @@
 #include "enum_type.hpp"
 #include <vector>
 
-class Objet {
-				private:
-								bool visible;
-								sf::Rect<int> rectangle;
-								sf::Sprite sprite;
-								std::vector<Type> tag;
-				public:
-								virtual bool estIphone() =0;
-								virtual void clic() = 0;
-								const sf::Rect<int>& obtenirRectangle() const;
-								void definirRectangle(int gauche, int haut);
-								void definirRectangle(int gauche, int haut, int largeur, int hauteur);
-};
+class Objet
+{
+private:
+    bool visible;
+    sf::Rect<int> rectangle;
+    sf::Sprite sprite;
 
+public:
+    virtual bool estIphone() = 0;
+    virtual void clic() = 0;
+    const sf::Rect<int> &obtenirRectangle() const;
+    void definirRectangle(int gauche, int haut);
+    void definirRectangle(int gauche, int haut, int largeur, int hauteur);
+};
 
 #endif
