@@ -39,12 +39,19 @@ message ( STATUS "Compiler flags: ${CMAKE_CXX_FLAGS}" )
 set ( ZZ3_HEADERS
       include/Manager.hpp
       include/Context.hpp
+      ./include/objet.hpp
+      ./include/fixe.hpp
+      ./include/bougeable.hpp
     )
 
 set ( ZZ3_SOURCES
       src/main.cpp
       src/Manager.cpp
       src/Context.cpp
+      
+      src/objet.cpp
+      src/fixe.cpp
+      src/bougeable.cpp
     )
 
 include_directories ( src/ )

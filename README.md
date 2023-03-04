@@ -27,6 +27,9 @@ VILLEDIEU DE TORCY Mathieu
 
 ### Vendredi 
 #### Repas du soir 
+Apéro : Chips + tuc + bretzel 
+Boissons :  soda (coca, oasis, ice-tea)
+
 Buffet avec pizza : 
 * Grande Pizzaiolo (base tomate)
 * Grande Bolognaise (base tomate)
@@ -34,10 +37,18 @@ Buffet avec pizza :
 * Grande Cortina (base tomate, sans fromage)
 * Grande Moussaka (base tomate, fromage)
 
-Chips + tuc + bretzel + soda (coca, oasis, ice-tea)
-
 ### Samedi
 #### Petit-déjeuner 
+Pain au chocolat
+Corissant
+Brioche
+
+Boison :
+* Café 
+* Thé
+* Jus d'orange
+* Jus multifruit
+* Jus de pomme
 
 #### Repas du midi 
 
