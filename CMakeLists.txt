@@ -6,11 +6,11 @@ cmake_minimum_required ( VERSION 2.8.12 )
 # Ajout des flags pour lier JSONCpp à votre projet
 #target_link_libraries(your_target jsoncpp)
 
-find_package ( Threads )
+find_package ( SFML 2.5 COMPONENTS graphics audio REQUIRED)
 
 # C++ Warning Level #-------------------------------------------------------------------------------
 if ( CMAKE_COMPILER_IS_GNUCXX )
- set ( CMAKE_CXX_FLAGS "-g -Wall -pedantic ${CMAKE_CXX_FLAGS}" )
+  set ( CMAKE_CXX_FLAGS "-g -Wall -Wfatal-errors -pedantic ${CMAKE_CXX_FLAGS}" )
 endif ()
 
 # C++14 #-------------------------------------------------------------------------------------------
@@ -47,10 +47,10 @@ include_directories ( src/ )
 
 # Executables #-------------------------------------------------------------------------------------
 add_executable ( Prog
-		src/main.cpp
+    src/main.cpp
                  ${ZZ3_HEADERS}
                  ${ZZ3_SOURCES}
                )
 # Build #-------------------------------------------------------------------------------------------
 set_target_properties ( Prog PROPERTIES LINKER_LANGUAGE C )
-target_link_libraries ( Prog ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries ( Prog sfml-graphics sfml-audio )
