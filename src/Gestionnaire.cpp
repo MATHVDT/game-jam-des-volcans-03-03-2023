@@ -77,8 +77,8 @@ void Gestionnaire::initScene()
     std::string img = "ressources/prise.png";
     sf::Texture *t = new sf::Texture();
     t->loadFromFile(img);
-    Affichable_t a = Affichable();
+    Affichable_t a = Affichable_t();
     a.couche = 0;
     a.sprite.setTexture(*t);
-    // contexte->ajouterAffichable(scene, a);
+    contexte->ajouterAffichable(scene, a);
 }

@@ -3,20 +3,53 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 
-typedef struct Affichable
+class Affichable
 {
-    sf::Sprite sprite;
-    uint couche;
-} Affichable_t;
+private:
+    sf::Sprite _sprite;
+    uint _couche;
 
-bool compareAffichables(const Affichable_t &r1, const Affichable_t &r2);
+public: // Static
+    static bool compare(const Affichable &a1, const Affichable &a2);
 
-struct CompareAffichables
-{
-    bool operator()(const Affichable_t &a, const Affichable_t &b) const
-    {
-        return a.couche < b.couche;
-    }
+public:
+    Affichable();
+    Affichable(uint couche, sf::Sprite s);
+
+    // Getter
+    uint obtenirCouche() const;
+    sf::Sprite &obtenirSprite() const;
+    sf::Vector2f obtenirSpritePosition() const;
+
+    // Setter
+    void definirCouche(uint couche);
+    void definirSprite(sf::Sprite &&s);
+    void definirTexture(sf::Texture &texture);
+    void definirSpritePosition(sf::Vector2f posistion);
 };
+
+/***************************************************/
+/*               Fonctions Operateurs              */
+/***************************************************/
+bool operator<(const Affichable &r1, const Affichable &r2);
+bool operator>(const Affichable &r1, const Affichable &r2);
+bool operator==(const Affichable &r1, const Affichable &r2);
+bool operator<=(const Affichable &r1, const Affichable &r2);
+bool operator>=(const Affichable &r1, const Affichable &r2);
+
+/***************************************************/
+/*                 Méthodes inline                 */
+/***************************************************/
+
+// Getter
+inline uint Affichable::obtenirCouche() const { return _couche; }
+inline sf::Sprite &Affichable::obtenirSprite() const { return _sprite; }
+inline sf::Vector2f Affichable::obtenirSpritePosition() const { return _sprite.getPosition(); }
+
+// Setter
+inline void Affichable::definirCouche(uint couche) { _couche = couche; }
+inline void Affichable::definirSprite(sf::Sprite &&s) { _sprite = s; }
+inline void Affichable::definirTexture(sf::Texture &texture) { _sprite.setTexture(texture); }
+inline void Affichable::definirSpritePosition(sf::Vector2f position) { _sprite.setPosition(position); }
 
 #endif
