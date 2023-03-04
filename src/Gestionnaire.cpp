@@ -77,6 +77,9 @@ void Gestionnaire::initScene()
     std::string img = "ressources/prise.png";
     sf::Texture *t = new sf::Texture();
     t->loadFromFile(img);
-    Objet *o = new Bougeable();
+    Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
+                             sf::Vector2f(1.0f, 1.0f),
+                             *t, 0, false);
+
     contexte->ajouterAffichable(scene, o);
 }

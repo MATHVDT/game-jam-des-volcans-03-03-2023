@@ -2,24 +2,45 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 
-//std::map<std::string, sf::Texture> Objet::texture = {};
+// std::map<std::string, sf::Texture> Objet::texture = {};
 
-const sf::Rect<int>& Objet::obtenirRectangle() const
+Objet::Objet(sf::Vector2f position,
+			 sf::Vector2f scale,
+			 sf::Texture &texture,
+			 uint couche,
+			 bool visible)
+	: _visible(visible),
+	  _rectangle(),
+	  _affichable(new Affichable())
 {
-				return rectangle;
+	_affichable->definirTexture(texture);
+	_affichable->definirCouche(couche);
+	_affichable->definirSpritePosition(position);
+
+	definirRectangle(position.x, position.y);
 }
 
-void Objet::definirRectangle(int gauche, int haut)
+Objet::~Objet() {}
+
+const sf::Rect<float> &Objet::obtenirRectangle() const
 {
-				rectangle.left = gauche;
-				rectangle.top = haut;
+	return _rectangle;
 }
 
-void Objet::definirRectangle(int gauche, int haut, int largeur, int hauteur)
+void Objet::definirRectangle(float gauche, float haut)
 {
-				definirRectangle(gauche, haut);
-				rectangle.width = largeur;
-				rectangle.height = hauteur;
+	_rectangle.left = gauche;
+	_rectangle.top = haut;
+}
+
+void Objet::definirRectangle(float gauche,
+							 float haut,
+							 float largeur,
+							 float hauteur)
+{
+	definirRectangle(gauche, haut);
+	_rectangle.width = largeur;
+	_rectangle.height = hauteur;
 }
 
 /*void static Objet::initialisationTexture()

@@ -2,13 +2,21 @@
 #define __FIXE_HPP__
 #include "objet.hpp"
 
-class Fixe : public Objet {
-				private:
-								bool cassee;
-				public:
-								void clic() override = 0;
-								bool estIphone() override = 0;
-};
+class Fixe : public Objet
+{
+private:
+	bool cassee;
 
+public:
+    Fixe(sf::Vector2f position,
+          sf::Vector2f scale,
+          sf::Texture &texture,
+          uint couche,
+          bool visible);
+    virtual ~Fixe() override;
+
+	void clic() override = 0;
+	bool estIphone() override = 0;
+};
 
 #endif

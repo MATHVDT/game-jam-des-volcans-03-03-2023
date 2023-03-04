@@ -1,8 +1,13 @@
 #include "../include/Affichable.hpp"
 
-
 Affichable::Affichable()
-    : _sprite{new sf::Sprite()}, _couche(0) {}
+    : _sprite{new sf::Sprite()},
+      _couche(0) {}
+
+Affichable::~Affichable()
+{
+    delete _sprite;
+}
 
 /// @brief Comparateur static
 /// @param a1

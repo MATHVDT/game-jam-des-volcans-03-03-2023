@@ -1,5 +1,5 @@
-#ifndef __RENDERER_HPP__
-#define __RENDERER_HPP__
+#ifndef __AFFICHABLE_HPP__
+#define __AFFICHABLE_HPP__
 
 #include <SFML/Graphics/Sprite.hpp>
 
@@ -14,6 +14,7 @@ public: // Static
 
 public:
     Affichable();
+        ~Affichable();
 
     // Getter
     uint obtenirCouche() const;

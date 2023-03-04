@@ -12,27 +12,35 @@
 #include <map>
 #include <string>
 #include <filesystem>
+
 class Objet
 {
 private:
-    bool visible;
-    sf::Rect<int> rectangle;
-    sf::Sprite sprite;
-	//	static std::map<std::string, sf::Texture> texture;
+    bool _visible;
+    sf::Rect<float> _rectangle;
+    //	static std::map<std::string, sf::Texture> texture;
 
-    Affichable _affichable;
+    Affichable* _affichable;
 
 public:
-		static void initialisationTexture();
+    Objet(sf::Vector2f position,
+          sf::Vector2f scale,
+          sf::Texture &texture,
+          uint couche,
+          bool visible);
+    virtual ~Objet();
+
+    static void initialisationTexture();
     virtual bool estIphone() = 0;
     virtual void clic() = 0;
-    const sf::Rect<int> &obtenirRectangle() const;
-    void definirRectangle(int gauche, int haut);
-    void definirRectangle(int gauche, int haut, int largeur, int hauteur);
+    const sf::Rect<float> &obtenirRectangle() const;
+    void definirRectangle(float gauche, float haut);
+    void definirRectangle(float gauche, float haut,
+                          float largeur, float hauteur);
 
     sf::Sprite *obtenirSprite() const;
 };
 
-inline sf::Sprite *Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
+inline sf::Sprite *Objet::obtenirSprite() const { return _affichable->obtenirSprite(); }
 
 #endif

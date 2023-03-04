@@ -4,14 +4,21 @@
 
 class Bougeable : public Objet
 {
-public:
-	bool selectionnee;
-	sf::Vector2<int> position_initiale;
-
 private:
-	bool estIphone() override;
+	bool _selectionnee;
+	sf::Vector2<float> _position_initiale;
+
+public:
+	Bougeable(sf::Vector2f position,
+			  sf::Vector2f scale,
+			  sf::Texture &texture,
+			  uint couche,
+			  bool visible);
+	virtual ~Bougeable() override;
+
+	virtual bool estIphone() override;
 	void remettrePosition();
-	void definirPosition(int haut, int gauche);
+	void definirPosition(float haut, float gauche);
 	void relache();
 	void clic() override;
 };
