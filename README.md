@@ -43,7 +43,12 @@ Pain au chocolat
 Corissant
 Brioche
 
-Café + thé
+Boison :
+* Café 
+* Thé
+* Jus d'orange
+* Jus multifruit
+* Jus de pomme
 
 #### Repas du midi 
 
