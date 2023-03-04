@@ -2,15 +2,13 @@
 #include <SFML/Graphics.hpp>
 
 #include "../include/Gestionnaire.hpp"
+#include "../include/objet.hpp"
 
 int main()
 {
 
     Gestionnaire *manager = Gestionnaire::obtenirInstance();
 
-    manager->initScene();
-
-    std::cerr << "La " << std::endl;
     manager->run();
 
     // sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");

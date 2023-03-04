@@ -1,14 +1,12 @@
 #ifndef __OBJET_HPP__
 #define __OBJET_HPP__
-#include <SFML/Graphics/RenderStates.hpp>
-#include <SFML/System/Vector2.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/Sprite.hpp>
 #include "enum_type.hpp"
 #include <vector>
 
-#include "../include/Affichable.hpp"
-
+#include "Affichable.hpp"
+#include <SFML/Graphics.hpp>
+#include <fstream>
+#include <iostream>
 #include <map>
 #include <string>
 #include <filesystem>
@@ -18,7 +16,7 @@ class Objet
 private:
     bool _visible;
     sf::Rect<float> _rectangle;
-    //	static std::map<std::string, sf::Texture> texture;
+    static std::map<std::string, sf::Texture> textureMap;
 
     Affichable _affichable;
 

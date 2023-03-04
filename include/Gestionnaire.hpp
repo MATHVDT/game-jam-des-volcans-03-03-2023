@@ -8,6 +8,7 @@
 #include "../include/bougeable.hpp"
 #include "../include/fixe.hpp"
 #include "../include/armoire.hpp"
+#include "../include/prise.hpp"
 
 
 class Gestionnaire

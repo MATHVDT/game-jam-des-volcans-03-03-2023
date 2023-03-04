@@ -25,6 +25,9 @@ Contexte::Contexte()
 
     _window.setActive();
     _window.setPosition(sf::Vector2i(50, 50));
+		for (int k=0; k<6;k++){
+						_tousLesObjets.push_back(std::set<Objet*> {} );
+		}
 }
 
 Contexte::~Contexte()
