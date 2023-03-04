@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "../include/objet.hpp"
+#include "../include/fixe.hpp"
+#include "../include/bougeable.hpp"
 
 int main()
 {
