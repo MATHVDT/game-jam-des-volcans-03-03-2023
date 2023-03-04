@@ -4,35 +4,32 @@
 #include <iostream>
 
 #include "../include/Contexte.hpp"
-#include "../include/objet.hpp"
+#include "../include/armoire.hpp"
 #include "../include/bougeable.hpp"
 #include "../include/fixe.hpp"
-#include "../include/armoire.hpp"
+#include "../include/objet.hpp"
 #include "../include/prise.hpp"
 
+class Gestionnaire {
+		private:
+				/* data */
+				Contexte* contexte;
 
-class Gestionnaire
-{
-private:
-    /* data */
-    Contexte *contexte;
+		private: // Static
+				static Gestionnaire* _instance;
 
-private: // Static
-    static Gestionnaire *_instance;
+		public: // Static
+				static Gestionnaire* obtenirInstance();
 
-public: // Static
-    static Gestionnaire *obtenirInstance();
+		public:
+				Gestionnaire();
+				~Gestionnaire();
 
-public:
-    Gestionnaire();
-    ~Gestionnaire();
+				void run();
+				void initScene();
 
-    void run();
-    void initScene();
-
-    void checkEvenment(const sf::Event& evenement);
-				const sf::Vector2f getMousePos(sf::RenderWindow &window) const
-    
+				void checkEvenment(const sf::Event& evenement);
+				const sf::Vector2f getMousePos(sf::RenderWindow& window) const;
 };
 
 /***************************************************/
