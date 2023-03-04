@@ -18,7 +18,7 @@ private:
     float _largeurFenetre;
     float _hauteurFenetre;
 
-    std::vector<std::set<Objet>> _tousLesObjets;
+    std::vector<std::set<Objet*>> _tousLesObjets;
 
     bool _jeuEnCours;
     sf::Event _event;
@@ -44,7 +44,7 @@ public:
     void afficherFenetre();
 
     void ajouterAffichable(int scene,
-                           Objet &&o);
+                           Objet *o);
 
     // Getter
     bool obtenirJeuEnCours() const;

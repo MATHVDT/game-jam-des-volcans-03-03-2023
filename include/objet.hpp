@@ -22,9 +22,9 @@ public:
     void definirRectangle(int gauche, int haut);
     void definirRectangle(int gauche, int haut, int largeur, int hauteur);
 
-    sf::Sprite &obtenirSprite() const;
+    sf::Sprite *obtenirSprite() const;
 };
 
-inline sf::Sprite &Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
+inline sf::Sprite *Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
 
 #endif

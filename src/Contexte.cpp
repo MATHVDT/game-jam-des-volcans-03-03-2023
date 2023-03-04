@@ -23,6 +23,13 @@ Contexte::Contexte()
 
 Contexte::~Contexte()
 {
+      for (auto &scene : _tousLesObjets)
+    { // Pour chaque scene
+        for (auto &o : scene)
+        { // Pour chaque objet
+            delete o;
+        }
+    }
     _window.close();
 }
 
@@ -55,7 +62,7 @@ void Contexte::dessiner()
     { // Pour chaque scene
         for (auto &o : scene)
         { // Pour chaque objet
-            dessiner(o.obtenirSprite());
+            dessiner(o->obtenirSprite());
         }
     }
 }
@@ -81,7 +88,7 @@ void Contexte::afficherFenetre()
 /// @param scene
 /// @param affichable
 void Contexte::ajouterAffichable(int scene,
-                                 Objet &&o)
+                                 Objet *o)
 {
     _tousLesObjets[scene].emplace(o);
 }
