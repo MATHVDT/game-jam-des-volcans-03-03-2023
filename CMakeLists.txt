@@ -37,11 +37,14 @@ message ( STATUS "Compiler flags: ${CMAKE_CXX_FLAGS}" )
 
 # Sources #-----------------------------------------------------------------------------------------
 set ( ZZ3_HEADERS
+      include/objet.hpp
+      include/fixe.hpp
+      include/bougeable.hpp
+      include/prise.hpp
+      include/armoire.hpp
+      include/enum_type.hpp
       include/Gestionnaire.hpp
       include/Contexte.hpp
-      ./include/objet.hpp
-      ./include/fixe.hpp
-      ./include/bougeable.hpp
     )
 
 set ( ZZ3_SOURCES
@@ -52,6 +55,8 @@ set ( ZZ3_SOURCES
       src/objet.cpp
       src/fixe.cpp
       src/bougeable.cpp
+      src/prise.cpp
+			src/armoire.cpp
     )
 
 include_directories ( src/ )
@@ -64,5 +69,4 @@ add_executable ( prog
                )
 # Build #-------------------------------------------------------------------------------------------
 set_target_properties ( prog PROPERTIES LINKER_LANGUAGE C )
-target_link_libraries ( prog ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(prog  -lsfml-graphics -lsfml-window -lsfml-system)

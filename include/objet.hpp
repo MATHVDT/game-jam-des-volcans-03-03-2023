@@ -3,6 +3,8 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Sprite.hpp>
+#include "enum_type.hpp"
+#include <vector>
 
 #include "../include/Affichable.hpp"
 
