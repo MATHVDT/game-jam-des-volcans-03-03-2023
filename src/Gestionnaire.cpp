@@ -103,22 +103,21 @@ void Gestionnaire::initScene()
     /* Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
                               sf::Vector2f(1.0f, 1.0f),
                               *t, 0, true);
-    */
-    Objet *o = new Ciseaux(sf::Vector2f(0.0f, 0.0f),
-                           sf::Vector2f(1.0f, 1.0f),
-                           0, true);
+ */
+        Objet *o = new Armoire(sf::Vector2f(1100.0f, 200.0f),
+                            sf::Vector2f(0.7f, 0.7f),
+                                0, true);
+        contexte->ajouterAffichable(scene, o);
 
-    // Objet *a = new Armoire(sf::Vector2f(20.0f, 0.0f),
-    //                        sf::Vector2f(1.0f, 1.0f),
-    //                        0, true);
-    // contexte->ajouterAffichable(scene, a);
+        o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
+                           sf::Vector2f(0.10f, 0.10f),
+                            0, true);
+        contexte->ajouterAffichable(scene, o);
 
-    Objet *p = new Prise(sf::Vector2f(100.0f, 0.0f),
-                         sf::Vector2f(1.0f, 1.0f),
-                         0, true);
-    contexte->ajouterAffichable(scene, p);
-
-    contexte->ajouterAffichable(scene, o);
+        o = new Prise(sf::Vector2f(240.0f, 610.0f),
+                           sf::Vector2f(0.06f, 0.06f),
+                            0, true);
+        contexte->ajouterAffichable(scene, o);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.
@@ -204,8 +203,8 @@ bool Gestionnaire::interactionObjets()
     Objet *o2 = contexte->obtenirObjetEnInteractionAvecObjetBougeableSelectionne();
 
     // Rajout les elements dans l'autre objet
-    ajouteType(o1, o2->obtenirListeMateriaux());
-    ajouteType(o2, o1->obtenirListeMateriaux());
+    ajouteType(o1, o2->obtenirMateriaux());
+    ajouteType(o2, o1->obtenirMateriaux());
 
     // Test la casssabilite et la consommabilite des objets
     o1->estIphone();

@@ -10,6 +10,7 @@ Objet::Objet(sf::Vector2f position,
 	  _rectangle(), _materiaux({})
 {
 	_affichable.definirCouche(couche);
+	_affichable.definirScale(scale);
 	_affichable.definirSpritePosition(position);
 
 	definirRectangle(position.x, position.y);
@@ -65,7 +66,7 @@ void Objet::ajouterMateriaux(Type type)
 	_materiaux.push_back(type);
 }
 
-std::vector<Type> Objet::obtenirListeMateriaux() const
+const std::vector<Type> Objet::obtenirMateriaux() const
 {
 	return _materiaux;
 }

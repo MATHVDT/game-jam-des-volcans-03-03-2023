@@ -7,6 +7,8 @@
 
 #include "../include/Contexte.hpp"
 #include "../include/armoire.hpp"
+#include "../include/ciseaux.hpp"
+#include "../include/prise.hpp"
 #include "../include/bougeable.hpp"
 #include "../include/fixe.hpp"
 #include "../include/objet.hpp"

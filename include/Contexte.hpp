@@ -6,10 +6,12 @@
 #include <set>
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Texture.hpp>
 
 #include "../include/Affichable.hpp"
 #include "../include/objet.hpp"
 #include "../include/bougeable.hpp"
+#include "../include/Fond.hpp"
 
 class Bougeable;
 class Objet;
@@ -22,6 +24,8 @@ private:
     sf::RenderWindow _window;
     float _largeurFenetre;
     float _hauteurFenetre;
+
+    Fond *_fond; 
 
     std::vector<std::set<Objet *>> _tousLesObjets;
     uint _sceneChargee;

@@ -51,8 +51,34 @@ Boison :
 * Jus de pomme
 
 #### Repas du midi 
+Buffet : 
+* Salade de pattes (jambon, mozza,tomate cerise, tomates séchées, pesto)  
+* Salade de pattes (jambon, mozza,tomate tomates séchées)  
+* Tranches de jambon  
+* Quiche épinard/chèvre
+* Cake tomates séchées
+* Cake jambon
+* Muffin banana bread
+* Banana bread  
+* Fromages (st-nectaire, cantal, ...)
+* Pain
 
 #### Repas du soir
+Buffet :
+* Salade de pattes (jambon, mozza,tomate cerise, tomates séchées, pesto)  
+* Salade de pattes (jambon, mozza,tomate tomates séchées)  
+* Tranches de jambon  
+* Charcuterie
+* Rotie de boeuf
+* Rotie de porc
+* Poulet
+* Salade auvergante
+* Salade ZZ-haricots
+* Salade paysanne
+* Fromages (st-nectaire, ...)
+* Clafoutis à la prune 
+* Tarte aux pommes
+
 
 ### Dimanche 
 #### Petit déjeuné 

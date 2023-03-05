@@ -23,6 +23,7 @@ public:
 
     // Setter
     void definirCouche(uint couche);
+    void definirScale(sf::Vector2f &scale);
     void definirTexture(sf::Texture &texture);
     void definirSpritePosition(const sf::Vector2f &posistion);
     void definirPositionCentreSprite(const sf::Vector2f &posistion);
@@ -50,5 +51,6 @@ inline const sf::Vector2f &Affichable::obtenirSpritePosition() const { return _s
 inline void Affichable::definirCouche(uint couche) { _couche = couche; }
 inline void Affichable::definirTexture(sf::Texture &texture) { _sprite->setTexture(texture); }
 inline void Affichable::definirSpritePosition(const sf::Vector2f& position) { _sprite->setPosition(position); }
+inline void Affichable::definirScale(sf::Vector2f& scale) { _sprite->setScale(scale); }
 
 #endif

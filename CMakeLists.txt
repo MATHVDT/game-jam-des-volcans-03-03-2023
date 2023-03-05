@@ -48,6 +48,7 @@ set ( ZZ3_HEADERS
       include/Contexte.hpp
 			include/ciseaux.hpp
 			include/corbeille.hpp
+      include/Fond.hpp
     )
 
 set ( ZZ3_SOURCES
@@ -63,6 +64,7 @@ set ( ZZ3_SOURCES
 			src/armoire.cpp
 			src/ciseaux.cpp
 			src/corbeille.cpp
+      src/Fond.cpp
     )
 
 include_directories ( src/ )
