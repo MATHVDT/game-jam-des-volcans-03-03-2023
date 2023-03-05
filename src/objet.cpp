@@ -10,6 +10,7 @@ Objet::Objet(sf::Vector2f position,
 	  _rectangle(), _materiaux({})
 {
 	_affichable.definirCouche(couche);
+	_affichable.definirScale(scale);
 	_affichable.definirSpritePosition(position);
 
 	definirRectangle(position.x, position.y);

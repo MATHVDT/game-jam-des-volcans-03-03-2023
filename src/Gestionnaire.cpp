@@ -88,12 +88,21 @@ void Gestionnaire::initScene()
     /* Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
                               sf::Vector2f(1.0f, 1.0f),
                               *t, 0, true);
- */ sf::Texture *ta = Objet::obtenirTextureMap()["ressources/armoire_ferme.png"];
-    Objet *o = new Armoire(sf::Vector2f(0.0f, 0.0f),
-                           sf::Vector2f(1.0f, 1.0f),
-                            0, true);
+ */
+        Objet *o = new Armoire(sf::Vector2f(1100.0f, 200.0f),
+                            sf::Vector2f(0.7f, 0.7f),
+                                0, true);
+        contexte->ajouterAffichable(scene, o);
 
-    contexte->ajouterAffichable(scene, o);
+        o = new Ciseaux(sf::Vector2f(800.0f, 600.0f),
+                           sf::Vector2f(0.12f, 0.12f),
+                            0, true);
+        contexte->ajouterAffichable(scene, o);
+
+        o = new Prise(sf::Vector2f(100.0f, 800.0f),
+                           sf::Vector2f(0.12f, 0.12f),
+                            0, true);
+        contexte->ajouterAffichable(scene, o);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.

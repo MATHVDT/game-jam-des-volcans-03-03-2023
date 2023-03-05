@@ -4,7 +4,7 @@ Contexte *Contexte::_instance = nullptr;
 
 Contexte::Contexte()
 {
-    _largeurFenetre = 1300.0f;
+    _largeurFenetre = 1600.0f;
     _hauteurFenetre = 900.0f;
 
     _sceneChargee = 0;
@@ -68,6 +68,12 @@ bool Contexte::obtenirSonderEvenement()
 /// @brief Dessine tous les objets
 void Contexte::dessiner()
 {
+    int i = 1;
+    
+    std::string nom_piece = "ressources/piece_" + std::to_string(i) + ".png";
+    _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre/1920.0f, _hauteurFenetre/1080.0f), (unsigned int)0);
+    
+    dessiner(_fond->obtenirSprite());
     for (auto &scene : _tousLesObjets)
     { // Pour chaque scene
         // auto &scene = _tousLesObjets[_sceneChargee];
