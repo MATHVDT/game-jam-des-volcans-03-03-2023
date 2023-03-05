@@ -36,7 +36,8 @@ class Objet {
 				void definirRectangle(float gauche, float haut);
 				void definirRectangle(float gauche, float haut,
 						float largeur, float hauteur);
-
+				void ajouterMateriaux(Type type);
+				const std::vector<Type> obtenirMateriaux() const;
 				bool obtenirVisible() const;
 				sf::Sprite* obtenirSprite() const;
 				static std::map<std::string, sf::Texture*> obtenirTextureMap();

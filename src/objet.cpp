@@ -59,3 +59,12 @@ std::map<std::string, sf::Texture *> Objet::obtenirTextureMap()
 {
 	return textureMap;
 }
+
+void Objet::ajouterMateriaux(Type type) {
+	_materiaux.push_back(type);
+}
+
+const std::vector<Type> Objet::obtenirMateriaux() const {
+	return _materiaux;
+}
+
