@@ -36,6 +36,8 @@ private:
     Bougeable *_objetBougeableSelectionne;
     Objet *_objetEnInteractionAvecObjetBougeableSelectionne;
 
+    uint _score;
+
 private: // Static
     static Contexte *_instance;
 
@@ -67,10 +69,13 @@ public:
     Bougeable *obtenirObjetBougeableSelectionne() const;
     Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const;
     const sf::Vector2f obtenirSourisPosition() const;
+    uint obtenirScore() const;
 
     void definirJeuEnCours(bool valeur = false);
     void definirObjetBougeableSelectionne(Bougeable *o);
     void definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o);
+    void definirScore(uint score);
+    void definirSceneChargee(uint scene);
 };
 
 /***************************************************/
@@ -83,10 +88,13 @@ inline const sf::Event &Contexte::obtenirEvenement() const { return _event; }
 inline std::multiset<Objet *, CompareObjetPointeur> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
 inline Bougeable *Contexte::obtenirObjetBougeableSelectionne() const { return _objetBougeableSelectionne; }
 inline Objet *Contexte::obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const { return _objetEnInteractionAvecObjetBougeableSelectionne; }
+inline uint Contexte::obtenirScore() const { return _score; }
 
 // multisetter
 inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
 inline void Contexte::definirObjetBougeableSelectionne(Bougeable *o) { _objetBougeableSelectionne = o; }
 inline void Contexte::definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o) { _objetEnInteractionAvecObjetBougeableSelectionne = o; }
+inline void Contexte::definirScore(uint score) { _score += score; }
+inline void Contexte::definirSceneChargee(uint scene) { _sceneChargee = scene; }
 
 #endif

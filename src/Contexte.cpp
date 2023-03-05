@@ -28,6 +28,8 @@ Contexte::Contexte()
 
     std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
     _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre / 1920.0f, _hauteurFenetre / 1080.0f), (unsigned int)0);
+
+    _score = 0;
 }
 
 Contexte::~Contexte()
