@@ -25,7 +25,7 @@ public: // Static
     
 
 public: // Static
-    static std::map<std::string, sf::Texture *> obtenirTexturesFond();
+    static std::map<std::string, sf::Texture *>& obtenirTexturesFond();
     static void initialisationTexture();
 
 public:

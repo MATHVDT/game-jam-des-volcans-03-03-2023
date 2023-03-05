@@ -25,9 +25,9 @@ private:
     float _largeurFenetre;
     float _hauteurFenetre;
 
-    Fond *_fond; 
+    Fond *_fond;
 
-    std::vector<std::set<Objet *>> _tousLesObjets;
+    std::vector<std::set<Objet *, CompareObjetPointeur>> _tousLesObjets;
     uint _sceneChargee;
 
     bool _jeuEnCours;
@@ -62,7 +62,7 @@ public:
     void retirerAffichableSceneChargee(Objet *o);
 
     bool obtenirJeuEnCours() const;
-    std::set<Objet *> &obtenirObjetSceneChargee();
+    std::set<Objet *, CompareObjetPointeur> &obtenirObjetSceneChargee();
     const sf::Event &obtenirEvenement() const;
     Bougeable *obtenirObjetBougeableSelectionne() const;
     Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const;
@@ -80,7 +80,7 @@ public:
 // Getter
 inline bool Contexte::obtenirJeuEnCours() const { return _jeuEnCours; }
 inline const sf::Event &Contexte::obtenirEvenement() const { return _event; }
-inline std::set<Objet *> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
+inline std::set<Objet *, CompareObjetPointeur> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
 inline Bougeable *Contexte::obtenirObjetBougeableSelectionne() const { return _objetBougeableSelectionne; }
 inline Objet *Contexte::obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const { return _objetEnInteractionAvecObjetBougeableSelectionne; }
 
