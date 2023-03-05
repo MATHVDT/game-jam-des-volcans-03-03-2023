@@ -25,6 +25,7 @@ public:
     void definirCouche(uint couche);
     void definirTexture(sf::Texture &texture);
     void definirSpritePosition(const sf::Vector2f &posistion);
+    void definirPositionCentreSprite(const sf::Vector2f &posistion);
 };
 
 /***************************************************/

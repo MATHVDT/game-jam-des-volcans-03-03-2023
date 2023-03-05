@@ -139,12 +139,13 @@ bool Gestionnaire::checkSourisSurObjet()
 
     // Parcours tous les objets pour savoir si la souris est dedans
     Objet *objetTouche = nullptr;
-    for (Objet *x : scene)
+    for (auto rit = scene.rbegin(); rit != scene.rend(); ++rit)
     {
-        if (x->obtenirVisible() &&
-            x->obtenirRectangle().contains(sourisPosition))
+
+        if ((*rit)->obtenirVisible() &&
+            (*rit)->obtenirRectangle().contains(sourisPosition))
         {
-            objetTouche = x;
+            objetTouche = (*rit);
             break;
         }
     }
@@ -161,8 +162,9 @@ bool Gestionnaire::objetSelectionneSuivreSouris()
     Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
     if (objetSelectionne != nullptr)
     {
-        objetSelectionne->definirPosition((sf::Vector2f)sf::Mouse::getPosition());
+        objetSelectionne->definirPositionCentreSprite((sf::Vector2f)sf::Mouse::getPosition());
     }
+    return true;
 }
 
 /// @brief Set l'objet qui est en interaction avec le selectionne

@@ -21,6 +21,7 @@ public:
 	void remettrePosition();
 	void relache();
 	void definirPosition(const sf::Vector2f &position);
+	void definirPositionCentreSprite(const sf::Vector2f &position);
 	void clic() override;
 };
 
