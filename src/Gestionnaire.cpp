@@ -39,7 +39,6 @@ void Gestionnaire::run()
         while (contexte->obtenirSonderEvenement())
         { // Actualise le contexte seulement quand il ya une evenement
             checkEvenment(contexte->obtenirEvenement());
-            miseAJour();
         }
         contexte->dessiner();
         contexte->afficherFenetre();
@@ -58,20 +57,18 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
 
     case sf::Event::MouseMoved:
         // Souris bougee
+        objetSelectionneSuivreSouris();
         break;
 
     case sf::Event::MouseButtonPressed:
-        // bouton pressed
+        // bouton appuye
         checkSourisSurObjet();
         break;
 
-        // case sf::Event:: :
-        //     // bouton pressed
-
-        //     break;
-
     case sf::Event::MouseButtonReleased:
         // bouton relache
+        if (trouveObjetEnInteractionAvecObjetSelectionne())
+            interactionObjets();
         break;
 
     default:
@@ -113,7 +110,7 @@ bool Gestionnaire::checkSourisSurObjet()
     }
 
     // Recup position souris
-    sf::Vector2f sourisPosition = (sf::Vector2f)sf::Mouse::getPosition();
+    sf::Vector2f sourisPosition = (sf::Vector2f)contexte->obtenirSourisPosition();
 
     // Recup tous les objets de la scene chargee
     std::set<Objet *> &scene = contexte->obtenirObjetSceneChargee();
@@ -137,11 +134,46 @@ bool Gestionnaire::checkSourisSurObjet()
     return true;
 }
 
-bool Gestionnaire::miseAJour()
+bool Gestionnaire::objetSelectionneSuivreSouris()
 {
     Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
     if (objetSelectionne != nullptr)
     {
         objetSelectionne->definirPosition((sf::Vector2f)sf::Mouse::getPosition());
     }
+}
+
+/// @brief Set l'objet qui est en interaction avec le selectionne
+/// @return
+bool Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
+{
+    // Pas le bouton gauche relache
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        return false;
+
+    // Recup tous les objets de la scene chargee
+    std::set<Objet *> &scene = contexte->obtenirObjetSceneChargee();
+
+    Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
+    if (objetSelectionne == nullptr)
+        return false;
+
+    // Parcours tous les objets pour savoir si la souris est dedans
+    Objet *objetEnInteraction = nullptr;
+    for (Objet *x : scene)
+    {
+        if (x == objetSelectionne)
+            continue;
+
+        if (x->obtenirRectangle().intersects(objetSelectionne->obtenirRectangle()))
+        {
+            contexte->definirObjetEnInteractionAvecObjetBougeableSelectionne(x);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Gestionnaire::interactionObjets()
+{
 }

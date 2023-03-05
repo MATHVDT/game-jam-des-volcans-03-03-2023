@@ -31,9 +31,11 @@ class Gestionnaire {
     void run();
     void initScene();
 
-    bool miseAJour();
+    bool objetSelectionneSuivreSouris();
     void checkEvenment(const sf::Event &evenement);
     bool checkSourisSurObjet();
+	bool trouveObjetEnInteractionAvecObjetSelectionne();
+
 };
 
 /***************************************************/

@@ -58,7 +58,7 @@ public:
     const sf::Event &obtenirEvenement() const;
     Bougeable *obtenirObjetBougeableSelectionne() const;
     Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const;
-    const sf::Vector2f obtenirSourisPosition(sf::RenderWindow &window) const;
+    const sf::Vector2f obtenirSourisPosition() const;
 
 
 

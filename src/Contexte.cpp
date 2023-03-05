@@ -104,11 +104,10 @@ void Contexte::ajouterAffichable(int scene,
     _tousLesObjets[scene].emplace(o);
 }
 
-
-const sf::Vector2f Contexte::obtenirSourisPosition(sf::RenderWindow &window) const
+const sf::Vector2f Contexte::obtenirSourisPosition() const
 {
     // récupération de la position de la souris dans la fenêtre
-    sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
+    sf::Vector2i pixelPos = sf::Mouse::getPosition(_window);
     // conversion en coordonnées "monde"
-    return window.mapPixelToCoords(pixelPos);
+    return _window.mapPixelToCoords(pixelPos);
 }
