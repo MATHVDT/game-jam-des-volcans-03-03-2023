@@ -110,6 +110,20 @@ void Contexte::ajouterAffichable(int scene,
     _tousLesObjets[scene].emplace(o);
 }
 
+/// @brief Retire un objet a la liste de tous les objets.
+/// @param scene
+/// @param affichable
+void Contexte::retirerAffichable(int scene,
+                                 Objet *o)
+{
+    _tousLesObjets[scene].erase(o);
+}
+
+void Contexte::retirerAffichableSceneChargee(Objet *o)
+{
+    retirerAffichable(_sceneChargee, o);
+}
+
 const sf::Vector2f Contexte::obtenirSourisPosition() const
 {
     // récupération de la position de la souris dans la fenêtre

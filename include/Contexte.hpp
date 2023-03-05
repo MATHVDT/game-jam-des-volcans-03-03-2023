@@ -56,7 +56,11 @@ public:
     void ajouterAffichable(int scene,
                            Objet *o);
 
-    // Getter
+    void retirerAffichable(int scene,
+                           Objet *o);
+
+    void retirerAffichableSceneChargee(Objet *o);
+
     bool obtenirJeuEnCours() const;
     std::set<Objet *> &obtenirObjetSceneChargee();
     const sf::Event &obtenirEvenement() const;
@@ -64,9 +68,6 @@ public:
     Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const;
     const sf::Vector2f obtenirSourisPosition() const;
 
-
-
-    // Setter
     void definirJeuEnCours(bool valeur = false);
     void definirObjetBougeableSelectionne(Bougeable *o);
     void definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o);

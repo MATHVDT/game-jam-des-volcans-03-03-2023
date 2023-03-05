@@ -37,7 +37,6 @@ public:
     virtual bool estIphone() = 0;
     virtual void clic() = 0;
 
-    // Getter
     bool obtenirVisible() const;
     sf::Sprite *obtenirSprite() const;
     const sf::Rect<float> &obtenirRectangle();

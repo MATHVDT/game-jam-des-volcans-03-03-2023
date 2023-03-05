@@ -15,29 +15,32 @@
 #include "../include/prise.hpp"
 #include "ciseaux.hpp"
 
-class Gestionnaire {
-		private:
-				/* data */
-				Contexte* contexte;
+class Gestionnaire
+{
+private:
+	/* data */
+	Contexte *contexte;
 
-		private: // Static
-				static Gestionnaire* _instance;
+private: // Static
+	static Gestionnaire *_instance;
 
-		public: // Static
-				static Gestionnaire* obtenirInstance();
+public: // Static
+	static Gestionnaire *obtenirInstance();
 
-		public:
-				Gestionnaire();
-				~Gestionnaire();
+public:
+	Gestionnaire();
+	~Gestionnaire();
 
-    void run();
-    void initScene();
+	void run();
+	void initScene();
 
-    bool objetSelectionneSuivreSouris();
-    void checkEvenment(const sf::Event &evenement);
-    bool checkSourisSurObjet();
+	bool objetSelectionneSuivreSouris();
+	void checkEvenment(const sf::Event &evenement);
+	bool checkSourisSurObjet();
 	bool trouveObjetEnInteractionAvecObjetSelectionne();
+	bool interactionObjets();
 
+	void ajouteType(Objet*o, const std::vector<Type> listMat);
 };
 
 /***************************************************/
