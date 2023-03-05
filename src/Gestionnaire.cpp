@@ -94,13 +94,13 @@ void Gestionnaire::initScene()
                                 0, true);
         contexte->ajouterAffichable(scene, o);
 
-        o = new Ciseaux(sf::Vector2f(800.0f, 600.0f),
-                           sf::Vector2f(0.12f, 0.12f),
+        o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
+                           sf::Vector2f(0.10f, 0.10f),
                             0, true);
         contexte->ajouterAffichable(scene, o);
 
-        o = new Prise(sf::Vector2f(100.0f, 800.0f),
-                           sf::Vector2f(0.12f, 0.12f),
+        o = new Prise(sf::Vector2f(240.0f, 610.0f),
+                           sf::Vector2f(0.06f, 0.06f),
                             0, true);
         contexte->ajouterAffichable(scene, o);
 }
