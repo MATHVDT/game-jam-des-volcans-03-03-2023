@@ -58,6 +58,8 @@ public:
     void ajouterAffichable(int scene,
                            Objet *o);
 
+    // Getter
+    int obtenirSceneChargee() const;
     void retirerAffichable(int scene,
                            Objet *o);
 

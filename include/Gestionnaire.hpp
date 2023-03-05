@@ -5,17 +5,17 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
-#include "objet.hpp"
-#include "bougeable.hpp"
-#include "fixe.hpp"
-
 #include "Contexte.hpp"
-
 #include "armoire.hpp"
 #include "ciseaux.hpp"
 #include "prise.hpp"
-#include "allumette.hpp"
+#include "bougeable.hpp"
+#include "fixe.hpp"
+#include "objet.hpp"
+#include "prise.hpp"
+#include "inflammable.hpp"
 #include "corbeille.hpp"
+#include "allumette.hpp"
 
 class Gestionnaire
 {

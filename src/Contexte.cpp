@@ -109,6 +109,9 @@ void Contexte::ajouterAffichable(int scene,
     _tousLesObjets[scene].emplace(o);
 }
 
+int Contexte::obtenirSceneChargee() const{
+	return _sceneChargee;
+}
 /// @brief Retire un objet a la liste de tous les objets.
 /// @param scene
 /// @param affichable

@@ -23,9 +23,10 @@ bool Ciseaux::estIphone()
 {
 
 	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), electircite);
-	if (result1 == _materiaux.end()) {}
+	if (result1 != _materiaux.end()) {
+				return true;}
 		//implemneter la destruction 
-	return true;
+	return false;
 }
 
 void Ciseaux::clic() {

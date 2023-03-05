@@ -6,8 +6,8 @@ Prise::Prise(sf::Vector2f position,
 			 bool visible)
 	: Fixe(position, scale, couche, visible), iphone(false), etat(1)
 {
-	_materiaux.push_back(electircite);
-	_affichable.definirTexture(*textureMap["ressources/objets/prise.png"]);
+				_materiaux.push_back(electircite);
+				_affichable.definirTexture(*textureMap["ressources/objets/prise.png"]);
 }
 
 Prise::~Prise() {}

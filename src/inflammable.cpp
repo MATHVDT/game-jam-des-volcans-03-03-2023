@@ -8,24 +8,24 @@ Inflammable::Inflammable(sf::Vector2f position,
     , etat(0)
 {
 	_materiaux.push_back(inflammable);
-	_affichable.definirTexture(*textureMap["ressources/inflammable_range.png"]);
+	_affichable.definirTexture(*textureMap["ressources/objets/inflammable_range.png"]);
 }
 
 void Inflammable::miseAJour()
 {
 	if (_selectionnee == 0)
-		_affichable.definirTexture(*textureMap["ressources/inflammable_range.png"]);
+		_affichable.definirTexture(*textureMap["ressources/objets/inflammable_range.png"]);
 	else if (_selectionnee == 1)
-		_affichable.definirTexture(*textureMap["ressources/inflammable.png"]);
+		_affichable.definirTexture(*textureMap["ressources/objets/inflammable.png"]);
 }
 
 bool Inflammable::estIphone()
 {
 
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), electircite);
-	if (result1 == _materiaux.end()) {}
+	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), feu);
+	if (result1 != _materiaux.end()) {return true;}
 		//implemneter la destruction 
-	return true;
+	return false;
 }
 
 void Inflammable::clic() {
