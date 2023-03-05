@@ -51,6 +51,10 @@ set ( ZZ3_HEADERS
 				include/allumette.hpp
 				include/inflammable.hpp
 				include/Fond.hpp
+				include/marteau.hpp
+				include/neon.hpp
+				include/canape.hpp
+				include/issue.hpp
 				)
 
 set ( ZZ3_SOURCES
@@ -69,6 +73,10 @@ set ( ZZ3_SOURCES
 				src/allumette.cpp
 				src/inflammable.cpp
 				src/Fond.cpp
+				src/marteau.cpp
+				src/neon.cpp
+				src/canape.cpp
+				src/issue.cpp
 				)
 
 include_directories ( src/ )
