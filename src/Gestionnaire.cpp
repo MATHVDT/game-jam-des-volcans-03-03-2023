@@ -161,7 +161,7 @@ bool Gestionnaire::objetSelectionneSuivreSouris()
     Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
     if (objetSelectionne != nullptr)
     {
-        objetSelectionne->definirPositionCentreSprite((sf::Vector2f)sf::Mouse::getPosition());
+        objetSelectionne->definirPositionCentreSprite((sf::Vector2f)contexte->obtenirSourisPosition());
     }
     return true;
 }
