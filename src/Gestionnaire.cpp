@@ -69,7 +69,16 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
         // bouton relache
         if (trouveObjetEnInteractionAvecObjetSelectionne())
         {
-            interactionObjets();
+            if (interactionObjets())
+            {
+                Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
+                if (o != nullptr)
+                {
+                    o->relache();
+                    contexte->retirerAffichableSceneChargee(o);
+                    delete o;
+                }
+            }
         }
         else
         {
