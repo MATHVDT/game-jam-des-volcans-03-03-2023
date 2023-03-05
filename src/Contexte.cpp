@@ -10,7 +10,7 @@ Contexte::Contexte()
     _sceneChargee = 0;
     for (int k = 0; k < NB_SCENES; ++k)
     {
-        _tousLesObjets.push_back(std::set<Objet *>{});
+        _tousLesObjets.push_back(std::multiset<Objet *, CompareObjetPointeur>());
     }
 
     _jeuEnCours = true;
@@ -25,10 +25,11 @@ Contexte::Contexte()
 
     _window.setActive();
     _window.setPosition(sf::Vector2i(50, 50));
-    for (int k = 0; k < 6; k++)
-    {
-        _tousLesObjets.push_back(std::set<Objet *>{});
-    }
+
+    std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
+    _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre / 1920.0f, _hauteurFenetre / 1080.0f), (unsigned int)0);
+
+    _score = 0;
 }
 
 Contexte::~Contexte()
@@ -40,6 +41,7 @@ Contexte::~Contexte()
             delete o;
         }
     }
+    delete _fond;
     _window.close();
 }
 
@@ -68,20 +70,15 @@ bool Contexte::obtenirSonderEvenement()
 /// @brief Dessine tous les objets
 void Contexte::dessiner()
 {
-    int i = 1;
-    
-    std::string nom_piece = "ressources/piece_" + std::to_string(i) + ".png";
-    _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre/1920.0f, _hauteurFenetre/1080.0f), (unsigned int)0);
-    
     dessiner(_fond->obtenirSprite());
-    for (auto &scene : _tousLesObjets)
-    { // Pour chaque scene
-        // auto &scene = _tousLesObjets[_sceneChargee];
-        for (auto &o : scene)
-        { // Pour chaque objet
-            dessiner(o->obtenirSprite());
-        }
+    // for (auto &scene : _tousLesObjets)
+    // { // Pour chaque scene
+    auto &scene = _tousLesObjets[_sceneChargee];
+    for (auto &o : scene)
+    { // Pour chaque objet
+        dessiner(o->obtenirSprite());
     }
+    // }
 }
 
 void Contexte::dessiner(const sf::Drawable &dessinable)
@@ -110,6 +107,9 @@ void Contexte::ajouterAffichable(int scene,
     _tousLesObjets[scene].emplace(o);
 }
 
+int Contexte::obtenirSceneChargee() const{
+	return _sceneChargee;
+}
 /// @brief Retire un objet a la liste de tous les objets.
 /// @param scene
 /// @param affichable

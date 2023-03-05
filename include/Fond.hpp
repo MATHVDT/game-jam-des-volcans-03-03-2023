@@ -19,16 +19,24 @@ private:
     Affichable _affichable;
     sf::Vector2<float> _position;
     std::string _nom_piece;
-    sf::Texture _texture;
+
+public: // Static
+    static std::map<std::string, sf::Texture *> texturesFond;
+    
+
+public: // Static
+    static std::map<std::string, sf::Texture *>& obtenirTexturesFond();
+    static void initialisationTexture();
+
 public:
     Fond(std::string nom_piece, sf::Vector2f position, sf::Vector2f scale, uint couche);
     ~Fond() = default;
 
-    void definirTexture();
+    void definirTexture(sf::Texture& texture);
 
-    sf::Sprite* obtenirSprite() const;
+    sf::Sprite *obtenirSprite() const;
 };
 
-inline sf::Sprite* Fond::obtenirSprite() const { return _affichable.obtenirSprite(); }
+inline sf::Sprite *Fond::obtenirSprite() const { return _affichable.obtenirSprite(); }
 
 #endif
