@@ -25,9 +25,9 @@ private:
     float _largeurFenetre;
     float _hauteurFenetre;
 
-    Fond *_fond; 
+    Fond *_fond;
 
-    std::vector<std::set<Objet *>> _tousLesObjets;
+    std::vector<std::multiset<Objet *, CompareObjetPointeur>> _tousLesObjets;
     uint _sceneChargee;
 
     bool _jeuEnCours;
@@ -57,16 +57,16 @@ public:
                            Objet *o);
 
     // Getter
-    bool obtenirJeuEnCours() const;
-    std::set<Objet *> &obtenirObjetSceneChargee() ;
-    const sf::Event &obtenirEvenement() const;
     int obtenirSceneChargee() const;
     void retirerAffichable(int scene,
                            Objet *o);
 
     void retirerAffichableSceneChargee(Objet *o);
 
-   Bougeable *obtenirObjetBougeableSelectionne() const;
+    bool obtenirJeuEnCours() const;
+    std::multiset<Objet *, CompareObjetPointeur> &obtenirObjetSceneChargee();
+    const sf::Event &obtenirEvenement() const;
+    Bougeable *obtenirObjetBougeableSelectionne() const;
     Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const;
     const sf::Vector2f obtenirSourisPosition() const;
 
@@ -82,11 +82,11 @@ public:
 // Getter
 inline bool Contexte::obtenirJeuEnCours() const { return _jeuEnCours; }
 inline const sf::Event &Contexte::obtenirEvenement() const { return _event; }
-inline std::set<Objet *> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
+inline std::multiset<Objet *, CompareObjetPointeur> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
 inline Bougeable *Contexte::obtenirObjetBougeableSelectionne() const { return _objetBougeableSelectionne; }
 inline Objet *Contexte::obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const { return _objetEnInteractionAvecObjetBougeableSelectionne; }
 
-// Setter
+// multisetter
 inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
 inline void Contexte::definirObjetBougeableSelectionne(Bougeable *o) { _objetBougeableSelectionne = o; }
 inline void Contexte::definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o) { _objetEnInteractionAvecObjetBougeableSelectionne = o; }

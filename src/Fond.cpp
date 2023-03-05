@@ -18,7 +18,7 @@ void Fond::definirTexture(sf::Texture &texture)
 	_affichable.definirTexture(texture);
 }
 
-std::map<std::string, sf::Texture *> Fond::obtenirTexturesFond()
+std::map<std::string, sf::Texture *> &Fond::obtenirTexturesFond()
 {
 	return texturesFond;
 }

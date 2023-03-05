@@ -56,7 +56,7 @@ void Objet::initialisationTexture()
 	}
 }
 
-std::map<std::string, sf::Texture *>& Objet::obtenirTextureMap()
+std::map<std::string, sf::Texture *> &Objet::obtenirTextureMap()
 {
 	return textureMap;
 }
@@ -69,4 +69,29 @@ void Objet::ajouterMateriaux(Type type)
 const std::vector<Type> Objet::obtenirMateriaux() const
 {
 	return _materiaux;
+}
+
+
+/***************************************************/
+/*               Fonctions Operateurs              */
+/***************************************************/
+bool operator<(const Objet &r1, const Objet &r2)
+{
+	return r1.obtenirCouche() < r2.obtenirCouche();
+}
+bool operator>(const Objet &r1, const Objet &r2)
+{
+	return r1.obtenirCouche() > r2.obtenirCouche();
+}
+bool operator==(const Objet &r1, const Objet &r2)
+{
+	return r1.obtenirCouche() == r2.obtenirCouche();
+}
+bool operator<=(const Objet &r1, const Objet &r2)
+{
+	return r1 < r2 || r1 == r2;
+}
+bool operator>=(const Objet &r1, const Objet &r2)
+{
+	return r1 > r2 || r1 == r2;
 }

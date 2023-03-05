@@ -92,8 +92,8 @@ void Gestionnaire::initScene()
 				sf::Texture* t = new sf::Texture();
 				std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
 
-				Bougeable* inflammable = new Inflammable(sf::Vector2f(160.0f, 210.0f),
-						sf::Vector2f(0.2f, 0.2f),
+				Bougeable* inflammable = new Inflammable(sf::Vector2f(1230.0f, 295.0f),
+						sf::Vector2f(0.15f, 0.15f),
 						2, true);
 				std::set<Bougeable*> _set = { inflammable };
 
@@ -108,18 +108,18 @@ void Gestionnaire::initScene()
 				contexte->ajouterAffichable(scene, o);
 
 				o = new Corbeille(sf::Vector2f(-50.0f, 600.0f),
-						sf::Vector2f(0.50f, 0.50f),
+						sf::Vector2f(0.40f, 0.40f),
 						1, true);
 				contexte->ajouterAffichable(scene, o);
 
 				o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
 						sf::Vector2f(0.10f, 0.10f),
-						2, true);
+						3, true);
 				contexte->ajouterAffichable(scene, o);
 
 				o = new Allumette(sf::Vector2f(600.0f, 600.0f),
 						sf::Vector2f(0.10f, 0.10f),
-						2, true);
+						4, true);
 				contexte->ajouterAffichable(scene, o);
 }
 
@@ -135,8 +135,8 @@ bool Gestionnaire::checkSourisSurObjet()
 				// Recup position souris
 				sf::Vector2f sourisPosition = (sf::Vector2f)contexte->obtenirSourisPosition();
 
-				// Recup tous les objets de la scene chargee
-				std::set<Objet*>& scene = contexte->obtenirObjetSceneChargee();
+    // Recup tous les objets de la scene chargee
+    std::multiset<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
 
 				// Parcours tous les objets pour savoir si la souris est dedans
 				Objet* objetTouche = nullptr;
@@ -172,8 +172,8 @@ bool Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 								return false;
 
-				// Recup tous les objets de la scene chargee
-				std::set<Objet*>& scene = contexte->obtenirObjetSceneChargee();
+    // Recup tous les objets de la scene chargee
+    std::multiset<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
 
 				Bougeable* objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
 				if (objetSelectionne == nullptr)
