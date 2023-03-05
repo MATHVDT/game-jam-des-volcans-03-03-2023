@@ -16,6 +16,7 @@
 #include "inflammable.hpp"
 #include "corbeille.hpp"
 #include "allumette.hpp"
+#include "BoutonChargerScene.hpp"
 
 class Gestionnaire
 {

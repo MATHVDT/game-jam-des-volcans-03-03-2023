@@ -51,6 +51,7 @@ set ( ZZ3_HEADERS
 				include/allumette.hpp
 				include/inflammable.hpp
 				include/Fond.hpp
+				include/BoutonChargerScene.hpp
 				)
 
 set ( ZZ3_SOURCES
@@ -69,6 +70,7 @@ set ( ZZ3_SOURCES
 				src/allumette.cpp
 				src/inflammable.cpp
 				src/Fond.cpp
+				src/BoutonChargerScene.cpp
 				)
 
 include_directories ( src/ )
