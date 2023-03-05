@@ -8,15 +8,15 @@ Ciseaux::Ciseaux(sf::Vector2f position,
     , etat(0)
 {
 	_materiaux.push_back(metal);
-	_affichable.definirTexture(*textureMap["ressources/ciseaux_cache.png"]);
+	_affichable.definirTexture(*textureMap["ressources/objets/ciseaux_cache.png"]);
 }
 
 void Ciseaux::miseAJour()
 {
 	if (_selectionnee == 0)
-		_affichable.definirTexture(*textureMap["ressources/ciseaux_cache.png"]);
+		_affichable.definirTexture(*textureMap["ressources/objets/ciseaux_cache.png"]);
 	else if (_selectionnee == 1)
-		_affichable.definirTexture(*textureMap["ressources/ciseaux.png"]);
+		_affichable.definirTexture(*textureMap["ressources/objets/ciseaux.png"]);
 }
 
 bool Ciseaux::estIphone()

@@ -16,12 +16,10 @@ public:
     Affichable();
     ~Affichable();
 
-    // Getter
     uint obtenirCouche() const;
     sf::Sprite *obtenirSprite() const;
     const sf::Vector2f &obtenirSpritePosition() const;
 
-    // Setter
     void definirCouche(uint couche);
     void definirScale(sf::Vector2f &scale);
     void definirTexture(sf::Texture &texture);

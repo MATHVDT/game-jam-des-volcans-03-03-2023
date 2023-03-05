@@ -7,8 +7,8 @@ Corbeille::Corbeille(sf::Vector2f position,
     : Fixe(position, scale, couche, visible)
     , etat(0)
 {
-	_affichable.definirTexture(*textureMap["ressources/corbeille.png"]);
 	_materiaux.push_back(papier);
+	_affichable.definirTexture(*textureMap["ressources/objets/corbeille.png"]);
 }
 
 Corbeille::~Corbeille() { }

@@ -96,7 +96,7 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
 void Gestionnaire::initScene()
 {
     uint scene = 0;
-    std::string img = "ressources/prise.png";
+    std::string img = "ressources/objets/prise.png";
     sf::Texture *t = new sf::Texture();
     std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
 
@@ -140,7 +140,7 @@ bool Gestionnaire::checkSourisSurObjet()
     sf::Vector2f sourisPosition = (sf::Vector2f)contexte->obtenirSourisPosition();
 
     // Recup tous les objets de la scene chargee
-    std::set<Objet *> &scene = contexte->obtenirObjetSceneChargee();
+    std::multiset<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
 
     // Parcours tous les objets pour savoir si la souris est dedans
     Objet *objetTouche = nullptr;
@@ -181,7 +181,7 @@ bool Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
         return false;
 
     // Recup tous les objets de la scene chargee
-    std::set<Objet *> &scene = contexte->obtenirObjetSceneChargee();
+    std::multiset<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
 
     Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
     if (objetSelectionne == nullptr)
