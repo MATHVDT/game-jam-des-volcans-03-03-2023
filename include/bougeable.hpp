@@ -1,25 +1,27 @@
 #ifndef __BOUGEABLE_HPP__
 #define __BOUGEABLE_HPP__
+
+#include "Contexte.hpp"
 #include "objet.hpp"
 
-class Bougeable : public Objet {
-		protected:
-				bool _selectionnee;
-				sf::Vector2<float> _position_initiale;
+class Bougeable : public Objet
+{
+protected:
+	bool _selectionnee;
+	sf::Vector2<float> _position_initiale;
 
-		public:
-				Bougeable(sf::Vector2f position,
-						sf::Vector2f scale,
-						uint couche,
-						bool visible);
+public:
+	Bougeable(sf::Vector2f position,
+			  sf::Vector2f scale,
+			  uint couche,
+			  bool visible);
+	virtual ~Bougeable() override;
 
-				virtual ~Bougeable() override;
-
-				virtual bool estIphone() override;
-				void remettrePosition();
-				void definirPosition(float haut, float gauche);
-				void relache();
-				virtual void clic() override;
+	virtual bool estIphone() override;
+	void remettrePosition();
+	void relache();
+	void definirPosition(const sf::Vector2f &position);
+	void clic() override;
 };
 
 #endif

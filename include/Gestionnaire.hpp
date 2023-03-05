@@ -13,6 +13,7 @@
 #include "../include/fixe.hpp"
 #include "../include/objet.hpp"
 #include "../include/prise.hpp"
+#include "ciseaux.hpp"
 
 class Gestionnaire {
 		private:
@@ -32,9 +33,11 @@ class Gestionnaire {
     void run();
     void initScene();
 
+    bool objetSelectionneSuivreSouris();
     void checkEvenment(const sf::Event &evenement);
     bool checkSourisSurObjet();
-    const sf::Vector2f getMousePos(sf::RenderWindow &window) const;
+	bool trouveObjetEnInteractionAvecObjetSelectionne();
+
 };
 
 /***************************************************/
