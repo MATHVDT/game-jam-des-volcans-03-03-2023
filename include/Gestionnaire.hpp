@@ -5,35 +5,44 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
-#include "../include/Contexte.hpp"
-#include "../include/armoire.hpp"
-#include "../include/bougeable.hpp"
-#include "../include/fixe.hpp"
-#include "../include/objet.hpp"
-#include "../include/prise.hpp"
+#include "Contexte.hpp"
+#include "armoire.hpp"
+#include "ciseaux.hpp"
+#include "prise.hpp"
+#include "bougeable.hpp"
+#include "fixe.hpp"
+#include "objet.hpp"
+#include "prise.hpp"
 #include "inflammable.hpp"
+#include "corbeille.hpp"
+#include "allumette.hpp"
 
-class Gestionnaire {
-		private:
-				/* data */
-				Contexte* contexte;
+class Gestionnaire
+{
+private:
+	/* data */
+	Contexte *contexte;
 
-		private: // Static
-				static Gestionnaire* _instance;
+private: // Static
+	static Gestionnaire *_instance;
 
-		public: // Static
-				static Gestionnaire* obtenirInstance();
+public: // Static
+	static Gestionnaire *obtenirInstance();
 
-		public:
-				Gestionnaire();
-				~Gestionnaire();
+public:
+	Gestionnaire();
+	~Gestionnaire();
 
-    void run();
-    void initScene();
+	void run();
+	void initScene();
 
-    void checkEvenment(const sf::Event &evenement);
-    bool checkSourisSurObjet();
-    const sf::Vector2f getMousePos(sf::RenderWindow &window) const;
+	bool objetSelectionneSuivreSouris();
+	void checkEvenment(const sf::Event &evenement);
+	bool checkSourisSurObjet();
+	bool trouveObjetEnInteractionAvecObjetSelectionne();
+	bool interactionObjets();
+
+	void ajouteType(Objet*o, const std::vector<Type> listMat);
 };
 
 /***************************************************/

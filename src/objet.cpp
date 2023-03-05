@@ -10,6 +10,7 @@ Objet::Objet(sf::Vector2f position,
 	  _rectangle(), _materiaux({})
 {
 	_affichable.definirCouche(couche);
+	_affichable.definirScale(scale);
 	_affichable.definirSpritePosition(position);
 
 	definirRectangle(position.x, position.y);
@@ -17,14 +18,14 @@ Objet::Objet(sf::Vector2f position,
 
 Objet::~Objet() {}
 
-const sf::Rect<float>& Objet::obtenirRectangle() 
+const sf::Rect<float> &Objet::obtenirRectangle()
 {
-				float haut = _affichable.obtenirSprite()->getGlobalBounds().top;
-				float gauche = _affichable.obtenirSprite()->getGlobalBounds().left;
-				float hauteur = _affichable.obtenirSprite()->getGlobalBounds().height;
-				float largeur = _affichable.obtenirSprite()->getGlobalBounds().width;
-				definirRectangle(gauche, haut,hauteur, largeur);
-				return _rectangle;
+	float haut = _affichable.obtenirSprite()->getGlobalBounds().top;
+	float gauche = _affichable.obtenirSprite()->getGlobalBounds().left;
+	float hauteur = _affichable.obtenirSprite()->getGlobalBounds().height;
+	float largeur = _affichable.obtenirSprite()->getGlobalBounds().width;
+	definirRectangle(gauche, haut, hauteur, largeur);
+	return _rectangle;
 }
 
 void Objet::definirRectangle(float gauche, float haut)
@@ -45,7 +46,7 @@ void Objet::definirRectangle(float gauche,
 
 void Objet::initialisationTexture()
 {
-	const std::filesystem::path chemin{"ressources/"};
+	const std::filesystem::path chemin{"ressources/objets/"};
 	for (auto &file : std::filesystem::directory_iterator{chemin}) // loop through the current folder
 	{
 		// std::cerr << file << std::endl;
@@ -55,16 +56,17 @@ void Objet::initialisationTexture()
 	}
 }
 
-std::map<std::string, sf::Texture *> Objet::obtenirTextureMap()
+std::map<std::string, sf::Texture *>& Objet::obtenirTextureMap()
 {
 	return textureMap;
 }
 
-void Objet::ajouterMateriaux(Type type) {
+void Objet::ajouterMateriaux(Type type)
+{
 	_materiaux.push_back(type);
 }
 
-const std::vector<Type> Objet::obtenirMateriaux() const {
+const std::vector<Type> Objet::obtenirMateriaux() const
+{
 	return _materiaux;
 }
-

@@ -6,10 +6,15 @@
 #include <set>
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Texture.hpp>
 
 #include "../include/Affichable.hpp"
 #include "../include/objet.hpp"
 #include "../include/bougeable.hpp"
+#include "../include/Fond.hpp"
+
+class Bougeable;
+class Objet;
 
 #define NB_SCENES 6
 
@@ -19,6 +24,8 @@ private:
     sf::RenderWindow _window;
     float _largeurFenetre;
     float _hauteurFenetre;
+
+    Fond *_fond; 
 
     std::vector<std::set<Objet *>> _tousLesObjets;
     uint _sceneChargee;
@@ -54,9 +61,18 @@ public:
     std::set<Objet *> &obtenirObjetSceneChargee() ;
     const sf::Event &obtenirEvenement() const;
     int obtenirSceneChargee() const;
+    void retirerAffichable(int scene,
+                           Objet *o);
 
-    // Setter
+    void retirerAffichableSceneChargee(Objet *o);
+
+   Bougeable *obtenirObjetBougeableSelectionne() const;
+    Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const;
+    const sf::Vector2f obtenirSourisPosition() const;
+
     void definirJeuEnCours(bool valeur = false);
+    void definirObjetBougeableSelectionne(Bougeable *o);
+    void definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o);
 };
 
 /***************************************************/
@@ -66,9 +82,13 @@ public:
 // Getter
 inline bool Contexte::obtenirJeuEnCours() const { return _jeuEnCours; }
 inline const sf::Event &Contexte::obtenirEvenement() const { return _event; }
-inline std::set<Objet *> &Contexte::obtenirObjetSceneChargee()  { return _tousLesObjets[_sceneChargee]; }
+inline std::set<Objet *> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
+inline Bougeable *Contexte::obtenirObjetBougeableSelectionne() const { return _objetBougeableSelectionne; }
+inline Objet *Contexte::obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const { return _objetEnInteractionAvecObjetBougeableSelectionne; }
 
 // Setter
 inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
+inline void Contexte::definirObjetBougeableSelectionne(Bougeable *o) { _objetBougeableSelectionne = o; }
+inline void Contexte::definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o) { _objetEnInteractionAvecObjetBougeableSelectionne = o; }
 
 #endif

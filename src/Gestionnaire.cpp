@@ -1,140 +1,216 @@
 #include "../include/Gestionnaire.hpp"
 
-Gestionnaire *Gestionnaire::_instance = nullptr;
+Gestionnaire* Gestionnaire::_instance = nullptr;
 
 Gestionnaire::Gestionnaire(/* args */)
 {
-    contexte = Contexte::obtenirInstance();
+				contexte = Contexte::obtenirInstance();
 }
 
 Gestionnaire::~Gestionnaire()
 {
-    delete contexte;
+				delete contexte;
 }
 
-Gestionnaire *Gestionnaire::obtenirInstance()
+Gestionnaire* Gestionnaire::obtenirInstance()
 {
-    if (Gestionnaire::_instance == nullptr)
-    {
-        Gestionnaire::_instance = new Gestionnaire();
-        if (Gestionnaire::_instance == nullptr)
-        {
-            std::cerr << "Erreur de new\n";
-            return nullptr;
-        }
-        else
-        {
-            return Gestionnaire::_instance;
-        }
-    }
+				if (Gestionnaire::_instance == nullptr) {
+								Gestionnaire::_instance = new Gestionnaire();
+								if (Gestionnaire::_instance == nullptr) {
+												std::cerr << "Erreur de new\n";
+												return nullptr;
+								} else {
+												return Gestionnaire::_instance;
+								}
+				}
 }
 
 void Gestionnaire::run()
 {
-    sf::Event event;
+				sf::Event event;
 
-    while (contexte->obtenirJeuEnCours())
-    {
+				while (contexte->obtenirJeuEnCours()) {
 
-        while (contexte->obtenirSonderEvenement())
-        { // Actualise le contexte seulement quand il ya une evenement
-            checkEvenment(contexte->obtenirEvenement());
-        }
-        contexte->dessiner();
-        contexte->afficherFenetre();
-    }
+								while (contexte->obtenirSonderEvenement()) { // Actualise le contexte seulement quand il ya une evenement
+												checkEvenment(contexte->obtenirEvenement());
+								}
+								contexte->dessiner();
+								contexte->afficherFenetre();
+				}
 }
 
 /// @brief Lance les actions suivant les evenements
 /// @param evenement
-void Gestionnaire::checkEvenment(const sf::Event &evenement)
+void Gestionnaire::checkEvenment(const sf::Event& evenement)
 {
-    switch (evenement.type)
-    {
-    case sf::Event::Closed:
-        contexte->definirJeuEnCours(false);
-        break;
+				switch (evenement.type) {
+				case sf::Event::Closed:
+								contexte->definirJeuEnCours(false);
+								break;
 
-    case sf::Event::MouseMoved:
-        // Souris bougee
-        break;
+				case sf::Event::MouseMoved:
+								// Souris bougee
+								objetSelectionneSuivreSouris();
+								break;
 
-    case sf::Event::MouseButtonPressed:
-        // bouton pressed
-        checkSourisSurObjet();
-        break;
+				case sf::Event::MouseButtonPressed:
+								// bouton appuye
+								checkSourisSurObjet();
+								break;
 
-        // case sf::Event:: :
-        //     // bouton pressed
+				case sf::Event::MouseButtonReleased:
+								// bouton relache
+								if (trouveObjetEnInteractionAvecObjetSelectionne()) {
+												if (interactionObjets()) {
+																Bougeable* o = contexte->obtenirObjetBougeableSelectionne();
+																if (o != nullptr) {
+																				o->relache();
+																				contexte->retirerAffichableSceneChargee(o);
+																				delete o;
+																}
+												} else {
+																Bougeable* o = contexte->obtenirObjetBougeableSelectionne();
+																if (o != nullptr)
+																				o->relache();
+												}
+								} else {
+												Bougeable* o = contexte->obtenirObjetBougeableSelectionne();
+												if (o != nullptr)
+																o->relache();
+								}
+								break;
 
-        //     break;
-
-    case sf::Event::MouseButtonReleased:
-        // bouton relache
-        break;
-
-    default:
-        break;
-    }
+				default:
+								break;
+				}
 }
 
 void Gestionnaire::initScene()
 {
-    uint scene = 0;
-    std::string img = "ressources/prise.png";
-    sf::Texture *t = new sf::Texture();
-    std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
+				uint scene = 0;
+				std::string img = "ressources/objets/prise.png";
+				sf::Texture* t = new sf::Texture();
+				std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
 
-     Bougeable *inflammable = new Inflammable(sf::Vector2f(0.0f, 0.0f),
-                              sf::Vector2f(1.0f, 1.0f),
-                         1, true);
-     std::set<Bougeable*>  _set = {inflammable};
-			      
-    Objet *o = new Armoire(sf::Vector2f(0.0f, 0.0f),
-                           sf::Vector2f(1.0f, 1.0f),
-                            0, true, _set);
+				Bougeable* inflammable = new Inflammable(sf::Vector2f(160.0f, 210.0f),
+						sf::Vector2f(0.2f, 0.2f),
+						2, true);
+				std::set<Bougeable*> _set = { inflammable };
 
-    contexte->ajouterAffichable(scene, o);
+				Objet* o = new Armoire(sf::Vector2f(1100.0f, 200.0f),
+						sf::Vector2f(0.7f, 0.7f),
+						1, true, _set);
+				contexte->ajouterAffichable(scene, o);
+
+				o = new Prise(sf::Vector2f(240.0f, 610.0f),
+						sf::Vector2f(0.06f, 0.06f),
+						1, true);
+				contexte->ajouterAffichable(scene, o);
+
+				o = new Corbeille(sf::Vector2f(-50.0f, 600.0f),
+						sf::Vector2f(0.50f, 0.50f),
+						1, true);
+				contexte->ajouterAffichable(scene, o);
+
+				o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
+						sf::Vector2f(0.10f, 0.10f),
+						2, true);
+				contexte->ajouterAffichable(scene, o);
+
+				o = new Allumette(sf::Vector2f(600.0f, 600.0f),
+						sf::Vector2f(0.10f, 0.10f),
+						2, true);
+				contexte->ajouterAffichable(scene, o);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.
 /// @return true si un objet est cliquee
 bool Gestionnaire::checkSourisSurObjet()
 {
-    // Pas le bouton gauche appuye
-    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-    {
-        return false;
-    }
+				// Pas le bouton gauche appuye
+				if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+								return false;
+				}
 
-    // Recup position souris
-    sf::Vector2f sourisPosition = (sf::Vector2f)sf::Mouse::getPosition();
+				// Recup position souris
+				sf::Vector2f sourisPosition = (sf::Vector2f)contexte->obtenirSourisPosition();
 
-    // Recup tous les objets de la scene chargee
-    std::set<Objet *> &scene = contexte->obtenirObjetSceneChargee();
+				// Recup tous les objets de la scene chargee
+				std::set<Objet*>& scene = contexte->obtenirObjetSceneChargee();
 
-    // Parcours tous les objets pour savoir si la souris est dedans
-    Objet *objetTouche = nullptr;
-    for (Objet *x : scene)
-    {
-        if (x->obtenirVisible() &&
-            x->obtenirRectangle().contains(sourisPosition))
-        {
-            objetTouche = x;
-            break;
-        }
-    }
+				// Parcours tous les objets pour savoir si la souris est dedans
+				Objet* objetTouche = nullptr;
+				for (auto rit = scene.rbegin(); rit != scene.rend(); ++rit) {
 
-    if (objetTouche == nullptr)
-        return false;
+								if ((*rit)->obtenirVisible() && (*rit)->obtenirRectangle().contains(sourisPosition)) {
+												objetTouche = (*rit);
+												break;
+								}
+				}
 
-    objetTouche->clic();
-    return true;
+				if (objetTouche == nullptr)
+								return false;
+
+				objetTouche->clic();
+				return true;
 }
-const sf::Vector2f Gestionnaire::getMousePos(sf::RenderWindow &window) const
+
+bool Gestionnaire::objetSelectionneSuivreSouris()
 {
-    // récupération de la position de la souris dans la fenêtre
-    sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
-    // conversion en coordonnées "monde"
-    return window.mapPixelToCoords(pixelPos);
+				Bougeable* objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
+				if (objetSelectionne != nullptr) {
+								objetSelectionne->definirPositionCentreSprite((sf::Vector2f)contexte->obtenirSourisPosition());
+				}
+				return true;
+}
+
+/// @brief Set l'objet qui est en interaction avec le selectionne
+/// @return
+bool Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
+{
+				// Pas le bouton gauche relache
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+								return false;
+
+				// Recup tous les objets de la scene chargee
+				std::set<Objet*>& scene = contexte->obtenirObjetSceneChargee();
+
+				Bougeable* objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
+				if (objetSelectionne == nullptr)
+								return false;
+
+				// Parcours tous les objets pour savoir si la souris est dedans
+				Objet* objetEnInteraction = nullptr;
+				for (Objet* x : scene) {
+								if (x == objetSelectionne)
+												continue;
+
+								if (x->obtenirRectangle().intersects(objetSelectionne->obtenirRectangle())) {
+												contexte->definirObjetEnInteractionAvecObjetBougeableSelectionne(x);
+												return true;
+								}
+				}
+				return false;
+}
+
+bool Gestionnaire::interactionObjets()
+{
+				Objet* o1 = contexte->obtenirObjetBougeableSelectionne();
+				Objet* o2 = contexte->obtenirObjetEnInteractionAvecObjetBougeableSelectionne();
+
+				// Rajout les elements dans l'autre objet
+				ajouteType(o1, o2->obtenirMateriaux());
+				ajouteType(o2, o1->obtenirMateriaux());
+
+				// Test la casssabilite et la consommabilite des objets
+				o2->estIphone();
+
+				return o1->estIphone();
+}
+
+void Gestionnaire::ajouteType(Objet* o, std::vector<Type> listMat)
+{
+				for (auto& mat : listMat) {
+								o->ajouterMateriaux(mat);
+				}
 }

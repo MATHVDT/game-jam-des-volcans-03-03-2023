@@ -12,29 +12,35 @@ Bougeable::Bougeable(sf::Vector2f position,
 	_position_initiale = position;
 }
 
-Bougeable::~Bougeable()
-{
-}
+Bougeable::~Bougeable() {}
 
 void Bougeable::clic()
 {
-	_selectionnee = !_selectionnee;
+	_selectionnee = true;
+	Contexte::obtenirInstance()->definirObjetBougeableSelectionne(this);
+	_position_initiale = _affichable.obtenirSpritePosition();
 }
 
 void Bougeable::relache()
 {
-	_selectionnee = !_selectionnee;
-	// appeler dans contexte pour checker la collision
+	_selectionnee = false;
+	Contexte::obtenirInstance()->definirObjetBougeableSelectionne(nullptr);
+	remettrePosition();
 }
 
-void Bougeable::definirPosition(float haut, float gauche)
+void Bougeable::definirPosition(const sf::Vector2f &position)
 {
-	definirRectangle(haut, gauche);
+	_affichable.definirSpritePosition(position);
+}
+
+void Bougeable::definirPositionCentreSprite(const sf::Vector2f &position)
+{
+	_affichable.definirPositionCentreSprite(position);
 }
 
 void Bougeable::remettrePosition()
 {
-	definirPosition(_position_initiale.x, _position_initiale.y);
+	definirPosition(_position_initiale);
 }
 
 bool Bougeable::estIphone()

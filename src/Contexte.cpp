@@ -4,7 +4,7 @@ Contexte *Contexte::_instance = nullptr;
 
 Contexte::Contexte()
 {
-    _largeurFenetre = 1300.0f;
+    _largeurFenetre = 1600.0f;
     _hauteurFenetre = 900.0f;
 
     _sceneChargee = 0;
@@ -29,6 +29,9 @@ Contexte::Contexte()
     {
         _tousLesObjets.push_back(std::set<Objet *>{});
     }
+
+    std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
+    _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre / 1920.0f, _hauteurFenetre / 1080.0f), (unsigned int)0);
 }
 
 Contexte::~Contexte()
@@ -40,6 +43,7 @@ Contexte::~Contexte()
             delete o;
         }
     }
+    delete _fond;
     _window.close();
 }
 
@@ -68,6 +72,9 @@ bool Contexte::obtenirSonderEvenement()
 /// @brief Dessine tous les objets
 void Contexte::dessiner()
 {
+    int i = 1;
+
+    dessiner(_fond->obtenirSprite());
     for (auto &scene : _tousLesObjets)
     { // Pour chaque scene
         // auto &scene = _tousLesObjets[_sceneChargee];
@@ -106,4 +113,25 @@ void Contexte::ajouterAffichable(int scene,
 
 int Contexte::obtenirSceneChargee() const{
 	return _sceneChargee;
+}
+/// @brief Retire un objet a la liste de tous les objets.
+/// @param scene
+/// @param affichable
+void Contexte::retirerAffichable(int scene,
+                                 Objet *o)
+{
+    _tousLesObjets[scene].erase(o);
+}
+
+void Contexte::retirerAffichableSceneChargee(Objet *o)
+{
+    retirerAffichable(_sceneChargee, o);
+}
+
+const sf::Vector2f Contexte::obtenirSourisPosition() const
+{
+    // récupération de la position de la souris dans la fenêtre
+    sf::Vector2i pixelPos = sf::Mouse::getPosition(_window);
+    // conversion en coordonnées "monde"
+    return _window.mapPixelToCoords(pixelPos);
 }

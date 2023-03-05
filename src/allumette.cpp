@@ -8,24 +8,24 @@ Allumette::Allumette(sf::Vector2f position,
     , etat(0)
 {
 	_materiaux.push_back(feu);
-	_affichable.definirTexture(*textureMap["ressources/allumette_range.png"]);
+	_affichable.definirTexture(*textureMap["ressources/objets/allumette_range.png"]);
 }
 
 void Allumette::miseAJour()
 {
 	if (_selectionnee == 0)
-		_affichable.definirTexture(*textureMap["ressources/allumette_range.png"]);
+		_affichable.definirTexture(*textureMap["ressources/objets/allumette_range.png"]);
 	else if (_selectionnee == 1)
-		_affichable.definirTexture(*textureMap["ressources/allumette.png"]);
+		_affichable.definirTexture(*textureMap["ressources/objets/allumette.png"]);
 }
 
 bool Allumette::estIphone()
 {
 
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), electircite);
-	if (result1 == _materiaux.end()) {}
+	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), papier);
+	if (result1 != _materiaux.end()) {return true;}
 		//implemneter la destruction 
-	return true;
+	return false;
 }
 
 void Allumette::clic() {

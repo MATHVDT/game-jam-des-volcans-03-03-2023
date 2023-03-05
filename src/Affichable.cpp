@@ -9,6 +9,14 @@ Affichable::~Affichable()
     delete _sprite;
 }
 
+void Affichable::definirPositionCentreSprite(const sf::Vector2f &posistion)
+{
+    float decalageHauteur = _sprite->getGlobalBounds().height / 2;
+    float decalageLargeur = _sprite->getGlobalBounds().width / 2;
+
+    definirSpritePosition(posistion - sf::Vector2f(decalageLargeur, decalageHauteur));
+}
+
 /// @brief Comparateur static
 /// @param a1
 /// @param a2

@@ -19,12 +19,14 @@ public:
     // Getter
     uint obtenirCouche() const;
     sf::Sprite *obtenirSprite() const;
-    sf::Vector2f obtenirSpritePosition() const;
+    const sf::Vector2f &obtenirSpritePosition() const;
 
     // Setter
     void definirCouche(uint couche);
+    void definirScale(sf::Vector2f &scale);
     void definirTexture(sf::Texture &texture);
-    void definirSpritePosition(sf::Vector2f posistion);
+    void definirSpritePosition(const sf::Vector2f &posistion);
+    void definirPositionCentreSprite(const sf::Vector2f &posistion);
 };
 
 /***************************************************/
@@ -43,11 +45,12 @@ bool operator>=(const Affichable &r1, const Affichable &r2);
 // Getter
 inline uint Affichable::obtenirCouche() const { return _couche; }
 inline sf::Sprite *Affichable::obtenirSprite() const { return _sprite; }
-inline sf::Vector2f Affichable::obtenirSpritePosition() const { return _sprite->getPosition(); }
+inline const sf::Vector2f &Affichable::obtenirSpritePosition() const { return _sprite->getPosition(); }
 
 // Setter
 inline void Affichable::definirCouche(uint couche) { _couche = couche; }
 inline void Affichable::definirTexture(sf::Texture &texture) { _sprite->setTexture(texture); }
-inline void Affichable::definirSpritePosition(sf::Vector2f position) { _sprite->setPosition(position); }
+inline void Affichable::definirSpritePosition(const sf::Vector2f& position) { _sprite->setPosition(position); }
+inline void Affichable::definirScale(sf::Vector2f& scale) { _sprite->setScale(scale); }
 
 #endif
