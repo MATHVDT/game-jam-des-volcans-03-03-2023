@@ -3,7 +3,7 @@
 #include "objet.hpp"
 
 class Bougeable : public Objet {
-		private:
+		protected:
 				bool _selectionnee;
 				sf::Vector2<float> _position_initiale;
 

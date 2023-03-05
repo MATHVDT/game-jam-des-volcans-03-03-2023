@@ -3,7 +3,7 @@
 #include "enum_type.hpp"
 #include <SFML/Graphics/Texture.hpp>
 #include <vector>
-
+#include <algorithm>
 #include "Affichable.hpp"
 #include <SFML/Graphics.hpp>
 #include <filesystem>
