@@ -60,7 +60,7 @@ Buffet :
 * Cake jambon
 * Muffin banana bread
 * Banana bread  
-* Fromages (st-nectaire, cantal, ...)
+* Fromages (st-nectaire, cantal, bleu d'auvergne)
 * Pain
 
 #### Repas du soir
@@ -75,17 +75,36 @@ Buffet :
 * Salade auvergante
 * Salade ZZ-haricots
 * Salade paysanne
-* Fromages (st-nectaire, ...)
+* Fromages (st-nectaire, bleu d'auvergne)
 * Clafoutis à la prune 
 * Tarte aux pommes
 
 
 ### Dimanche 
 #### Petit déjeuné 
+Pain au chocolat
+Corissant
+Brioche
 
+Boison :
+* Café 
+* Thé
+* Jus d'orange
+* Jus multifruit
+* Jus de pomme  
 
 #### Repas du midi 
-
+* Salade de pattes (jambon, mozza,tomate cerise, tomates séchées, pesto)  
+* Salade de pattes (jambon, mozza,tomate tomates séchées)  
+* Tranches de jambon  
+* Quiche épinard/chèvre
+* Cake tomates séchées
+* Cake jambon
+* Poulet
+* Muffin banana bread
+* Banana bread  
+* Fromages (st-nectaire, cantal)
+* Pain  
 
 #### Repas du soir 
 
