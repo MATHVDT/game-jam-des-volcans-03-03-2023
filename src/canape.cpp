@@ -8,7 +8,7 @@ Canape::Canape(sf::Vector2f position,
     , etat(0)
 {
 	_materiaux.push_back(encombrant);
-	_affichable.definirTexture(*textureMap["ressources/objets/canape_ignufue.png"]);
+	_affichable.definirTexture(*textureMap["ressources/objets/canape_ignifuge.png"]);
 }
 
 void Canape::miseAJour()

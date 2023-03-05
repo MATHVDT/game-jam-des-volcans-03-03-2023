@@ -17,6 +17,10 @@
 #include "corbeille.hpp"
 #include "allumette.hpp"
 #include "BoutonChargerScene.hpp"
+#include "issue.hpp"
+#include "canape.hpp"
+#include "neon.hpp"
+#include "marteau.hpp"
 
 class Gestionnaire
 {

@@ -101,12 +101,19 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
 
 void Gestionnaire::initScene()
 {
+	//MENU
 	uint scene = 0;
 
-	BoutonChargerScene * piece_1 = new BoutonChargerScene(sf::Vector2f(210.0f, 30.0f),
+	BoutonChargerScene * piece = new BoutonChargerScene(sf::Vector2f(210.0f, 30.0f),
 											 sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
 											 2, true, 1, "ressources/objets/piece_1_lobby.png");
-	contexte->ajouterAffichable(scene, piece_1);
+	contexte->ajouterAffichable(scene, piece);
+
+	piece = new BoutonChargerScene(sf::Vector2f(210.0f, 250.0f),
+											 sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
+											 2, true, 2, "ressources/objets/piece_2_lobby.png");
+	contexte->ajouterAffichable(scene, piece);
+
 	// SCENE 1
 	scene = 1;
 
@@ -144,6 +151,46 @@ void Gestionnaire::initScene()
 					  sf::Vector2f(0.10f, 0.10f),
 					  4, true);
 	contexte->ajouterAffichable(scene, o);
+
+	// SCENE 2
+	scene = 2;
+
+	BoutonChargerScene * retour_2 = new BoutonChargerScene(sf::Vector2f(0.0f, 0.0f),
+											 sf::Vector2f(0.15f, 0.15f),
+											 100, true, 0, "ressources/objets/bouton_retour.png");
+	contexte->ajouterAffichable(scene, retour_2);
+
+	o = new Issue(sf::Vector2f(1140.0f, 200.0f),
+				  sf::Vector2f(0.45f, 0.45f),
+				  1, true);
+	contexte->ajouterAffichable(scene, o);
+
+	o = new Canape(sf::Vector2f(540.0f, 430.0f),
+				  sf::Vector2f(0.6f, 0.6f),
+				  2, true);
+	contexte->ajouterAffichable(scene, o);
+	
+	o = new Neon(sf::Vector2f(640.0f, -50.0f),
+				  sf::Vector2f(0.3f, 0.3f),
+				  3, true);
+	contexte->ajouterAffichable(scene, o);
+
+	o = new Neon(sf::Vector2f(240.0f, -50.0f),
+				  sf::Vector2f(0.3f, 0.3f),
+				  4, true);
+	contexte->ajouterAffichable(scene, o);
+
+	o = new Marteau(sf::Vector2f(1140.0f, 310.0f),
+				  sf::Vector2f(0.1f, 0.1f),
+				  5, true);
+	contexte->ajouterAffichable(scene, o);
+
+	o = new Marteau(sf::Vector2f(1140.0f, 310.0f),
+				  sf::Vector2f(0.1f, 0.1f),
+				  6, true);
+	contexte->ajouterAffichable(scene, o);
+
+
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.
