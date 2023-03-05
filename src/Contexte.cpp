@@ -29,6 +29,9 @@ Contexte::Contexte()
     {
         _tousLesObjets.push_back(std::set<Objet *>{});
     }
+
+    std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
+    _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre / 1920.0f, _hauteurFenetre / 1080.0f), (unsigned int)0);
 }
 
 Contexte::~Contexte()
@@ -40,6 +43,7 @@ Contexte::~Contexte()
             delete o;
         }
     }
+    delete _fond;
     _window.close();
 }
 
@@ -69,10 +73,7 @@ bool Contexte::obtenirSonderEvenement()
 void Contexte::dessiner()
 {
     int i = 1;
-    
-    std::string nom_piece = "ressources/piece_" + std::to_string(i) + ".png";
-    _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre/1920.0f, _hauteurFenetre/1080.0f), (unsigned int)0);
-    
+
     dessiner(_fond->obtenirSprite());
     for (auto &scene : _tousLesObjets)
     { // Pour chaque scene

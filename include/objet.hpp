@@ -24,7 +24,8 @@ protected:
     static std::map<std::string, sf::Texture *> textureMap;
 
 public: // Static
-    static std::map<std::string, sf::Texture *> obtenirTextureMap();
+    static std::map<std::string, sf::Texture *>& obtenirTextureMap();
+    static void initialisationTexture();
 
 public:
     Objet(sf::Vector2f position,
@@ -33,7 +34,6 @@ public:
           bool visible);
     virtual ~Objet();
 
-    static void initialisationTexture();
     virtual bool estIphone() = 0;
     virtual void clic() = 0;
 

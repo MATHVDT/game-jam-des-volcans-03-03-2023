@@ -46,7 +46,7 @@ void Objet::definirRectangle(float gauche,
 
 void Objet::initialisationTexture()
 {
-	const std::filesystem::path chemin{"ressources/"};
+	const std::filesystem::path chemin{"ressources/objets/"};
 	for (auto &file : std::filesystem::directory_iterator{chemin}) // loop through the current folder
 	{
 		// std::cerr << file << std::endl;
@@ -56,7 +56,7 @@ void Objet::initialisationTexture()
 	}
 }
 
-std::map<std::string, sf::Texture *> Objet::obtenirTextureMap()
+std::map<std::string, sf::Texture *>& Objet::obtenirTextureMap()
 {
 	return textureMap;
 }

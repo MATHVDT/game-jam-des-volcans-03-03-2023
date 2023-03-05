@@ -96,7 +96,7 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
 void Gestionnaire::initScene()
 {
     uint scene = 0;
-    std::string img = "ressources/prise.png";
+    std::string img = "ressources/objets/prise.png";
     sf::Texture *t = new sf::Texture();
     std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
 

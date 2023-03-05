@@ -7,18 +7,18 @@ Corbeille::Corbeille(sf::Vector2f position,
 		: Fixe(position, scale, couche, visible)
 		,etat(0)
 {
-								_affichable.definirTexture(*textureMap["ressources/corbeille.png"]);
+								_affichable.definirTexture(*textureMap["ressources/objets/corbeille.png"]);
 }
 
 Corbeille::~Corbeille() { }
 void Corbeille::miseAJour()
 {
 				if (etat == 0)
-								_affichable.definirTexture(*textureMap["ressources/corbeille.png"]);
+								_affichable.definirTexture(*textureMap["ressources/objets/corbeille.png"]);
 				else if (etat == 1)
-								_affichable.definirTexture(*textureMap["ressources/corbeille_brule.png"]);
+								_affichable.definirTexture(*textureMap["ressources/objets/corbeille_brule.png"]);
 				else if (etat == 2)
-								_affichable.definirTexture(*textureMap["ressources/corbeille_brule_beaucoup.png"]);
+								_affichable.definirTexture(*textureMap["ressources/objets/corbeille_brule_beaucoup.png"]);
 }
 bool Corbeille::estIphone() { return true; }
 void Corbeille::clic() { }

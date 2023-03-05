@@ -9,16 +9,16 @@ Prise::Prise(sf::Vector2f position,
 		, etat(1)
 {
 				_materiaux.push_back(electircite);
-				_affichable.definirTexture(*textureMap["ressources/prise.png"]);
+				_affichable.definirTexture(*textureMap["ressources/objets/prise.png"]);
 }
 
 Prise::~Prise() { }
 void Prise::miseAJour()
 {
 				if (etat == 0)
-								_affichable.definirTexture(*textureMap["ressources/prise_casse.png"]);
+								_affichable.definirTexture(*textureMap["ressources/objets/prise_casse.png"]);
 				else if (etat == 1)
-								_affichable.definirTexture(*textureMap["ressources/prise.png"]);
+								_affichable.definirTexture(*textureMap["ressources/objets/prise.png"]);
 }
 
 bool Prise::estIphone()
