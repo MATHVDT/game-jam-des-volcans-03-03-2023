@@ -68,7 +68,15 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
     case sf::Event::MouseButtonReleased:
         // bouton relache
         if (trouveObjetEnInteractionAvecObjetSelectionne())
+        {
             interactionObjets();
+        }
+        else
+        {
+            Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
+            if (o != nullptr)
+                o->remettrePosition();
+        }
         break;
 
     default:
@@ -176,4 +184,24 @@ bool Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
 
 bool Gestionnaire::interactionObjets()
 {
+    Objet *o1 = contexte->obtenirObjetBougeableSelectionne();
+    Objet *o2 = contexte->obtenirObjetEnInteractionAvecObjetBougeableSelectionne();
+
+    // Rajout les elements dans l'autre objet
+    ajouteType(o1, o2->obtenirListeMateriaux());
+    ajouteType(o2, o1->obtenirListeMateriaux());
+
+    // Test la casssabilite et la consommabilite des objets
+    o1->estIphone();
+    o2->estIphone();
+
+    return true;
+}
+
+void ajouteType(Objet *o, std::vector<Type> listMat)
+{
+    for (auto &mat : listMat)
+    {
+        o->ajouterMateriaux(mat);
+    }
 }

@@ -37,13 +37,14 @@ public:
     virtual bool estIphone() = 0;
     virtual void clic() = 0;
 
-    // Getter
     bool obtenirVisible() const;
     sf::Sprite *obtenirSprite() const;
     const sf::Rect<float> &obtenirRectangle();
     const sf::Vector2f &obtenirPosition() const;
+    std::vector<Type> obtenirListeMateriaux()const;
 
-    // Setter
+
+    void ajouterMateriaux(Type mat);
 
 protected:
     void definirRectangle(float gauche, float haut);
