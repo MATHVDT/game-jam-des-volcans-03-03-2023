@@ -5,5 +5,7 @@ enum Type { eau, // peut être un nom reservé hihihi
 				electircite,
 				metal,
 				feu,
+				papier,
+				inflammable,
 				gros_feu};
 #endif

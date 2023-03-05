@@ -2,15 +2,15 @@
 #define _INCLUDE_CISEAUX_HPP
 
 #include "bougeable.hpp"
-class Ciseaux : public Bougeable {
+class Inflammable : public Bougeable {
     private:
 	int etat;
 	void miseAJour();
 
     public:
-	Ciseaux(sf::Vector2f position, sf::Vector2f scale, uint couche, bool visible);
+	Inflammable(sf::Vector2f position, sf::Vector2f scale, uint couche, bool visible);
 
-	virtual ~Ciseaux() override {};
+	virtual ~Inflammable() override {};
 	void clic() override;
 	bool estIphone() override;
 };

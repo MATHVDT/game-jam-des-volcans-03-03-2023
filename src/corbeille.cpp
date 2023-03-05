@@ -8,6 +8,7 @@ Corbeille::Corbeille(sf::Vector2f position,
     , etat(0)
 {
 	_affichable.definirTexture(*textureMap["ressources/corbeille.png"]);
+	_materiaux.push_back(papier);
 }
 
 Corbeille::~Corbeille() { }
@@ -24,11 +25,12 @@ bool Corbeille::estIphone()
 {
 
 	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), feu);
-	auto result2 = std::find(_materiaux.begin(), _materiaux.end(), gros_feu);
+	auto result2 = std::find(_materiaux.begin(), _materiaux.end(), inflammable);
 
-	if (result2 != _materiaux.end()) {
-		etat = 2;
-	} else if (result1 != _materiaux.end()) {
+	if (result1 != _materiaux.end()) {
+		if (result2 != _materiaux.end() && result1 != _materiaux.end()) {
+			etat = 2;
+		}
 		etat = 1;
 	}
 	miseAJour();

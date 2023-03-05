@@ -7,7 +7,7 @@ Allumette::Allumette(sf::Vector2f position,
     : Bougeable(position, scale, couche, visible)
     , etat(0)
 {
-	_materiaux.push_back(metal);
+	_materiaux.push_back(feu);
 	_affichable.definirTexture(*textureMap["ressources/allumette_range.png"]);
 }
 
