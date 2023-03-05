@@ -8,6 +8,7 @@ class Armoire : public Fixe
 private:
     bool estOuvert;
 
+
 public:
     Armoire(sf::Vector2f position,
             sf::Vector2f scale,

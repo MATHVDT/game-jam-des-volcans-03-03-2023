@@ -3,19 +3,21 @@
 
 #include "fixe.hpp"
 
-class Prise : public Fixe
-{
-private:
+class Prise : public Fixe {
+		private:
 				bool iphone;
-public:
-    Prise(sf::Vector2f position,
-          sf::Vector2f scale,
-          uint couche,
-          bool visible);
-    virtual ~Prise() override;
+				int etat;
 
-	void clic() override{};
-	bool estIphone() override;
+		public:
+				Prise(sf::Vector2f position,
+						sf::Vector2f scale,
+						uint couche,
+						bool visible);
+				virtual ~Prise() override;
+
+				void miseAJour(); 
+				void clic() override {};
+				bool estIphone() override;
 };
 
 #endif

@@ -27,7 +27,7 @@ void Bougeable::relache()
 	// _selectionnee = !_selectionnee;
 	_selectionnee = false;
 	Contexte::obtenirInstance()->definirObjetBougeableSelectionne(nullptr);
-	// appeler dans contexte pour checker la collision
+	remettrePosition();
 }
 
 void Bougeable::definirPosition(const sf::Vector2f &position)

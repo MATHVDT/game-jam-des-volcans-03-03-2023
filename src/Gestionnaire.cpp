@@ -75,7 +75,7 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
         {
             Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
             if (o != nullptr)
-                o->remettrePosition();
+                o->relache();
         }
         break;
 
@@ -94,17 +94,22 @@ void Gestionnaire::initScene()
     /* Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
                               sf::Vector2f(1.0f, 1.0f),
                               *t, 0, true);
- */
+    */
     Objet *o = new Ciseaux(sf::Vector2f(0.0f, 0.0f),
                            sf::Vector2f(1.0f, 1.0f),
                            0, true);
 
-    Objet *a = new Armoire(sf::Vector2f(20.0f, 0.0f),
-                           sf::Vector2f(1.0f, 1.0f),
-                           0, true);
+    // Objet *a = new Armoire(sf::Vector2f(20.0f, 0.0f),
+    //                        sf::Vector2f(1.0f, 1.0f),
+    //                        0, true);
+    // contexte->ajouterAffichable(scene, a);
+
+    Objet *p = new Prise(sf::Vector2f(100.0f, 0.0f),
+                         sf::Vector2f(1.0f, 1.0f),
+                         0, true);
+    contexte->ajouterAffichable(scene, p);
 
     contexte->ajouterAffichable(scene, o);
-    contexte->ajouterAffichable(scene, a);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.
@@ -198,7 +203,7 @@ bool Gestionnaire::interactionObjets()
     return true;
 }
 
-void ajouteType(Objet *o, std::vector<Type> listMat)
+void Gestionnaire::ajouteType(Objet *o, std::vector<Type> listMat)
 {
     for (auto &mat : listMat)
     {

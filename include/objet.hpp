@@ -3,7 +3,7 @@
 #include "enum_type.hpp"
 #include <SFML/Graphics/Texture.hpp>
 #include <vector>
-
+#include <algorithm>
 #include "Affichable.hpp"
 
 #include <SFML/Graphics.hpp>
@@ -41,10 +41,8 @@ public:
     sf::Sprite *obtenirSprite() const;
     const sf::Rect<float> &obtenirRectangle();
     const sf::Vector2f &obtenirPosition() const;
-    std::vector<Type> obtenirListeMateriaux()const;
-
-
-    void ajouterMateriaux(Type mat);
+    std::vector<Type> obtenirListeMateriaux() const;
+    void ajouterMateriaux(Type type);
 
 protected:
     void definirRectangle(float gauche, float haut);

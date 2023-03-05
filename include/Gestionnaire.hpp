@@ -38,7 +38,7 @@ public:
 	bool trouveObjetEnInteractionAvecObjetSelectionne();
 	bool interactionObjets();
 
-	void ajouteType(Objet*o, std::vector<Type> listMat);
+	void ajouteType(Objet*o, const std::vector<Type> listMat);
 };
 
 /***************************************************/
