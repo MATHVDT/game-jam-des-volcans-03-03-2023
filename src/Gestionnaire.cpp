@@ -103,8 +103,8 @@ void Gestionnaire::initScene()
 {
 	uint scene = 0;
 
-	BoutonChargerScene * piece_1 = new BoutonChargerScene(sf::Vector2f(200.0f, 300.0f),
-											 sf::Vector2f(1.0f, 1.0f),
+	BoutonChargerScene * piece_1 = new BoutonChargerScene(sf::Vector2f(210.0f, 30.0f),
+											 sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
 											 2, true, 1, "ressources/objets/piece_1_lobby.png");
 	contexte->ajouterAffichable(scene, piece_1);
 	// SCENE 1
