@@ -1,8 +1,9 @@
-.vscode
+.vscode*
 
 *.swp
 CMakeFiles/
 CMakeCache*
+prog
 Prog
 Makefile
 *.cmake
