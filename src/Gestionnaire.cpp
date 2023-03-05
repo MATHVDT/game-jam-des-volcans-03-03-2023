@@ -109,7 +109,7 @@ void Gestionnaire::initScene()
 											 2, true, 1, "ressources/objets/piece_1_lobby.png");
 	contexte->ajouterAffichable(scene, piece);
 
-	piece = new BoutonChargerScene(sf::Vector2f(210.0f, 250.0f),
+	piece = new BoutonChargerScene(sf::Vector2f(210.0f, 360.0f),
 											 sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
 											 2, true, 2, "ressources/objets/piece_2_lobby.png");
 	contexte->ajouterAffichable(scene, piece);
@@ -165,17 +165,17 @@ void Gestionnaire::initScene()
 				  1, true);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Canape(sf::Vector2f(540.0f, 430.0f),
+	o = new Canape(sf::Vector2f(580.0f, 440.0f),
 				  sf::Vector2f(0.6f, 0.6f),
 				  2, true);
 	contexte->ajouterAffichable(scene, o);
 	
-	o = new Neon(sf::Vector2f(640.0f, -50.0f),
+	o = new Neon(sf::Vector2f(940.0f, -50.0f),
 				  sf::Vector2f(0.3f, 0.3f),
 				  3, true);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Neon(sf::Vector2f(240.0f, -50.0f),
+	o = new Neon(sf::Vector2f(440.0f, -50.0f),
 				  sf::Vector2f(0.3f, 0.3f),
 				  4, true);
 	contexte->ajouterAffichable(scene, o);
