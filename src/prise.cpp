@@ -6,8 +6,8 @@ Prise::Prise(sf::Vector2f position,
 			 bool visible)
 	: Fixe(position, scale, couche, visible), iphone(false), etat(1)
 {
-	_materiaux.push_back(electircite);
-	_affichable.definirTexture(*textureMap["ressources/objets/prise.png"]);
+				_materiaux.push_back(electircite);
+				_affichable.definirTexture(*textureMap["ressources/objets/prise.png"]);
 }
 
 Prise::~Prise() {}
@@ -24,8 +24,7 @@ bool Prise::estIphone()
 
 	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), metal);
 
-	if (result1 != _materiaux.end())
-	{
+	if (result1 != _materiaux.end()) {
 		etat = 0;
 		miseAJour();
 	}

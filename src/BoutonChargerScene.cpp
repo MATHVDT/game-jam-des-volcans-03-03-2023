@@ -1,4 +1,4 @@
-#include "BoutonChargerScene.hpp"
+#include "../include/BoutonChargerScene.hpp"
 
 BoutonChargerScene::BoutonChargerScene(sf::Vector2f position, sf::Vector2f scale,
                                        uint couche, bool visible,
@@ -8,12 +8,12 @@ BoutonChargerScene::BoutonChargerScene(sf::Vector2f position, sf::Vector2f scale
 {
     _numeroScene = numeroScene;
 
-    _affichable.definirTexture(*textureMap[cleTextureScene])
+    _affichable.definirTexture(*textureMap[cleTextureScene]);
 }
 
 BoutonChargerScene::~BoutonChargerScene() {}
 
 void BoutonChargerScene::clic()
 {
-    Contexte::obtenirInstance()->definirSceneChargee(_numeroScene)
+    Contexte::obtenirInstance()->definirSceneChargee(_numeroScene);
 }

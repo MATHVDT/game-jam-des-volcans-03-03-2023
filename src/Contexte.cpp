@@ -70,8 +70,6 @@ bool Contexte::obtenirSonderEvenement()
 /// @brief Dessine tous les objets
 void Contexte::dessiner()
 {
-    int i = 1;
-
     dessiner(_fond->obtenirSprite());
     // for (auto &scene : _tousLesObjets)
     // { // Pour chaque scene
@@ -109,6 +107,9 @@ void Contexte::ajouterAffichable(int scene,
     _tousLesObjets[scene].emplace(o);
 }
 
+int Contexte::obtenirSceneChargee() const{
+	return _sceneChargee;
+}
 /// @brief Retire un objet a la liste de tous les objets.
 /// @param scene
 /// @param affichable

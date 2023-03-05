@@ -5,15 +5,22 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
-#include "../include/Contexte.hpp"
-#include "../include/armoire.hpp"
-#include "../include/ciseaux.hpp"
-#include "../include/prise.hpp"
-#include "../include/bougeable.hpp"
-#include "../include/fixe.hpp"
-#include "../include/objet.hpp"
-#include "../include/prise.hpp"
+#include "Contexte.hpp"
+#include "armoire.hpp"
 #include "ciseaux.hpp"
+#include "prise.hpp"
+#include "bougeable.hpp"
+#include "fixe.hpp"
+#include "objet.hpp"
+#include "prise.hpp"
+#include "inflammable.hpp"
+#include "corbeille.hpp"
+#include "allumette.hpp"
+#include "BoutonChargerScene.hpp"
+#include "issue.hpp"
+#include "canape.hpp"
+#include "neon.hpp"
+#include "marteau.hpp"
 
 #include <SFML/Audio.hpp>
 

@@ -58,6 +58,8 @@ public:
     void ajouterAffichable(int scene,
                            Objet *o);
 
+    // Getter
+    int obtenirSceneChargee() const;
     void retirerAffichable(int scene,
                            Objet *o);
 
@@ -95,6 +97,12 @@ inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
 inline void Contexte::definirObjetBougeableSelectionne(Bougeable *o) { _objetBougeableSelectionne = o; }
 inline void Contexte::definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o) { _objetEnInteractionAvecObjetBougeableSelectionne = o; }
 inline void Contexte::definirScore(uint score) { _score += score; }
-inline void Contexte::definirSceneChargee(uint scene) { _sceneChargee = scene; }
+
+inline void Contexte::definirSceneChargee(uint scene) {
+    _sceneChargee = scene;
+
+    std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
+    _fond->obtenirSprite()->setTexture(*(Fond::texturesFond[nom_piece]));
+}
 
 #endif
