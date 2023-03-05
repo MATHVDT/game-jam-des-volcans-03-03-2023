@@ -85,13 +85,14 @@ void Gestionnaire::initScene()
     sf::Texture *t = new sf::Texture();
     std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
 
-    /* Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
+     Bougeable *inflammable = new Inflammable(sf::Vector2f(0.0f, 0.0f),
                               sf::Vector2f(1.0f, 1.0f),
-                              *t, 0, true);
- */ sf::Texture *ta = Objet::obtenirTextureMap()["ressources/armoire_ferme.png"];
+                         1, true);
+     std::set<Bougeable*>  _set = {inflammable};
+			      
     Objet *o = new Armoire(sf::Vector2f(0.0f, 0.0f),
                            sf::Vector2f(1.0f, 1.0f),
-                            0, true);
+                            0, true, _set);
 
     contexte->ajouterAffichable(scene, o);
 }

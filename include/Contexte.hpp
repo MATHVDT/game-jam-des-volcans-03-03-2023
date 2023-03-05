@@ -53,6 +53,7 @@ public:
     bool obtenirJeuEnCours() const;
     std::set<Objet *> &obtenirObjetSceneChargee() ;
     const sf::Event &obtenirEvenement() const;
+    int obtenirSceneChargee() const;
 
     // Setter
     void definirJeuEnCours(bool valeur = false);

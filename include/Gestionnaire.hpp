@@ -11,6 +11,7 @@
 #include "../include/fixe.hpp"
 #include "../include/objet.hpp"
 #include "../include/prise.hpp"
+#include "inflammable.hpp"
 
 class Gestionnaire {
 		private:

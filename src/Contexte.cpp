@@ -103,3 +103,7 @@ void Contexte::ajouterAffichable(int scene,
 {
     _tousLesObjets[scene].emplace(o);
 }
+
+int Contexte::obtenirSceneChargee() const{
+	return _sceneChargee;
+}
