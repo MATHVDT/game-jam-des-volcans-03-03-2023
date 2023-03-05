@@ -100,24 +100,30 @@ void Gestionnaire::initScene()
     sf::Texture *t = new sf::Texture();
     std::cerr << "load from file : " << t->loadFromFile(img) << "\n";
 
-    /* Objet *o = new Bougeable(sf::Vector2f(0.0f, 0.0f),
-                              sf::Vector2f(1.0f, 1.0f),
-                              *t, 0, true);
- */
-        Objet *o = new Armoire(sf::Vector2f(1100.0f, 200.0f),
-                            sf::Vector2f(0.7f, 0.7f),
-                                0, true);
-        contexte->ajouterAffichable(scene, o);
+    Objet *o = new Armoire(sf::Vector2f(1100.0f, 200.0f),
+                           sf::Vector2f(0.7f, 0.7f),
+                           1, true);
+    contexte->ajouterAffichable(scene, o);
 
-        o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
-                           sf::Vector2f(0.10f, 0.10f),
-                            0, true);
-        contexte->ajouterAffichable(scene, o);
+    o = new Prise(sf::Vector2f(240.0f, 610.0f),
+                  sf::Vector2f(0.06f, 0.06f),
+                  1, true);
+    contexte->ajouterAffichable(scene, o);
 
-        o = new Prise(sf::Vector2f(240.0f, 610.0f),
-                           sf::Vector2f(0.06f, 0.06f),
-                            0, true);
-        contexte->ajouterAffichable(scene, o);
+    o = new Corbeille(sf::Vector2f(-50.0f, 600.0f),
+                      sf::Vector2f(0.50f, 0.50f),
+                      1, true);
+    contexte->ajouterAffichable(scene, o);
+
+    o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
+                    sf::Vector2f(0.10f, 0.10f),
+                    2, true);
+    contexte->ajouterAffichable(scene, o);
+
+    o = new Allumette(sf::Vector2f(600.0f, 600.0f),
+                      sf::Vector2f(0.10f, 0.10f),
+                      2, true);
+    contexte->ajouterAffichable(scene, o);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.

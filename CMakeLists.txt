@@ -44,6 +44,7 @@ set ( ZZ3_HEADERS
 	include/armoire.hpp
 	include/enum_type.hpp
 	include/Gestionnaire.hpp
+	include/Fond.hpp
 	include/Affichable.hpp
 	include/Contexte.hpp
 	include/ciseaux.hpp
@@ -57,6 +58,7 @@ set ( ZZ3_SOURCES
 	src/Gestionnaire.cpp
 	src/Contexte.cpp
 	src/Affichable.cpp
+	src/Fond.cpp
 
 	src/objet.cpp
 	src/fixe.cpp
