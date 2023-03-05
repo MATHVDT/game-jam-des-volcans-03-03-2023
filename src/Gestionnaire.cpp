@@ -194,17 +194,6 @@ void Gestionnaire::initScene()
 				  sf::Vector2f(0.1f, 0.1f),
 				  6, true);
 	contexte->ajouterAffichable(scene, o);
-
-
-    o = new Prise(sf::Vector2f(240.0f, 610.0f),
-                  sf::Vector2f(0.06f, 0.06f),
-                  0, true);
-    contexte->ajouterAffichable(scene, o);
-
-    o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
-                    sf::Vector2f(0.10f, 0.10f),
-                    1, true);
-    contexte->ajouterAffichable(scene, o);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.
