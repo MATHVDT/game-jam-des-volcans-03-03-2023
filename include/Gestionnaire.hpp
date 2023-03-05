@@ -15,6 +15,8 @@
 #include "../include/prise.hpp"
 #include "ciseaux.hpp"
 
+#include <SFML/Audio.hpp>
+
 class Gestionnaire
 {
 private:

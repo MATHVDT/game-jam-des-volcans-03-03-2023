@@ -77,4 +77,4 @@ add_executable ( prog
                )
 # Build #-------------------------------------------------------------------------------------------
 set_target_properties ( prog PROPERTIES LINKER_LANGUAGE CXX )
-target_link_libraries(prog  -lsfml-graphics -lsfml-window -lsfml-system)
+target_link_libraries(prog  -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio)

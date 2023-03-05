@@ -32,6 +32,11 @@ Gestionnaire *Gestionnaire::obtenirInstance()
 void Gestionnaire::run()
 {
     sf::Event event;
+    sf::Music musique;
+    if (!musique.openFromFile("ressources/sons/marseillaise.ogg"))
+        std::cerr << "dommage pas de musique" << std::endl;
+    musique.play();
+    musique.setLoop(true);
 
     while (contexte->obtenirJeuEnCours())
     {
@@ -104,21 +109,20 @@ void Gestionnaire::initScene()
                               sf::Vector2f(1.0f, 1.0f),
                               *t, 0, true);
  */
-        Objet *o = new Armoire(sf::Vector2f(1100.0f, 200.0f),
-                            sf::Vector2f(0.7f, 0.7f),
-                                0, true);
-        contexte->ajouterAffichable(scene, o);
-
-        o = new Prise(sf::Vector2f(240.0f, 610.0f),
-                           sf::Vector2f(0.06f, 0.06f),
+    Objet *o = new Armoire(sf::Vector2f(1100.0f, 200.0f),
+                           sf::Vector2f(0.7f, 0.7f),
                            0, true);
-        contexte->ajouterAffichable(scene, o);
-        
-        o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
-                           sf::Vector2f(0.10f, 0.10f),
-                            1, true);
-        contexte->ajouterAffichable(scene, o);
+    contexte->ajouterAffichable(scene, o);
 
+    o = new Prise(sf::Vector2f(240.0f, 610.0f),
+                  sf::Vector2f(0.06f, 0.06f),
+                  0, true);
+    contexte->ajouterAffichable(scene, o);
+
+    o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
+                    sf::Vector2f(0.10f, 0.10f),
+                    1, true);
+    contexte->ajouterAffichable(scene, o);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.
