@@ -10,7 +10,7 @@ Contexte::Contexte()
     _sceneChargee = 0;
     for (int k = 0; k < NB_SCENES; ++k)
     {
-        _tousLesObjets.push_back(std::set<Objet *, CompareObjetPointeur>());
+        _tousLesObjets.push_back(std::multiset<Objet *, CompareObjetPointeur>());
     }
 
     _jeuEnCours = true;

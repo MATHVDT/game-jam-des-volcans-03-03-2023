@@ -111,12 +111,12 @@ void Gestionnaire::initScene()
 
         o = new Prise(sf::Vector2f(240.0f, 610.0f),
                            sf::Vector2f(0.06f, 0.06f),
-                           1, true);
+                           0, true);
         contexte->ajouterAffichable(scene, o);
         
         o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
                            sf::Vector2f(0.10f, 0.10f),
-                            2, true);
+                            1, true);
         contexte->ajouterAffichable(scene, o);
 
 }
@@ -135,7 +135,7 @@ bool Gestionnaire::checkSourisSurObjet()
     sf::Vector2f sourisPosition = (sf::Vector2f)contexte->obtenirSourisPosition();
 
     // Recup tous les objets de la scene chargee
-    std::set<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
+    std::multiset<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
 
     // Parcours tous les objets pour savoir si la souris est dedans
     Objet *objetTouche = nullptr;
@@ -176,7 +176,7 @@ bool Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
         return false;
 
     // Recup tous les objets de la scene chargee
-    std::set<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
+    std::multiset<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
 
     Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
     if (objetSelectionne == nullptr)
