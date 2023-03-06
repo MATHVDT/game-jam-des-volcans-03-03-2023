@@ -39,9 +39,9 @@ Buffet avec pizza :
 
 ### Samedi
 #### Petit-déjeuner 
-Pain au chocolat
-Corissant
-Brioche
+Pain au chocolat  
+Croissant  
+Brioche   
 
 Boison :
 * Café 
@@ -82,9 +82,9 @@ Buffet :
 
 ### Dimanche 
 #### Petit déjeuné 
-Pain au chocolat
-Corissant
-Brioche
+Pain au chocolat  
+Croissant  
+Brioche  
 
 Boison :
 * Café 
@@ -94,6 +94,7 @@ Boison :
 * Jus de pomme  
 
 #### Repas du midi 
+Buffet :   
 * Salade de pattes (jambon, mozza,tomate cerise, tomates séchées, pesto)  
 * Salade de pattes (jambon, mozza,tomate tomates séchées)  
 * Tranches de jambon  
@@ -107,17 +108,20 @@ Boison :
 * Pain  
 
 #### Repas du soir 
-
+* Mini-patisserie   
+* Mini-wrap   
+* Gougères
+* Allumettes   
 
 ---
 ## Évènements divers
-
+* Test du jeu [Riding Seas](https://store.steampowered.com/app/1428140/Riding_Seas/)   
 
 ---
 ## Objectifs
 
-- [ ]   
-- [ ]   
+- [X] Noter tous les repas dans le README  
+- [X] Avoir un executable   
 - [ ]  
 - [ ]   
 - [ ]  
