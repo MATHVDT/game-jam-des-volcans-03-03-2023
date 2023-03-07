@@ -27,7 +27,7 @@ VILLEDIEU DE TORCY Mathieu
 
 ### Vendredi 
 #### Repas du soir 
-Apéro : Chips + tuc + bretzel 
+Apéro : Chips + TUC + bretzel  
 Boissons :  soda (coca, oasis, ice-tea)
 
 Buffet avec pizza : 
