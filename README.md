@@ -1,11 +1,11 @@
 # Game-Jam-03-03-2023 : Jam des Volcans
-[![Logo Jam des volcans](https://github.com/MATHVDT/game-jam-des-volcans-03-03-2023/blob/master/ressources/autres/banner_logo_jam_des_volcan_2023.jpg "Logo Jam des volcans")](https://jam-des-volcans.fr/)
+[![Logo Jam des volcans](https://media.licdn.com/dms/image/D4E1EAQGOTb3eS8WOQg/event-background-image-crop_720_1280/0/1675111085004?e=1678471200&v=beta&t=U2OyLlqU-4m_lCeD5hf44mHL9BfR42y8ozg5XmvHvjg "Logo Jam des volcans")](https://jam-des-volcans.fr/)
 
 
 **Date :** 03-05 mars 2023   
-**Thème :** Construire pour détruire !  
-**Nom du jeu :** Club sandwich   
-**Type de jeu :** Pointer & Cliquer (#glisserdeposer)
+**Thème :** Construire pour détruire !
+**Nom du jeu :**  
+**Type de jeu :** 
 
 ---
 ## Membre de la Team :
@@ -16,18 +16,12 @@ VILLEDIEU DE TORCY Mathieu
 ---
 ## Code
 
-**Compilation :** *cmake . && make && ./prog*  
+**Compilation :** cmake . && make && ./prog  
 
 ---  
 ## Pitch du jeu 
 
-Le but du jeu est de réaliser le plus d’accidents possibles dans les différentes pièces du couloir. Pour ce faire, certains objets peuvent être déplacés et combinés avec d’autres.
 
-Mais que se passe-t-il si on met les ciseaux dans la prise ? À vous de le découvrir *(dans le jeu, pas dans la vraie vie !)* en parcourant les différentes salles du couloir. Bon jeu ! 😉
-
-## Déroulé du jeu
-
-Le jeu ne contient que deux salles avec un nombre limité d'intéraction. Une fois toutes les accidents, clic sur la flèche de retour pour changer de salle en passant par le couloir.
 
 ## Repas du week-end
 
@@ -58,8 +52,8 @@ Boison :
 
 #### Repas du midi 
 Buffet : 
-* Salade de pattes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
-* Salade de pattes (jambon, mozza, tomates séchées)  
+* Salade de pattes (jambon, mozza,tomate cerise, tomates séchées, pesto)  
+* Salade de pattes (jambon, mozza,tomate tomates séchées)  
 * Tranches de jambon  
 * Quiche épinard/chèvre
 * Cake tomates séchées
@@ -71,8 +65,8 @@ Buffet :
 
 #### Repas du soir
 Buffet :
-* Salade de pattes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
-* Salade de pattes (jambon, mozza, tomates séchées)  
+* Salade de pattes (jambon, mozza,tomate cerise, tomates séchées, pesto)  
+* Salade de pattes (jambon, mozza,tomate tomates séchées)  
 * Tranches de jambon  
 * Charcuterie
 * Rotie de boeuf
@@ -101,8 +95,8 @@ Boison :
 
 #### Repas du midi 
 Buffet :   
-* Salade de pattes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
-* Salade de pattes (jambon, mozza, tomates séchées)  
+* Salade de pattes (jambon, mozza,tomate cerise, tomates séchées, pesto)  
+* Salade de pattes (jambon, mozza,tomate tomates séchées)  
 * Tranches de jambon  
 * Quiche épinard/chèvre
 * Cake tomates séchées
@@ -121,15 +115,13 @@ Buffet :
 
 ---
 ## Évènements divers
-* Plusieurs parties sur le jeu [Riding Seas](https://store.steampowered.com/app/1428140/Riding_Seas/)   
+* Test du jeu [Riding Seas](https://store.steampowered.com/app/1428140/Riding_Seas/)   
 
 ---
 ## Objectifs
 
 - [X] Noter tous les repas dans le README  
-- [X] Avoir un super système de glisser-déposer
 - [X] Avoir un executable   
-- [X] Test du jeu [Riding Seas](https://store.steampowered.com/app/1428140/Riding_Seas/)
-- [ ] Test de la démo du jeu [Twistales](https://store.steampowered.com/app/2279160/Twistales/) avec les développeurs
-- [X] Ecrire le code en Français premier (ie les noms de variables et méthodes en français)  
-- [ ] Traduire l'intégralité du code en français
+- [ ]  
+- [ ]   
+- [ ]  
