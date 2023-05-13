@@ -1,7 +1,7 @@
 #ifndef __ARMOIRE_HPP__
 #define __ARMOIRE_HPP__
 
-// #include "FRsupEN.hpp"
+// #include "../FRsupEN.hpp"
 
 #include "bougeable.hpp"
 #include "fixe.hpp"

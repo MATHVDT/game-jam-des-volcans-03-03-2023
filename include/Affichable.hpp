@@ -1,7 +1,7 @@
 #ifndef __AFFICHABLE_HPP__
 #define __AFFICHABLE_HPP__
 
-// #include "FRsupEN.hpp"
+// #include "../FRsupEN.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 

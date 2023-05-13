@@ -1,7 +1,7 @@
 #ifndef __INFLAMMABLE_HPP__
 #define __INFLAMMABLE_HPP__
 
-// #include "FRsupEN.hpp"
+// #include "../FRsupEN.hpp"
 
 #include "bougeable.hpp"
 

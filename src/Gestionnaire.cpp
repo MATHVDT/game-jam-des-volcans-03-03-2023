@@ -53,6 +53,7 @@ void Gestionnaire::enCours()
 
 /// @brief Lance les actions suivant les evenements
 /// @param evenement
+// void Gestionnaire::checkEvenement(const sf::Event &evenement)
 void Gestionnaire::checkEvenement(const sf::Event &evenement)
 {
 	switch (evenement.type)
@@ -61,23 +62,21 @@ void Gestionnaire::checkEvenement(const sf::Event &evenement)
 		contexte->definirJeuEnCours(false);
 		break;
 
-	case sf::Event::MouseMoved:
-		// Souris bougee
+	case sf::Event::MouseMoved: // Souris bougee
 		objetSelectionneSuivreSouris();
 		break;
 
-	case sf::Event::MouseButtonPressed:
-		// bouton appuye
+	case sf::Event::MouseButtonPressed: // bouton appuye
 		checkSourisSurObjet();
 		break;
 
-	case sf::Event::MouseButtonReleased:
-		// bouton relache
+	case sf::Event::MouseButtonReleased: // bouton relache
+	{
+		Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
 		if (trouveObjetEnInteractionAvecObjetSelectionne())
 		{
 			if (interactionObjets())
 			{
-				Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
 				if (o != nullptr)
 				{
 					o->relache();
@@ -87,19 +86,17 @@ void Gestionnaire::checkEvenement(const sf::Event &evenement)
 			}
 			else
 			{
-				Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
 				if (o != nullptr)
 					o->relache();
 			}
 		}
 		else
 		{
-			Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
 			if (o != nullptr)
 				o->relache();
 		}
 		break;
-
+	}
 	default:
 		break;
 	}

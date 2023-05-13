@@ -1,7 +1,7 @@
 #ifndef __BOUTON_CHARGER_SCENE__
 #define __BOUTON_CHARGER_SCENE__
 
-// #include "FRsupEN.hpp"
+// #include "../FRsupEN.hpp"
 
 #include "fixe.hpp"
 #include "Contexte.hpp"

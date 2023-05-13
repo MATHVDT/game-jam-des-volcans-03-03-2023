@@ -37,6 +37,7 @@ message ( STATUS "Compiler flags: ${CMAKE_CXX_FLAGS}" )
 
 # Sources #-----------------------------------------------------------------------------------------
 set ( ZZ3_HEADERS
+				FRsupEN.hpp
 				include/objet.hpp
 				include/fixe.hpp
 				include/bougeable.hpp

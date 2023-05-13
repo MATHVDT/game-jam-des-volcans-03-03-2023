@@ -20,7 +20,7 @@ Contexte::Contexte()
 
     _fenetre.create(sf::VideoMode(_largeurFenetre,
                                   _hauteurFenetre),
-                    "Club sandwich : ne rien faire de stupide dans la salle, ou pas",
+                    "Club sandwich : ne rien faire de stupide dans les salles, ou pas",
                     sf::Style::Default);
 
     _fenetre.setActive();
