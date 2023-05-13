@@ -31,13 +31,18 @@ Gestionnaire *Gestionnaire::obtenirInstance()
 
 void Gestionnaire::run()
 {
-    sf::Event event;
-    sf::Music musique;
-    if (!musique.openFromFile("ressources/sons/marseillaise.ogg"))
-        std::cerr << "dommage pas de musique" << std::endl;
-    musique.play();
-    musique.setLoop(true);
-
+	sf::Event event;
+	sf::Music musique;
+	if (!musique.openFromFile("ressources/sons/marseillaise.ogg"))
+	{
+		std::cerr << "dommage pas de musique" << std::endl;
+	}
+	else
+	{
+		musique.play();
+		musique.setVolume(25);
+		musique.setLoop(true);
+	}
 	while (contexte->obtenirJeuEnCours())
 	{
 
@@ -106,25 +111,25 @@ void Gestionnaire::checkEvenment(const sf::Event &evenement)
 
 void Gestionnaire::initScene()
 {
-	//MENU
+	// MENU
 	uint scene = 0;
 
-	BoutonChargerScene * piece = new BoutonChargerScene(sf::Vector2f(210.0f, 30.0f),
-											 sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
-											 2, true, 1, "ressources/objets/piece_1_lobby.png");
+	BoutonChargerScene *piece = new BoutonChargerScene(sf::Vector2f(210.0f, 30.0f),
+													   sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
+													   2, true, 1, "ressources/objets/piece_1_lobby.png");
 	contexte->ajouterAffichable(scene, piece);
 
 	piece = new BoutonChargerScene(sf::Vector2f(210.0f, 360.0f),
-											 sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
-											 2, true, 2, "ressources/objets/piece_2_lobby.png");
+								   sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
+								   2, true, 2, "ressources/objets/piece_2_lobby.png");
 	contexte->ajouterAffichable(scene, piece);
 
 	// SCENE 1
 	scene = 1;
 
-	BoutonChargerScene * retour_1 = new BoutonChargerScene(sf::Vector2f(0.0f, 0.0f),
-											 sf::Vector2f(0.15f, 0.15f),
-											 100, true, 0, "ressources/objets/bouton_retour.png");
+	BoutonChargerScene *retour_1 = new BoutonChargerScene(sf::Vector2f(0.0f, 0.0f),
+														  sf::Vector2f(0.15f, 0.15f),
+														  100, true, 0, "ressources/objets/bouton_retour.png");
 	contexte->ajouterAffichable(scene, retour_1);
 
 	Bougeable *inflammable = new Inflammable(sf::Vector2f(1230.0f, 295.0f),
@@ -160,9 +165,9 @@ void Gestionnaire::initScene()
 	// SCENE 2
 	scene = 2;
 
-	BoutonChargerScene * retour_2 = new BoutonChargerScene(sf::Vector2f(0.0f, 0.0f),
-											 sf::Vector2f(0.15f, 0.15f),
-											 100, true, 0, "ressources/objets/bouton_retour.png");
+	BoutonChargerScene *retour_2 = new BoutonChargerScene(sf::Vector2f(0.0f, 0.0f),
+														  sf::Vector2f(0.15f, 0.15f),
+														  100, true, 0, "ressources/objets/bouton_retour.png");
 	contexte->ajouterAffichable(scene, retour_2);
 
 	o = new Issue(sf::Vector2f(1140.0f, 200.0f),
@@ -171,28 +176,28 @@ void Gestionnaire::initScene()
 	contexte->ajouterAffichable(scene, o);
 
 	o = new Canape(sf::Vector2f(580.0f, 440.0f),
-				  sf::Vector2f(0.6f, 0.6f),
-				  2, true);
+				   sf::Vector2f(0.6f, 0.6f),
+				   2, true);
 	contexte->ajouterAffichable(scene, o);
-	
+
 	o = new Neon(sf::Vector2f(940.0f, -50.0f),
-				  sf::Vector2f(0.3f, 0.3f),
-				  3, true);
+				 sf::Vector2f(0.3f, 0.3f),
+				 3, true);
 	contexte->ajouterAffichable(scene, o);
 
 	o = new Neon(sf::Vector2f(440.0f, -50.0f),
-				  sf::Vector2f(0.3f, 0.3f),
-				  4, true);
+				 sf::Vector2f(0.3f, 0.3f),
+				 4, true);
 	contexte->ajouterAffichable(scene, o);
 
 	o = new Marteau(sf::Vector2f(1140.0f, 310.0f),
-				  sf::Vector2f(0.1f, 0.1f),
-				  5, true);
+					sf::Vector2f(0.1f, 0.1f),
+					5, true);
 	contexte->ajouterAffichable(scene, o);
 
 	o = new Marteau(sf::Vector2f(1140.0f, 310.0f),
-				  sf::Vector2f(0.1f, 0.1f),
-				  6, true);
+					sf::Vector2f(0.1f, 0.1f),
+					6, true);
 	contexte->ajouterAffichable(scene, o);
 }
 
