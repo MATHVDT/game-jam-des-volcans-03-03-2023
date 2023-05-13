@@ -40,12 +40,12 @@ bool operator>=(const Affichable &r1, const Affichable &r2);
 /*                 Méthodes inline                 */
 /***************************************************/
 
-// Getter
+// Fonction obtenir
 inline uint Affichable::obtenirCouche() const { return _couche; }
 inline sf::Sprite *Affichable::obtenirSprite() const { return _sprite; }
 inline const sf::Vector2f &Affichable::obtenirSpritePosition() const { return _sprite->getPosition(); }
 
-// Setter
+// Fonction définir
 inline void Affichable::definirCouche(uint couche) { _couche = couche; }
 inline void Affichable::definirTexture(sf::Texture &texture) { _sprite->setTexture(texture); }
 inline void Affichable::definirSpritePosition(const sf::Vector2f& position) { _sprite->setPosition(position); }

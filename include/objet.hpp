@@ -44,7 +44,7 @@ public:
     const sf::Vector2f &obtenirPosition() const;
     const std::vector<Type> obtenirMateriaux() const;
 
-    // Setter
+    // Fonction définir
     void ajouterMateriaux(Type type);
 
 protected:

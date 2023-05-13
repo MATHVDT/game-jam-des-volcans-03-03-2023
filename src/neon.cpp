@@ -13,6 +13,7 @@ Neon::Neon(sf::Vector2f position,
 }
 
 Neon::~Neon() { }
+
 void Neon::miseAJour()
 {
 	if (etat == 0)

@@ -1,11 +1,10 @@
 #include "../include/marteau.hpp"
 
 Marteau::Marteau(sf::Vector2f position,
-    sf::Vector2f scale,
-    uint couche,
-    bool visible)
-    : Bougeable(position, scale, couche, visible)
-    , etat(0)
+				 sf::Vector2f scale,
+				 uint couche,
+				 bool visible)
+	: Bougeable(position, scale, couche, visible), etat(0)
 {
 	_materiaux.push_back(cassant);
 	_affichable.definirTexture(*textureMap["ressources/objets/brise_vitre_range.png"]);
@@ -23,13 +22,16 @@ bool Marteau::estIphone()
 {
 
 	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), neon);
-	if (result1 != _materiaux.end()) {
-				return true;}
-		//implemneter la destruction 
+	if (result1 != _materiaux.end())
+	{
+		return true;
+	}
+	// implemneter la destruction
 	return false;
 }
 
-void Marteau::clic() {
+void Marteau::clic()
+{
 	Bougeable::clic();
 	miseAJour();
 }

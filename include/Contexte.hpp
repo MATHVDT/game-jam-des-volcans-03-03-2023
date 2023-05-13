@@ -21,7 +21,7 @@ class Objet;
 class Contexte
 {
 private:
-    sf::RenderWindow _window;
+    sf::RenderWindow _fenetre;
     float _largeurFenetre;
     float _hauteurFenetre;
 
@@ -31,7 +31,7 @@ private:
     uint _sceneChargee;
 
     bool _jeuEnCours;
-    sf::Event _event;
+    sf::Event _evenement;
 
     Bougeable *_objetBougeableSelectionne;
     Objet *_objetEnInteractionAvecObjetBougeableSelectionne;
@@ -45,7 +45,7 @@ public:
     static Contexte *obtenirInstance();
 
 public:
-    Contexte(/* args */);
+    Contexte();
     ~Contexte();
 
     bool obtenirSonderEvenement();
@@ -58,7 +58,7 @@ public:
     void ajouterAffichable(int scene,
                            Objet *o);
 
-    // Getter
+    // Fonction obtenir
     int obtenirSceneChargee() const;
     void retirerAffichable(int scene,
                            Objet *o);
@@ -84,21 +84,22 @@ public:
 /*                 Méthodes inline                 */
 /***************************************************/
 
-// Getter
+// Fonction obtenir
 inline bool Contexte::obtenirJeuEnCours() const { return _jeuEnCours; }
-inline const sf::Event &Contexte::obtenirEvenement() const { return _event; }
+inline const sf::Event &Contexte::obtenirEvenement() const { return _evenement; }
 inline std::multiset<Objet *, CompareObjetPointeur> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
 inline Bougeable *Contexte::obtenirObjetBougeableSelectionne() const { return _objetBougeableSelectionne; }
 inline Objet *Contexte::obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const { return _objetEnInteractionAvecObjetBougeableSelectionne; }
 inline uint Contexte::obtenirScore() const { return _score; }
 
-// multisetter
+// Fonction définir
 inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
 inline void Contexte::definirObjetBougeableSelectionne(Bougeable *o) { _objetBougeableSelectionne = o; }
 inline void Contexte::definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o) { _objetEnInteractionAvecObjetBougeableSelectionne = o; }
 inline void Contexte::definirScore(uint score) { _score += score; }
 
-inline void Contexte::definirSceneChargee(uint scene) {
+inline void Contexte::definirSceneChargee(uint scene)
+{
     _sceneChargee = scene;
 
     std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";

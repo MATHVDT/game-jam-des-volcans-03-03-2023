@@ -8,7 +8,7 @@ class Bougeable : public Objet
 {
 protected:
 	bool _selectionnee;
-	sf::Vector2<float> _position_initiale;
+	sf::Vector2f _position_initiale;
 
 public:
 	Bougeable(sf::Vector2f position,

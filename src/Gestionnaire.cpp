@@ -31,7 +31,6 @@ Gestionnaire *Gestionnaire::obtenirInstance()
 
 void Gestionnaire::run()
 {
-	sf::Event event;
 	sf::Music musique;
 	if (!musique.openFromFile("ressources/sons/marseillaise.ogg"))
 	{

@@ -17,7 +17,7 @@ class Fond
 {
 private:
     Affichable _affichable;
-    sf::Vector2<float> _position;
+    sf::Vector2f _position;
     std::string _nom_piece;
 
 public: // Static

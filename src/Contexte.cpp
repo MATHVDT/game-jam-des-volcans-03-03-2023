@@ -18,13 +18,13 @@ Contexte::Contexte()
     _objetBougeableSelectionne = nullptr;
     _objetEnInteractionAvecObjetBougeableSelectionne = nullptr;
 
-    _window.create(sf::VideoMode(_largeurFenetre,
+    _fenetre.create(sf::VideoMode(_largeurFenetre,
                                  _hauteurFenetre),
                    "SFML works!",
                    sf::Style::Default);
 
-    _window.setActive();
-    _window.setPosition(sf::Vector2i(50, 50));
+    _fenetre.setActive();
+    _fenetre.setPosition(sf::Vector2i(50, 50));
 
     std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
     _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre / 1920.0f, _hauteurFenetre / 1080.0f), (unsigned int)0);
@@ -42,7 +42,7 @@ Contexte::~Contexte()
         }
     }
     delete _fond;
-    _window.close();
+    _fenetre.close();
 }
 
 Contexte *Contexte::obtenirInstance()
@@ -64,7 +64,7 @@ Contexte *Contexte::obtenirInstance()
 
 bool Contexte::obtenirSonderEvenement()
 {
-    return _window.pollEvent(_event);
+    return _fenetre.pollEvent(_evenement);
 }
 
 /// @brief Dessine tous les objets
@@ -83,19 +83,19 @@ void Contexte::dessiner()
 
 void Contexte::dessiner(const sf::Drawable &dessinable)
 {
-    _window.draw(dessinable);
+    _fenetre.draw(dessinable);
 }
 
 void Contexte::dessiner(const sf::Drawable *dessinable)
 {
-    _window.draw(*dessinable);
+    _fenetre.draw(*dessinable);
 }
 
 /// @brief Affiche la fenetre.
 void Contexte::afficherFenetre()
 {
-    _window.display();
-    _window.clear();
+    _fenetre.display();
+    _fenetre.clear();
 }
 
 /// @brief Ajoute un objet a la liste de tous les objets.
@@ -127,7 +127,7 @@ void Contexte::retirerAffichableSceneChargee(Objet *o)
 const sf::Vector2f Contexte::obtenirSourisPosition() const
 {
     // récupération de la position de la souris dans la fenêtre
-    sf::Vector2i pixelPos = sf::Mouse::getPosition(_window);
+    sf::Vector2i pixelPos = sf::Mouse::getPosition(_fenetre);
     // conversion en coordonnées "monde"
-    return _window.mapPixelToCoords(pixelPos);
+    return _fenetre.mapPixelToCoords(pixelPos);
 }
