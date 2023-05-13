@@ -1,6 +1,8 @@
 #ifndef __BOUGEABLE_HPP__
 #define __BOUGEABLE_HPP__
 
+// #include "FRsupEN.hpp"
+
 #include "Contexte.hpp"
 #include "objet.hpp"
 

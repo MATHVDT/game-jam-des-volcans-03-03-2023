@@ -1,15 +1,21 @@
-#ifndef _ENUM_TYPE_HPP
-#define _ENUM_TYPE_HPP
+#ifndef __ENUM_TYPE_HPP__
+#define __ENUM_TYPE_HPP__
 
-enum Type { eau, // peut être un nom reservé hihihi
-				electircite,
-				metal,
-				feu,
-				papier,
-				inflammable,
-				neon,
-				encombrant,
-				issue_secours,
-				cassant,
-				gros_feu};
+// #include "FRsupEN.hpp"
+
+enum Type
+{
+	eau, // peut être un nom reservé hihihi
+	electircite,
+	metal,
+	feu,
+	papier,
+	inflammable,
+	neon,
+	encombrant,
+	issue_secours,
+	cassant,
+	gros_feu
+};
+
 #endif

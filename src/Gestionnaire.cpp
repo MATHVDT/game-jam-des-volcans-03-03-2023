@@ -22,14 +22,11 @@ Gestionnaire *Gestionnaire::obtenirInstance()
 			std::cerr << "Erreur de new\n";
 			return nullptr;
 		}
-		else
-		{
-			return Gestionnaire::_instance;
-		}
 	}
+	return Gestionnaire::_instance;
 }
 
-void Gestionnaire::run()
+void Gestionnaire::enCours()
 {
 	sf::Music musique;
 	if (!musique.openFromFile("ressources/sons/marseillaise.ogg"))
@@ -38,8 +35,8 @@ void Gestionnaire::run()
 	}
 	else
 	{
+		musique.setVolume(10);
 		musique.play();
-		musique.setVolume(25);
 		musique.setLoop(true);
 	}
 	while (contexte->obtenirJeuEnCours())
@@ -47,7 +44,7 @@ void Gestionnaire::run()
 
 		while (contexte->obtenirSonderEvenement())
 		{ // Actualise le contexte seulement quand il ya une evenement
-			checkEvenment(contexte->obtenirEvenement());
+			checkEvenement(contexte->obtenirEvenement());
 		}
 		contexte->dessiner();
 		contexte->afficherFenetre();
@@ -56,7 +53,7 @@ void Gestionnaire::run()
 
 /// @brief Lance les actions suivant les evenements
 /// @param evenement
-void Gestionnaire::checkEvenment(const sf::Event &evenement)
+void Gestionnaire::checkEvenement(const sf::Event &evenement)
 {
 	switch (evenement.type)
 	{
@@ -261,7 +258,6 @@ bool Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
 		return false;
 
 	// Parcours tous les objets pour savoir si la souris est dedans
-	Objet *objetEnInteraction = nullptr;
 	for (Objet *x : scene)
 	{
 		if (x == objetSelectionne)

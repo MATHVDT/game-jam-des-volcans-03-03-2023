@@ -1,6 +1,6 @@
 #include "../include/objet.hpp"
 
-std::map<std::string, sf::Texture *> Objet::textureMap = {};
+std::map<std::string, sf::Texture *> Objet::textureCarte = {};
 
 Objet::Objet(sf::Vector2f position,
 			 sf::Vector2f scale,
@@ -52,13 +52,13 @@ void Objet::initialisationTexture()
 		// std::cerr << file << std::endl;
 		sf::Texture *texture = new sf::Texture();
 		texture->loadFromFile(file.path());
-		textureMap.insert(std::make_pair(file.path().string(), texture));
+		textureCarte.insert(std::make_pair(file.path().string(), texture));
 	}
 }
 
 std::map<std::string, sf::Texture *> &Objet::obtenirTextureMap()
 {
-	return textureMap;
+	return textureCarte;
 }
 
 void Objet::ajouterMateriaux(Type type)
@@ -70,7 +70,6 @@ const std::vector<Type> Objet::obtenirMateriaux() const
 {
 	return _materiaux;
 }
-
 
 /***************************************************/
 /*               Fonctions Operateurs              */

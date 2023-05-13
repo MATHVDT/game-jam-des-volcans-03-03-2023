@@ -1,3 +1,5 @@
+// #include "FRsupEN.hpp"
+
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -13,7 +15,7 @@ int main()
   Gestionnaire *manager = Gestionnaire::obtenirInstance();
 
   manager->initScene();
-  manager->run();
+  manager->enCours();
 
   delete manager;
 

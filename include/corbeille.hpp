@@ -1,17 +1,21 @@
-#ifndef _CORBEILLE_HPP
-#define _CORBEILLE_HPP
+#ifndef __CORBEILLE_HPP__
+#define __CORBEILLE_HPP__
+
+// #include "FRsupEN.hpp"
+
 #include "fixe.hpp"
 
-class Corbeille : public Fixe {
-    private:
+class Corbeille : public Fixe
+{
+private:
 	int etat;
 	void miseAJour();
 
-    public:
+public:
 	Corbeille(sf::Vector2f position,
-	    sf::Vector2f scale,
-	    uint couche,
-	    bool visible);
+			  sf::Vector2f scale,
+			  uint couche,
+			  bool visible);
 	virtual ~Corbeille() override;
 
 	void clic() override;

@@ -1,6 +1,8 @@
 #ifndef __MANAGER_HPP__
 #define __MANAGER_HPP__
 
+// #include "FRsupEN.hpp"
+
 #include <iostream>
 
 #include <SFML/Graphics/Texture.hpp>
@@ -27,33 +29,32 @@
 class Gestionnaire
 {
 private:
-	/* data */
 	Contexte *contexte;
 
-private: // Static
+private: // Statique
 	static Gestionnaire *_instance;
 
-public: // Static
+public: // Statique
 	static Gestionnaire *obtenirInstance();
 
 public:
 	Gestionnaire();
 	~Gestionnaire();
 
-	void run();
+	void enCours();
 	void initScene();
 
 	bool objetSelectionneSuivreSouris();
-	void checkEvenment(const sf::Event &evenement);
+	void checkEvenement(const sf::Event &evenement);
 	bool checkSourisSurObjet();
 	bool trouveObjetEnInteractionAvecObjetSelectionne();
 	bool interactionObjets();
 
-	void ajouteType(Objet*o, const std::vector<Type> listMat);
+	void ajouteType(Objet *o, const std::vector<Type> listMat);
 };
 
 /***************************************************/
-/*                 Méthodes inline                 */
+/*               Méthodes en ligne                 */
 /***************************************************/
 
 #endif

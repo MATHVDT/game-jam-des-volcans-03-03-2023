@@ -1,5 +1,7 @@
-#ifndef _PRISE_HPP
-#define _PRISE_HPP
+#ifndef __PRISE_HPP__
+#define __PRISE_HPP__
+
+// #include "FRsupEN.hpp"
 
 #include "fixe.hpp"
 

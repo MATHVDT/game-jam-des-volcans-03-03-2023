@@ -19,9 +19,9 @@ Contexte::Contexte()
     _objetEnInteractionAvecObjetBougeableSelectionne = nullptr;
 
     _fenetre.create(sf::VideoMode(_largeurFenetre,
-                                 _hauteurFenetre),
-                   "SFML works!",
-                   sf::Style::Default);
+                                  _hauteurFenetre),
+                    "Club sandwich : ne rien faire de stupide dans la salle, ou pas",
+                    sf::Style::Default);
 
     _fenetre.setActive();
     _fenetre.setPosition(sf::Vector2i(50, 50));
@@ -55,11 +55,8 @@ Contexte *Contexte::obtenirInstance()
             std::cerr << "Erreur de new\n";
             return nullptr;
         }
-        else
-        {
-            return Contexte::_instance;
-        }
     }
+    return Contexte::_instance;
 }
 
 bool Contexte::obtenirSonderEvenement()
@@ -71,14 +68,12 @@ bool Contexte::obtenirSonderEvenement()
 void Contexte::dessiner()
 {
     dessiner(_fond->obtenirSprite());
-    // for (auto &scene : _tousLesObjets)
-    // { // Pour chaque scene
+
     auto &scene = _tousLesObjets[_sceneChargee];
     for (auto &o : scene)
     { // Pour chaque objet
         dessiner(o->obtenirSprite());
     }
-    // }
 }
 
 void Contexte::dessiner(const sf::Drawable &dessinable)
@@ -107,8 +102,9 @@ void Contexte::ajouterAffichable(int scene,
     _tousLesObjets[scene].emplace(o);
 }
 
-int Contexte::obtenirSceneChargee() const{
-	return _sceneChargee;
+int Contexte::obtenirSceneChargee() const
+{
+    return _sceneChargee;
 }
 /// @brief Retire un objet a la liste de tous les objets.
 /// @param scene

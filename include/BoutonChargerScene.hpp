@@ -1,6 +1,8 @@
 #ifndef __BOUTON_CHARGER_SCENE__
 #define __BOUTON_CHARGER_SCENE__
 
+// #include "FRsupEN.hpp"
+
 #include "fixe.hpp"
 #include "Contexte.hpp"
 
@@ -17,7 +19,7 @@ public:
     ~BoutonChargerScene();
 
     void clic() override;
-    bool estIphone() override {}
+    bool estIphone() override { return false; }
 };
 
 #endif

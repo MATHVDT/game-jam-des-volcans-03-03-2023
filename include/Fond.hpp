@@ -1,5 +1,7 @@
-#ifndef _FOND_HPP
-#define _FOND_HPP
+#ifndef __FOND_HPP__
+#define __FOND_HPP__
+
+// #include "FRsupEN.hpp"
 
 #include "enum_type.hpp"
 #include <SFML/Graphics/Texture.hpp>
@@ -22,17 +24,16 @@ private:
 
 public: // Static
     static std::map<std::string, sf::Texture *> texturesFond;
-    
 
 public: // Static
-    static std::map<std::string, sf::Texture *>& obtenirTexturesFond();
+    static std::map<std::string, sf::Texture *> &obtenirTexturesFond();
     static void initialisationTexture();
 
 public:
     Fond(std::string nom_piece, sf::Vector2f position, sf::Vector2f scale, uint couche);
     ~Fond() = default;
 
-    void definirTexture(sf::Texture& texture);
+    void definirTexture(sf::Texture &texture);
 
     sf::Sprite *obtenirSprite() const;
 };

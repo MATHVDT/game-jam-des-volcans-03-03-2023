@@ -1,6 +1,8 @@
 #ifndef __AFFICHABLE_HPP__
 #define __AFFICHABLE_HPP__
 
+// #include "FRsupEN.hpp"
+
 #include <SFML/Graphics/Sprite.hpp>
 
 class Affichable
@@ -48,7 +50,7 @@ inline const sf::Vector2f &Affichable::obtenirSpritePosition() const { return _s
 // Fonction définir
 inline void Affichable::definirCouche(uint couche) { _couche = couche; }
 inline void Affichable::definirTexture(sf::Texture &texture) { _sprite->setTexture(texture); }
-inline void Affichable::definirSpritePosition(const sf::Vector2f& position) { _sprite->setPosition(position); }
-inline void Affichable::definirScale(sf::Vector2f& scale) { _sprite->setScale(scale); }
+inline void Affichable::definirSpritePosition(const sf::Vector2f &position) { _sprite->setPosition(position); }
+inline void Affichable::definirScale(sf::Vector2f &scale) { _sprite->setScale(scale); }
 
 #endif

@@ -1,29 +1,30 @@
 #include "../include/armoire.hpp"
-#include <set>
 
 Armoire::Armoire(sf::Vector2f position,
-    sf::Vector2f scale,
-    uint couche,
-    bool visible,
-    std::set<Bougeable*> lisetObjet)
-    : Fixe(position, scale, couche, visible)
-    , estOuvert(false), _listeObjet(lisetObjet)
+				 sf::Vector2f scale,
+				 uint couche,
+				 bool visible,
+				 std::set<Bougeable *> lisetObjet)
+	: Fixe(position, scale, couche, visible), estOuvert(false), _listeObjet(lisetObjet)
 {
-		_affichable.definirTexture(*textureMap["ressources/objets/armoire_ferme.png"]);
+	_affichable.definirTexture(*textureCarte["ressources/objets/armoire_ferme.png"]);
 }
 
-Armoire::~Armoire() { }
+Armoire::~Armoire() {}
 
 void Armoire::clic()
 {
 	estOuvert = !estOuvert;
-	if (estOuvert) {
-		_affichable.definirTexture(*textureMap["ressources/objets/armoire_ouvert.png"]);
+	if (estOuvert)
+	{
+		_affichable.definirTexture(*textureCarte["ressources/objets/armoire_ouvert.png"]);
 		auto contexte = Contexte::obtenirInstance();
-		for (auto& objet : _listeObjet) {
+		for (auto &objet : _listeObjet)
+		{
 			contexte->ajouterAffichable(contexte->obtenirSceneChargee(), objet);
 		}
 		_listeObjet.clear();
 	}
-		else _affichable.definirTexture(*textureMap["ressources/objets/armoire_ferme.png"]);
+	else
+		_affichable.definirTexture(*textureCarte["ressources/objets/armoire_ferme.png"]);
 }

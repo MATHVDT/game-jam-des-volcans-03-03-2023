@@ -7,8 +7,7 @@ BoutonChargerScene::BoutonChargerScene(sf::Vector2f position, sf::Vector2f scale
     : Fixe(position, scale, couche, visible)
 {
     _numeroScene = numeroScene;
-
-    _affichable.definirTexture(*textureMap[cleTextureScene]);
+    _affichable.definirTexture(*textureCarte[cleTextureScene]);
 }
 
 BoutonChargerScene::~BoutonChargerScene() {}
