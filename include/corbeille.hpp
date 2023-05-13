@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_CORBEILLE_HPP
-#define _INCLUDE_CORBEILLE_HPP
+#ifndef _CORBEILLE_HPP
+#define _CORBEILLE_HPP
 #include "fixe.hpp"
 
 class Corbeille : public Fixe {

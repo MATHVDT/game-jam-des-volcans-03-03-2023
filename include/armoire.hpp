@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_ARMOIRE_HPP
-#define _INCLUDE_ARMOIRE_HPP
+#ifndef _ARMOIRE_HPP
+#define _ARMOIRE_HPP
 
 #include "bougeable.hpp"
 #include "fixe.hpp"

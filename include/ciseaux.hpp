@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_CISEAUX_HPP
-#define _INCLUDE_CISEAUX_HPP
+#ifndef _CISEAUX_HPP
+#define _CISEAUX_HPP
 
 #include "bougeable.hpp"
 class Ciseaux : public Bougeable {

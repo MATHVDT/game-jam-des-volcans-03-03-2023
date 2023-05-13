@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_MARTEAU_HPP
-#define _INCLUDE_MARTEAU_HPP
+#ifndef _MARTEAU_HPP
+#define _MARTEAU_HPP
 
 #include "bougeable.hpp"
 class Marteau : public Bougeable {

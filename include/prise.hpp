@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_PRISE_HPP
-#define _INCLUDE_PRISE_HPP
+#ifndef _PRISE_HPP
+#define _PRISE_HPP
 
 #include "fixe.hpp"
 

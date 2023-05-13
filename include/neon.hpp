@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_NEON_HPP
-#define _INCLUDE_NEON_HPP
+#ifndef _NEON_HPP
+#define _NEON_HPP
 
 #include "bougeable.hpp"
 #include "fixe.hpp"

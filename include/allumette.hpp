@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_ALLUMETTE_HPP
-#define _INCLUDE_ALLUMETTE_HPP
+#ifndef _ALLUMETTE_HPP
+#define _ALLUMETTE_HPP
 
 #include "bougeable.hpp"
 class Allumette : public Bougeable {

@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_FOND_HPP
-#define _INCLUDE_FOND_HPP
+#ifndef _FOND_HPP
+#define _FOND_HPP
 
 #include "enum_type.hpp"
 #include <SFML/Graphics/Texture.hpp>

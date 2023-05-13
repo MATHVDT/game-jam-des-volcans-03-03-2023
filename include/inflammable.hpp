@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_INFLAMMABLE_HPP
-#define _INCLUDE_INFLAMMABLE_HPP
+#ifndef _INFLAMMABLE_HPP
+#define _INFLAMMABLE_HPP
 
 #include "bougeable.hpp"
 class Inflammable : public Bougeable {

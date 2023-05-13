@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_ISSUUUUUUUUUE_HPP
-#define _INCLUDE_ISSUUUUUUUUUE_HPP
+#ifndef _ISSUUUUUUUUUE_HPP
+#define _ISSUUUUUUUUUE_HPP
 
 #include "fixe.hpp"
 

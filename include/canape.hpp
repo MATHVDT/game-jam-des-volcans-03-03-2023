@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_CANAPE_HPP
-#define _INCLUDE_CANAPE_HPP
+#ifndef _CANAPE_HPP
+#define _CANAPE_HPP
 
 #include "bougeable.hpp"
 class Canape : public Bougeable {
