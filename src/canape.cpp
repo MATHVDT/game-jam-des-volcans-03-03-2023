@@ -10,13 +10,11 @@ Canape::Canape(sf::Vector2f position,
 	_affichable.definirTexture(*textureCarte["ressources/objets/canape_ignifuge.png"]);
 }
 
-void Canape::miseAJour()
-{
-}
+void Canape::miseAJour() {}
 
 bool Canape::estIphone()
 {
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), electircite);
+	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), electricite);
 	if (result1 != _materiaux.end())
 	{
 		return true;

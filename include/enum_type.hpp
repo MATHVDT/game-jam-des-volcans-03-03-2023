@@ -6,7 +6,7 @@
 enum Type
 {
 	eau, // peut être un nom reservé hihihi
-	electircite,
+	electricite,
 	metal,
 	feu,
 	papier,

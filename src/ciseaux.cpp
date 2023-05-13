@@ -21,7 +21,7 @@ void Ciseaux::miseAJour()
 bool Ciseaux::estIphone()
 {
 
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), electircite);
+	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), electricite);
 	if (result1 != _materiaux.end())
 	{
 		return true;
