@@ -1,22 +1,22 @@
 #ifndef __INFLAMMABLE_HPP__
 #define __INFLAMMABLE_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "bougeable.hpp"
 
-class Inflammable : public Bougeable
+CLASSE Inflammable : PUBLIC Bougeable
 {
-private:
-	int etat;
-	void miseAJour();
+PRIVEE:
+	ENTIER etat;
+	RIEN miseAJour();
 
-public:
-	Inflammable(sf::Vector2f position, sf::Vector2f scale, uint couche, bool visible);
+PUBLIC:
+	Inflammable(sf::VECTEUR_NB_VIRGULE position, sf::VECTEUR_NB_VIRGULE scale, ENTIER_NON_SIGNE couche, BOOLEEN visible);
 
-	virtual ~Inflammable() override{};
-	void clic() override;
-	bool estIphone() override;
+	VIRTUEL ~Inflammable() SURCHARGE{};
+	RIEN clic() SURCHARGE;
+	BOOLEEN estIphone() SURCHARGE;
 };
 
 #endif

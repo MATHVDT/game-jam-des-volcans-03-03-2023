@@ -1,49 +1,49 @@
 #include "../include/bougeable.hpp"
 
-Bougeable::Bougeable(sf::Vector2f position,
-					 sf::Vector2f scale,
-					 uint couche,
-					 bool visible)
+Bougeable::Bougeable(sf::VECTEUR_NB_VIRGULE position,
+					 sf::VECTEUR_NB_VIRGULE scale,
+					 ENTIER_NON_SIGNE couche,
+					 BOOLEEN visible)
 	: Objet(position, scale,
 			couche,
 			visible)
 {
-	_selectionnee = false;
+	_selectionnee = FAUX;
 	_position_initiale = position;
 }
 
 Bougeable::~Bougeable() {}
 
-void Bougeable::clic()
+RIEN Bougeable::clic()
 {
-	_selectionnee = true;
+	_selectionnee = VRAI;
 	Contexte::obtenirInstance()->definirObjetBougeableSelectionne(this);
 	_position_initiale = _affichable.obtenirSpritePosition();
 }
 
-void Bougeable::relache()
+RIEN Bougeable::relache()
 {
-	_selectionnee = false;
+	_selectionnee = FAUX;
 	Contexte::obtenirInstance()->definirObjetBougeableSelectionne(nullptr);
 	remettrePosition();
 }
 
-void Bougeable::definirPosition(const sf::Vector2f &position)
+RIEN Bougeable::definirPosition(CONSTANT sf::VECTEUR_NB_VIRGULE &position)
 {
 	_affichable.definirSpritePosition(position);
 }
 
-void Bougeable::definirPositionCentreSprite(const sf::Vector2f &position)
+RIEN Bougeable::definirPositionCentreSprite(CONSTANT sf::VECTEUR_NB_VIRGULE &position)
 {
 	_affichable.definirPositionCentreSprite(position);
 }
 
-void Bougeable::remettrePosition()
+RIEN Bougeable::remettrePosition()
 {
 	definirPosition(_position_initiale);
 }
 
-bool Bougeable::estIphone()
+BOOLEEN Bougeable::estIphone()
 {
-	return true;
+	RETOUR VRAI;
 }

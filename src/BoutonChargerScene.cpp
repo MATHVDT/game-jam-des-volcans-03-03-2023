@@ -1,8 +1,8 @@
 #include "../include/BoutonChargerScene.hpp"
 
-BoutonChargerScene::BoutonChargerScene(sf::Vector2f position, sf::Vector2f scale,
-                                       uint couche, bool visible,
-                                       uint numeroScene, std::string cleTextureScene)
+BoutonChargerScene::BoutonChargerScene(sf::VECTEUR_NB_VIRGULE position, sf::VECTEUR_NB_VIRGULE scale,
+                                       ENTIER_NON_SIGNE couche, BOOLEEN visible,
+                                       ENTIER_NON_SIGNE numeroScene, std::CHAINE cleTextureScene)
 
     : Fixe(position, scale, couche, visible)
 {
@@ -12,7 +12,7 @@ BoutonChargerScene::BoutonChargerScene(sf::Vector2f position, sf::Vector2f scale
 
 BoutonChargerScene::~BoutonChargerScene() {}
 
-void BoutonChargerScene::clic()
+RIEN BoutonChargerScene::clic()
 {
     Contexte::obtenirInstance()->definirSceneChargee(_numeroScene);
 }

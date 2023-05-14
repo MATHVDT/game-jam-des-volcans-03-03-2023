@@ -5,5 +5,7 @@ CMakeFiles/
 CMakeCache*
 prog
 Prog
+clubSandwich
+*.exe
 Makefile
 *.cmake

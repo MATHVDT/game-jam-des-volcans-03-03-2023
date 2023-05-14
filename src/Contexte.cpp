@@ -8,12 +8,12 @@ Contexte::Contexte()
     _hauteurFenetre = 900.0f;
 
     _sceneChargee = 0;
-    for (int k = 0; k < NB_SCENES; ++k)
+    POUR (ENTIER k = 0; k < NB_SCENES; ++k)
     {
-        _tousLesObjets.push_back(std::multiset<Objet *, CompareObjetPointeur>());
+        _tousLesObjets.AJOUTER_FIN(std::ENSEMBLE_MULTIPLE<Objet *, CompareObjetPointeur>());
     }
 
-    _jeuEnCours = true;
+    _jeuEnCours = VRAI;
 
     _objetBougeableSelectionne = nullptr;
     _objetEnInteractionAvecObjetBougeableSelectionne = nullptr;
@@ -26,104 +26,104 @@ Contexte::Contexte()
     _fenetre.setActive();
     _fenetre.setPosition(sf::Vector2i(50, 50));
 
-    std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
-    _fond = new Fond(nom_piece, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(_largeurFenetre / 1920.0f, _hauteurFenetre / 1080.0f), (unsigned int)0);
+    std::CHAINE nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
+    _fond = NOUVEAU Fond(nom_piece, sf::VECTEUR_NB_VIRGULE(0.0f, 0.0f), sf::VECTEUR_NB_VIRGULE(_largeurFenetre / 1920.0f, _hauteurFenetre / 1080.0f), (unsigned ENTIER)0);
 
     _score = 0;
 }
 
 Contexte::~Contexte()
 {
-    for (auto &scene : _tousLesObjets)
+    POUR (auto &scene : _tousLesObjets)
     { // Pour chaque scene
-        for (auto &o : scene)
+        POUR (auto &o : scene)
         { // Pour chaque objet
-            delete o;
+            SUPPRIMER o;
         }
     }
-    delete _fond;
+    SUPPRIMER _fond;
     _fenetre.close();
 }
 
 Contexte *Contexte::obtenirInstance()
 {
-    if (Contexte::_instance == nullptr)
+    SI (Contexte::_instance == nullptr)
     {
-        Contexte::_instance = new Contexte();
-        if (Contexte::_instance == nullptr)
+        Contexte::_instance = NOUVEAU Contexte();
+        SI (Contexte::_instance == nullptr)
         {
-            std::cerr << "Erreur de new\n";
-            return nullptr;
+            std::SORTIE_ERREUR << "Erreur de NOUVEAU\n";
+            RETOUR nullptr;
         }
     }
-    return Contexte::_instance;
+    RETOUR Contexte::_instance;
 }
 
-bool Contexte::obtenirSonderEvenement()
+BOOLEEN Contexte::obtenirSonderEvenement()
 {
-    return _fenetre.pollEvent(_evenement);
+    RETOUR _fenetre.SONDAGE_EVENEMENT(_evenement);
 }
 
 /// @brief Dessine tous les objets
-void Contexte::dessiner()
+RIEN Contexte::dessiner()
 {
-    dessiner(_fond->obtenirSprite());
+    dessiner(_fond->obtenirLutin());
 
     auto &scene = _tousLesObjets[_sceneChargee];
-    for (auto &o : scene)
+    POUR (auto &o : scene)
     { // Pour chaque objet
-        dessiner(o->obtenirSprite());
+        dessiner(o->obtenirLutin());
     }
 }
 
-void Contexte::dessiner(const sf::Drawable &dessinable)
+RIEN Contexte::dessiner(CONSTANT sf::Drawable &dessinable)
 {
-    _fenetre.draw(dessinable);
+    _fenetre.DESSINER(dessinable);
 }
 
-void Contexte::dessiner(const sf::Drawable *dessinable)
+RIEN Contexte::dessiner(CONSTANT sf::Drawable *dessinable)
 {
-    _fenetre.draw(*dessinable);
+    _fenetre.DESSINER(*dessinable);
 }
 
 /// @brief Affiche la fenetre.
-void Contexte::afficherFenetre()
+RIEN Contexte::afficherFenetre()
 {
-    _fenetre.display();
-    _fenetre.clear();
+    _fenetre.AFFICHER();
+    _fenetre.EFFACER();
 }
 
 /// @brief Ajoute un objet a la liste de tous les objets.
 /// @param scene
 /// @param affichable
-void Contexte::ajouterAffichable(int scene,
+RIEN Contexte::ajouterAffichable(ENTIER scene,
                                  Objet *o)
 {
-    _tousLesObjets[scene].emplace(o);
+    _tousLesObjets[scene].INSERER(o);
 }
 
-int Contexte::obtenirSceneChargee() const
+ENTIER Contexte::obtenirSceneChargee() CONSTANT
 {
-    return _sceneChargee;
+    RETOUR _sceneChargee;
 }
 /// @brief Retire un objet a la liste de tous les objets.
 /// @param scene
 /// @param affichable
-void Contexte::retirerAffichable(int scene,
+RIEN Contexte::retirerAffichable(ENTIER scene,
                                  Objet *o)
 {
-    _tousLesObjets[scene].erase(o);
+    _tousLesObjets[scene].ECRASER(o);
 }
 
-void Contexte::retirerAffichableSceneChargee(Objet *o)
+RIEN Contexte::retirerAffichableSceneChargee(Objet *o)
 {
     retirerAffichable(_sceneChargee, o);
 }
 
-const sf::Vector2f Contexte::obtenirSourisPosition() const
+CONSTANT sf::VECTEUR_NB_VIRGULE Contexte::obtenirSourisPosition() CONSTANT
 {
     // récupération de la position de la souris dans la fenêtre
-    sf::Vector2i pixelPos = sf::Mouse::getPosition(_fenetre);
+    sf::Vector2i pixelPos = sf::SOURIS::OBTENIR_POSITION(_fenetre);
     // conversion en coordonnées "monde"
-    return _fenetre.mapPixelToCoords(pixelPos);
+    RETOUR _fenetre.PIXEL_CARTE_EN_COORDONNEES(pixelPos);
 }

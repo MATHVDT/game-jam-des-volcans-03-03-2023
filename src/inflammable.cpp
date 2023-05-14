@@ -1,35 +1,35 @@
 #include "../include/inflammable.hpp"
 
-Inflammable::Inflammable(sf::Vector2f position,
-						 sf::Vector2f scale,
-						 uint couche,
-						 bool visible)
+Inflammable::Inflammable(sf::VECTEUR_NB_VIRGULE position,
+						 sf::VECTEUR_NB_VIRGULE scale,
+						 ENTIER_NON_SIGNE couche,
+						 BOOLEEN visible)
 	: Bougeable(position, scale, couche, visible), etat(0)
 {
-	_materiaux.push_back(inflammable);
+	_materiaux.AJOUTER_FIN(inflammable);
 	_affichable.definirTexture(*textureCarte["ressources/objets/inflammable_range.png"]);
 }
 
-void Inflammable::miseAJour()
+RIEN Inflammable::miseAJour()
 {
-	if (_selectionnee == 0)
-		_affichable.definirTexture(*textureCarte["ressources/objets/inflammable_range.png"]);
-	else if (_selectionnee == 1)
+	SI(_selectionnee == 0)
+	_affichable.definirTexture(*textureCarte["ressources/objets/inflammable_range.png"]);
+	SINON SI(_selectionnee == 1)
 		_affichable.definirTexture(*textureCarte["ressources/objets/inflammable.png"]);
 }
 
-bool Inflammable::estIphone()
+BOOLEEN Inflammable::estIphone()
 {
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), feu);
-	if (result1 != _materiaux.end())
+	auto result1 = std::TROUVER(_materiaux.DEBUT(), _materiaux.FIN(), feu);
+	SI(result1 != _materiaux.FIN())
 	{
-		return true;
+		RETOUR VRAI;
 	}
 	// implemneter la destruction
-	return false;
+	RETOUR FAUX;
 }
 
-void Inflammable::clic()
+RIEN Inflammable::clic()
 {
 	Bougeable::clic();
 	miseAJour();

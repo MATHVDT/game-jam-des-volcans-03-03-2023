@@ -1,33 +1,33 @@
 #include "../include/neon.hpp"
 
-Neon::Neon(sf::Vector2f position,
-		   sf::Vector2f scale,
-		   uint couche,
-		   bool visible)
-	: Fixe(position, scale, couche, visible), iphone(false), etat(1)
+Neon::Neon(sf::VECTEUR_NB_VIRGULE position,
+		   sf::VECTEUR_NB_VIRGULE scale,
+		   ENTIER_NON_SIGNE couche,
+		   BOOLEEN visible)
+	: Fixe(position, scale, couche, visible), iphone(FAUX), etat(1)
 {
-	_materiaux.push_back(neon);
+	_materiaux.AJOUTER_FIN(neon);
 	_affichable.definirTexture(*textureCarte["ressources/objets/neon.png"]);
 }
 
 Neon::~Neon() {}
 
-void Neon::miseAJour()
+RIEN Neon::miseAJour()
 {
-	if (etat == 0)
+	SI (etat == 0)
 		_affichable.definirTexture(*textureCarte["ressources/objets/neon_casse.png"]);
-	else if (etat == 1)
+	SINON SI (etat == 1)
 		_affichable.definirTexture(*textureCarte["ressources/objets/neon.png"]);
 }
 
-bool Neon::estIphone()
+BOOLEEN Neon::estIphone()
 {
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), cassant);
+	auto result1 = std::TROUVER(_materiaux.DEBUT(), _materiaux.FIN(), cassant);
 
-	if (result1 != _materiaux.end())
+	SI (result1 != _materiaux.FIN())
 	{
 		etat = 0;
 		miseAJour();
 	}
-	return iphone;
+	RETOUR iphone;
 }

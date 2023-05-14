@@ -1,26 +1,26 @@
 #ifndef __PRISE_HPP__
 #define __PRISE_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "fixe.hpp"
 
-class Prise : public Fixe
+CLASSE Prise : PUBLIC Fixe
 {
-private:
-	bool iphone;
-	int etat;
+PRIVEE:
+	BOOLEEN iphone;
+	ENTIER etat;
 
-public:
-	Prise(sf::Vector2f position,
-		  sf::Vector2f scale,
-		  uint couche,
-		  bool visible);
-	virtual ~Prise() override;
+PUBLIC:
+	Prise(sf::VECTEUR_NB_VIRGULE position,
+		  sf::VECTEUR_NB_VIRGULE scale,
+		  ENTIER_NON_SIGNE couche,
+		  BOOLEEN visible);
+	VIRTUEL ~Prise() SURCHARGE;
 
-	void miseAJour();
-	void clic() override{};
-	bool estIphone() override;
+	RIEN miseAJour();
+	RIEN clic() SURCHARGE{};
+	BOOLEEN estIphone() SURCHARGE;
 };
 
 #endif

@@ -1,11 +1,11 @@
 #include "../include/objet.hpp"
 
-std::map<std::string, sf::Texture *> Objet::textureCarte = {};
+std::map<std::CHAINE, sf::Texture *> Objet::textureCarte = {};
 
-Objet::Objet(sf::Vector2f position,
-			 sf::Vector2f scale,
-			 uint couche,
-			 bool visible)
+Objet::Objet(sf::VECTEUR_NB_VIRGULE position,
+			 sf::VECTEUR_NB_VIRGULE scale,
+			 ENTIER_NON_SIGNE couche,
+			 BOOLEEN visible)
 	: _visible(visible),
 	  _rectangle(), _materiaux({})
 {
@@ -18,79 +18,79 @@ Objet::Objet(sf::Vector2f position,
 
 Objet::~Objet() {}
 
-const sf::Rect<float> &Objet::obtenirRectangle()
+CONSTANT sf::RECTANGLE<NB_VIRGULE> &Objet::obtenirRectangle()
 {
-	float haut = _affichable.obtenirSprite()->getGlobalBounds().top;
-	float gauche = _affichable.obtenirSprite()->getGlobalBounds().left;
-	float hauteur = _affichable.obtenirSprite()->getGlobalBounds().height;
-	float largeur = _affichable.obtenirSprite()->getGlobalBounds().width;
+	NB_VIRGULE haut = _affichable.obtenirLutin()->OBTENIR_EXTREMITES_GLOBAL().top;
+	NB_VIRGULE gauche = _affichable.obtenirLutin()->OBTENIR_EXTREMITES_GLOBAL().left;
+	NB_VIRGULE hauteur = _affichable.obtenirLutin()->OBTENIR_EXTREMITES_GLOBAL().height;
+	NB_VIRGULE largeur = _affichable.obtenirLutin()->OBTENIR_EXTREMITES_GLOBAL().width;
 	definirRectangle(gauche, haut, hauteur, largeur);
-	return _rectangle;
+	RETOUR _rectangle;
 }
 
-void Objet::definirRectangle(float gauche, float haut)
+RIEN Objet::definirRectangle(NB_VIRGULE gauche, NB_VIRGULE haut)
 {
 	_rectangle.left = gauche;
 	_rectangle.top = haut;
 }
 
-void Objet::definirRectangle(float gauche,
-							 float haut,
-							 float largeur,
-							 float hauteur)
+RIEN Objet::definirRectangle(NB_VIRGULE gauche,
+							 NB_VIRGULE haut,
+							 NB_VIRGULE largeur,
+							 NB_VIRGULE hauteur)
 {
 	definirRectangle(gauche, haut);
 	_rectangle.width = largeur;
 	_rectangle.height = hauteur;
 }
 
-void Objet::initialisationTexture()
+RIEN Objet::initialisationTexture()
 {
-	const std::filesystem::path chemin{"ressources/objets/"};
-	for (auto &file : std::filesystem::directory_iterator{chemin}) // loop through the current folder
+	CONSTANT std::filesystem::path chemin{"ressources/objets/"};
+	POUR (auto &file : std::filesystem::directory_iterator{chemin}) // loop through the current folder
 	{
-		// std::cerr << file << std::endl;
-		sf::Texture *texture = new sf::Texture();
+		// std::SORTIE_ERREUR << file << std::RETOUR_CHARIOT;
+		sf::Texture *texture = NOUVEAU sf::Texture();
 		texture->loadFromFile(file.path());
-		textureCarte.insert(std::make_pair(file.path().string(), texture));
+		textureCarte.insert(std::make_pair(file.path().CHAINE(), texture));
 	}
 }
 
-std::map<std::string, sf::Texture *> &Objet::obtenirTextureMap()
+std::map<std::CHAINE, sf::Texture *> &Objet::obtenirTextureMap()
 {
-	return textureCarte;
+	RETOUR textureCarte;
 }
 
-void Objet::ajouterMateriaux(Type type)
+RIEN Objet::ajouterMateriaux(Type type)
 {
-	_materiaux.push_back(type);
+	_materiaux.AJOUTER_FIN(type);
 }
 
-const std::vector<Type> Objet::obtenirMateriaux() const
+CONSTANT std::VECTEUR<Type> Objet::obtenirMateriaux() CONSTANT
 {
-	return _materiaux;
+	RETOUR _materiaux;
 }
 
 /***************************************************/
 /*               Fonctions Operateurs              */
 /***************************************************/
-bool operator<(const Objet &r1, const Objet &r2)
+BOOLEEN operator<(CONSTANT Objet &r1, CONSTANT Objet &r2)
 {
-	return r1.obtenirCouche() < r2.obtenirCouche();
+	RETOUR r1.obtenirCouche() < r2.obtenirCouche();
 }
-bool operator>(const Objet &r1, const Objet &r2)
+BOOLEEN operator>(CONSTANT Objet &r1, CONSTANT Objet &r2)
 {
-	return r1.obtenirCouche() > r2.obtenirCouche();
+	RETOUR r1.obtenirCouche() > r2.obtenirCouche();
 }
-bool operator==(const Objet &r1, const Objet &r2)
+BOOLEEN operator==(CONSTANT Objet &r1, CONSTANT Objet &r2)
 {
-	return r1.obtenirCouche() == r2.obtenirCouche();
+	RETOUR r1.obtenirCouche() == r2.obtenirCouche();
 }
-bool operator<=(const Objet &r1, const Objet &r2)
+BOOLEEN operator<=(CONSTANT Objet &r1, CONSTANT Objet &r2)
 {
-	return r1 < r2 || r1 == r2;
+	RETOUR r1 < r2 || r1 == r2;
 }
-bool operator>=(const Objet &r1, const Objet &r2)
+BOOLEEN operator>=(CONSTANT Objet &r1, CONSTANT Objet &r2)
 {
-	return r1 > r2 || r1 == r2;
+	RETOUR r1 > r2 || r1 == r2;
 }

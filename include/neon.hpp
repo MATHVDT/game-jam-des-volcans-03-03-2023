@@ -1,30 +1,30 @@
 #ifndef __NEON_HPP__
 #define __NEON_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "bougeable.hpp"
 #include "fixe.hpp"
 #include "Contexte.hpp"
 #include <set>
 
-class Neon : public Fixe
+CLASSE Neon : PUBLIC Fixe
 {
-private:
-	bool estOuvert;
-	bool iphone;
-	int etat;
+PRIVEE:
+	BOOLEEN estOuvert;
+	BOOLEEN iphone;
+	ENTIER etat;
 
-public:
-	Neon(sf::Vector2f position,
-		 sf::Vector2f scale,
-		 uint couche,
-		 bool visible);
-	virtual ~Neon() override;
+PUBLIC:
+	Neon(sf::VECTEUR_NB_VIRGULE position,
+		 sf::VECTEUR_NB_VIRGULE scale,
+		 ENTIER_NON_SIGNE couche,
+		 BOOLEEN visible);
+	VIRTUEL ~Neon() SURCHARGE;
 
-	void clic() override{};
-	bool estIphone() override;
-	void miseAJour();
+	RIEN clic() SURCHARGE{};
+	BOOLEEN estIphone() SURCHARGE;
+	RIEN miseAJour();
 };
 
 #endif

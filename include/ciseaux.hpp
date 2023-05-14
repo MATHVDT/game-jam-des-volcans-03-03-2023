@@ -1,22 +1,22 @@
 #ifndef __CISEAUX_HPP__
 #define __CISEAUX_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "bougeable.hpp"
 
-class Ciseaux : public Bougeable
+CLASSE Ciseaux : PUBLIC Bougeable
 {
-private:
-	int etat;
-	void miseAJour();
+PRIVEE:
+	ENTIER etat;
+	RIEN miseAJour();
 
-public:
-	Ciseaux(sf::Vector2f position, sf::Vector2f scale, uint couche, bool visible);
+PUBLIC:
+	Ciseaux(sf::VECTEUR_NB_VIRGULE position, sf::VECTEUR_NB_VIRGULE scale, ENTIER_NON_SIGNE couche, BOOLEEN visible);
 
-	virtual ~Ciseaux() override{};
-	void clic() override;
-	bool estIphone() override;
+	VIRTUEL ~Ciseaux() SURCHARGE{};
+	RIEN clic() SURCHARGE;
+	BOOLEEN estIphone() SURCHARGE;
 };
 
 #endif

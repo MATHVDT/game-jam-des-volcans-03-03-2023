@@ -1,25 +1,25 @@
 #ifndef __ISSUUUUUUUUUE_HPP__
 #define __ISSUUUUUUUUUE_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "fixe.hpp"
 
-class Issue : public Fixe
+CLASSE Issue : PUBLIC Fixe
 {
-private:
-	bool iphone;
+PRIVEE:
+	BOOLEEN iphone;
 
-public:
-	Issue(sf::Vector2f position,
-		  sf::Vector2f scale,
-		  uint couche,
-		  bool visible);
-	virtual ~Issue() override;
+PUBLIC:
+	Issue(sf::VECTEUR_NB_VIRGULE position,
+		  sf::VECTEUR_NB_VIRGULE scale,
+		  ENTIER_NON_SIGNE couche,
+		  BOOLEEN visible);
+	VIRTUEL ~Issue() SURCHARGE;
 
-	void miseAJour();
-	void clic() override{};
-	bool estIphone() override;
+	RIEN miseAJour();
+	RIEN clic() SURCHARGE{};
+	BOOLEEN estIphone() SURCHARGE;
 };
 
 #endif

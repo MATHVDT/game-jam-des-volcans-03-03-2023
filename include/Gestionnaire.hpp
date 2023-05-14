@@ -1,7 +1,7 @@
 #ifndef __MANAGER_HPP__
 #define __MANAGER_HPP__
 
-// #include "../FRsupEN.hpp"pp"
+#include "../FRsupEN.hpp"
 
 #include <iostream>
 
@@ -26,35 +26,31 @@
 
 #include <SFML/Audio.hpp>
 
-class Gestionnaire
+CLASSE Gestionnaire
 {
-private:
+PRIVEE:
 	Contexte *contexte;
 
-private: // Statique
-	static Gestionnaire *_instance;
+PRIVEE: // Statique
+	STATIQUE Gestionnaire *_instance;
 
-public: // Statique
-	static Gestionnaire *obtenirInstance();
+PUBLIC: // Statique
+	STATIQUE Gestionnaire *obtenirInstance();
 
-public:
+PUBLIC:
 	Gestionnaire();
 	~Gestionnaire();
 
-	void enCours();
-	void initScene();
+	RIEN enCours();
+	RIEN initScene();
 
-	bool objetSelectionneSuivreSouris();
-	void checkEvenement(const sf::Event &evenement);
-	bool checkSourisSurObjet();
-	bool trouveObjetEnInteractionAvecObjetSelectionne();
-	bool interactionObjets();
+	BOOLEEN objetSelectionneSuivreSouris();
+	RIEN checkEvenement(CONSTANT sf::EVENEMENT & evenement);
+	BOOLEEN checkSourisSurObjet();
+	BOOLEEN trouveObjetEnInteractionAvecObjetSelectionne();
+	BOOLEEN interactionObjets();
 
-	void ajouteType(Objet *o, const std::vector<Type> listMat);
+	RIEN ajouteType(Objet * o, CONSTANT std::VECTEUR<Type> listMat);
 };
-
-/***************************************************/
-/*               Méthodes en ligne                 */
-/***************************************************/
 
 #endif

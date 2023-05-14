@@ -1,25 +1,25 @@
 #ifndef __BOUTON_CHARGER_SCENE__
 #define __BOUTON_CHARGER_SCENE__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "fixe.hpp"
 #include "Contexte.hpp"
 
-class BoutonChargerScene : public Fixe
+CLASSE BoutonChargerScene : PUBLIC Fixe
 {
-private:
-    uint _numeroScene;
+PRIVEE:
+    ENTIER_NON_SIGNE _numeroScene;
 
-public:
-    BoutonChargerScene(sf::Vector2f position,
-                       sf::Vector2f scale,
-                       uint couche, bool visible,
-                       uint numeroScene, std::string cleTextureScene);
+PUBLIC:
+    BoutonChargerScene(sf::VECTEUR_NB_VIRGULE position,
+                       sf::VECTEUR_NB_VIRGULE scale,
+                       ENTIER_NON_SIGNE couche, BOOLEEN visible,
+                       ENTIER_NON_SIGNE numeroScene, std::CHAINE cleTextureScene);
     ~BoutonChargerScene();
 
-    void clic() override;
-    bool estIphone() override { return false; }
+    RIEN clic() SURCHARGE;
+    BOOLEEN estIphone() SURCHARGE { RETOUR FAUX; }
 };
 
 #endif

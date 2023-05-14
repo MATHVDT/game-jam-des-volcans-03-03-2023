@@ -1,30 +1,30 @@
 #ifndef __BOUGEABLE_HPP__
 #define __BOUGEABLE_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "Contexte.hpp"
 #include "objet.hpp"
 
-class Bougeable : public Objet
+CLASSE Bougeable : PUBLIC Objet
 {
 protected:
-	bool _selectionnee;
-	sf::Vector2f _position_initiale;
+	BOOLEEN _selectionnee;
+	sf::VECTEUR_NB_VIRGULE _position_initiale;
 
-public:
-	Bougeable(sf::Vector2f position,
-			  sf::Vector2f scale,
-			  uint couche,
-			  bool visible);
-	virtual ~Bougeable() override;
+PUBLIC:
+	Bougeable(sf::VECTEUR_NB_VIRGULE position,
+			  sf::VECTEUR_NB_VIRGULE scale,
+			  ENTIER_NON_SIGNE couche,
+			  BOOLEEN visible);
+	VIRTUEL ~Bougeable() SURCHARGE;
 
-	virtual bool estIphone() override;
-	void remettrePosition();
-	void relache();
-	void definirPosition(const sf::Vector2f &position);
-	void definirPositionCentreSprite(const sf::Vector2f &position);
-	void clic() override;
+	VIRTUEL BOOLEEN estIphone() SURCHARGE;
+	RIEN remettrePosition();
+	RIEN relache();
+	RIEN definirPosition(CONSTANT sf::VECTEUR_NB_VIRGULE &position);
+	RIEN definirPositionCentreSprite(CONSTANT sf::VECTEUR_NB_VIRGULE &position);
+	RIEN clic() SURCHARGE;
 };
 
 #endif

@@ -85,11 +85,11 @@ set ( ZZ3_SOURCES
 include_directories ( src/ )
 
 # Executables #-------------------------------------------------------------------------------------
-add_executable ( prog
+add_executable ( clubSandwich.exe
 				src/main.cpp
 				${ZZ3_HEADERS}
 				${ZZ3_SOURCES}
 				)
 # Build #-------------------------------------------------------------------------------------------
-set_target_properties ( prog PROPERTIES LINKER_LANGUAGE CXX )
-target_link_libraries(prog  -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio)
+set_target_properties ( clubSandwich.exe PROPERTIES LINKER_LANGUAGE CXX )
+target_link_libraries( clubSandwich.exe  -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio)

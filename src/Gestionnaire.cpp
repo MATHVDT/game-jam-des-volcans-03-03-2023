@@ -9,40 +9,40 @@ Gestionnaire::Gestionnaire(/* args */)
 
 Gestionnaire::~Gestionnaire()
 {
-	delete contexte;
+	SUPPRIMER contexte;
 }
 
 Gestionnaire *Gestionnaire::obtenirInstance()
 {
-	if (Gestionnaire::_instance == nullptr)
+	SI(Gestionnaire::_instance == nullptr)
 	{
-		Gestionnaire::_instance = new Gestionnaire();
-		if (Gestionnaire::_instance == nullptr)
+		Gestionnaire::_instance = NOUVEAU Gestionnaire();
+		SI(Gestionnaire::_instance == nullptr)
 		{
-			std::cerr << "Erreur de new\n";
-			return nullptr;
+			std::SORTIE_ERREUR << "Erreur de NOUVEAU\n";
+			RETOUR nullptr;
 		}
 	}
-	return Gestionnaire::_instance;
+	RETOUR Gestionnaire::_instance;
 }
 
-void Gestionnaire::enCours()
+RIEN Gestionnaire::enCours()
 {
 	sf::Music musique;
-	if (!musique.openFromFile("ressources/sons/marseillaise.ogg"))
+	SI(!musique.openFromFile("ressources/sons/marseillaise.ogg"))
 	{
-		std::cerr << "dommage pas de musique" << std::endl;
+		std::SORTIE_ERREUR << "dommage pas de musique" << std::RETOUR_CHARIOT;
 	}
-	else
+	SINON
 	{
-		musique.setVolume(10);
-		musique.play();
-		musique.setLoop(true);
+		musique.DEFINIR_VOLUME(10);
+		musique.JOUER();
+		musique.DEFINIR_BOUCLE(VRAI);
 	}
-	while (contexte->obtenirJeuEnCours())
+	TANT_QUE(contexte->obtenirJeuEnCours())
 	{
 
-		while (contexte->obtenirSonderEvenement())
+		TANT_QUE(contexte->obtenirSonderEvenement())
 		{ // Actualise le contexte seulement quand il ya une evenement
 			checkEvenement(contexte->obtenirEvenement());
 		}
@@ -53,223 +53,226 @@ void Gestionnaire::enCours()
 
 /// @brief Lance les actions suivant les evenements
 /// @param evenement
-// void Gestionnaire::checkEvenement(const sf::Event &evenement)
-void Gestionnaire::checkEvenement(const sf::Event &evenement)
+// RIEN Gestionnaire::checkEvenement(CONSTANT sf::EVENEMENT &evenement)
+RIEN Gestionnaire::checkEvenement(CONSTANT sf::EVENEMENT &evenement)
 {
-	switch (evenement.type)
+	CHOIX(evenement.type)
 	{
-	case sf::Event::Closed:
-		contexte->definirJeuEnCours(false);
-		break;
+		CAS sf::EVENEMENT::FERME : contexte->definirJeuEnCours(FAUX);
+		QUITTER;
 
-	case sf::Event::MouseMoved: // Souris bougee
-		objetSelectionneSuivreSouris();
-		break;
+		CAS sf::EVENEMENT::SOURIS_BOUGEE : // Souris bougee
+										   objetSelectionneSuivreSouris();
+		QUITTER;
 
-	case sf::Event::MouseButtonPressed: // bouton appuye
-		checkSourisSurObjet();
-		break;
+		CAS sf::EVENEMENT::BOUTON_SOURIS_PRESSE : // bouton appuye
+												  checkSourisSurObjet();
+		QUITTER;
 
-	case sf::Event::MouseButtonReleased: // bouton relache
-	{
-		Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
-		if (trouveObjetEnInteractionAvecObjetSelectionne())
+		CAS sf::EVENEMENT::BOUTON_SOURIS_RELACHE: // bouton relache
 		{
-			if (interactionObjets())
+			Bougeable *o = contexte->obtenirObjetBougeableSelectionne();
+			SI(trouveObjetEnInteractionAvecObjetSelectionne())
 			{
-				if (o != nullptr)
+				SI(interactionObjets())
 				{
+					SI(o != nullptr)
+					{
+						o->relache();
+						contexte->retirerAffichableSceneChargee(o);
+						SUPPRIMER o;
+					}
+				}
+				SINON
+				{
+					SI(o != nullptr)
 					o->relache();
-					contexte->retirerAffichableSceneChargee(o);
-					delete o;
 				}
 			}
-			else
+			SINON
 			{
-				if (o != nullptr)
-					o->relache();
-			}
-		}
-		else
-		{
-			if (o != nullptr)
+				SI(o != nullptr)
 				o->relache();
+			}
+			QUITTER;
 		}
-		break;
-	}
-	default:
-		break;
+	DEFAUT:
+		QUITTER;
 	}
 }
 
-void Gestionnaire::initScene()
+RIEN Gestionnaire::initScene()
 {
 	// MENU
-	uint scene = 0;
+	ENTIER_NON_SIGNE scene = 0;
 
-	BoutonChargerScene *piece = new BoutonChargerScene(sf::Vector2f(210.0f, 30.0f),
-													   sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
-													   2, true, 1, "ressources/objets/piece_1_lobby.png");
+	BoutonChargerScene *piece = NOUVEAU BoutonChargerScene(sf::VECTEUR_NB_VIRGULE(210.0f, 30.0f),
+														   sf::VECTEUR_NB_VIRGULE(1600.0f / 1920.0f, 1600.0f / 1920.0f),
+														   2, VRAI, 1, "ressources/objets/piece_1_lobby.png");
 	contexte->ajouterAffichable(scene, piece);
 
-	piece = new BoutonChargerScene(sf::Vector2f(210.0f, 360.0f),
-								   sf::Vector2f(1600.0f / 1920.0f, 1600.0f / 1920.0f),
-								   2, true, 2, "ressources/objets/piece_2_lobby.png");
+	piece = NOUVEAU BoutonChargerScene(sf::VECTEUR_NB_VIRGULE(210.0f, 360.0f),
+									   sf::VECTEUR_NB_VIRGULE(1600.0f / 1920.0f, 1600.0f / 1920.0f),
+									   2, VRAI, 2, "ressources/objets/piece_2_lobby.png");
 	contexte->ajouterAffichable(scene, piece);
 
 	// SCENE 1
 	scene = 1;
 
-	BoutonChargerScene *retour_1 = new BoutonChargerScene(sf::Vector2f(0.0f, 0.0f),
-														  sf::Vector2f(0.15f, 0.15f),
-														  100, true, 0, "ressources/objets/bouton_retour.png");
+	BoutonChargerScene *retour_1 = NOUVEAU BoutonChargerScene(sf::VECTEUR_NB_VIRGULE(0.0f, 0.0f),
+															  sf::VECTEUR_NB_VIRGULE(0.15f, 0.15f),
+															  100, VRAI, 0, "ressources/objets/bouton_retour.png");
 	contexte->ajouterAffichable(scene, retour_1);
 
-	Bougeable *inflammable = new Inflammable(sf::Vector2f(1230.0f, 295.0f),
-											 sf::Vector2f(0.15f, 0.15f),
-											 2, true);
-	std::set<Bougeable *> _set = {inflammable};
+	Bougeable *inflammable = NOUVEAU Inflammable(sf::VECTEUR_NB_VIRGULE(1230.0f, 295.0f),
+												 sf::VECTEUR_NB_VIRGULE(0.15f, 0.15f),
+												 2, VRAI);
+	std::ENSEMBLE<Bougeable *> _set = {inflammable};
 
-	Objet *o = new Armoire(sf::Vector2f(1100.0f, 200.0f),
-						   sf::Vector2f(0.7f, 0.7f),
-						   1, true, _set);
+	Objet *o = NOUVEAU Armoire(sf::VECTEUR_NB_VIRGULE(1100.0f, 200.0f),
+							   sf::VECTEUR_NB_VIRGULE(0.7f, 0.7f),
+							   1, VRAI, _set);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Prise(sf::Vector2f(240.0f, 610.0f),
-				  sf::Vector2f(0.06f, 0.06f),
-				  1, true);
+	o = NOUVEAU Prise(sf::VECTEUR_NB_VIRGULE(240.0f, 610.0f),
+					  sf::VECTEUR_NB_VIRGULE(0.06f, 0.06f),
+					  1, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Corbeille(sf::Vector2f(-50.0f, 600.0f),
-					  sf::Vector2f(0.40f, 0.40f),
-					  1, true);
+	o = NOUVEAU Corbeille(sf::VECTEUR_NB_VIRGULE(-50.0f, 600.0f),
+						  sf::VECTEUR_NB_VIRGULE(0.40f, 0.40f),
+						  1, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Ciseaux(sf::Vector2f(800.0f, 550.0f),
-					sf::Vector2f(0.10f, 0.10f),
-					3, true);
+	o = NOUVEAU Ciseaux(sf::VECTEUR_NB_VIRGULE(800.0f, 550.0f),
+						sf::VECTEUR_NB_VIRGULE(0.10f, 0.10f),
+						3, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Allumette(sf::Vector2f(600.0f, 600.0f),
-					  sf::Vector2f(0.10f, 0.10f),
-					  4, true);
+	o = NOUVEAU Allumette(sf::VECTEUR_NB_VIRGULE(600.0f, 600.0f),
+						  sf::VECTEUR_NB_VIRGULE(0.10f, 0.10f),
+						  4, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
 	// SCENE 2
 	scene = 2;
 
-	BoutonChargerScene *retour_2 = new BoutonChargerScene(sf::Vector2f(0.0f, 0.0f),
-														  sf::Vector2f(0.15f, 0.15f),
-														  100, true, 0, "ressources/objets/bouton_retour.png");
+	BoutonChargerScene *retour_2 = NOUVEAU BoutonChargerScene(sf::VECTEUR_NB_VIRGULE(0.0f, 0.0f),
+															  sf::VECTEUR_NB_VIRGULE(0.15f, 0.15f),
+															  100, VRAI, 0, "ressources/objets/bouton_retour.png");
 	contexte->ajouterAffichable(scene, retour_2);
 
-	o = new Issue(sf::Vector2f(1140.0f, 200.0f),
-				  sf::Vector2f(0.45f, 0.45f),
-				  1, true);
+	o = NOUVEAU Issue(sf::VECTEUR_NB_VIRGULE(1140.0f, 200.0f),
+					  sf::VECTEUR_NB_VIRGULE(0.45f, 0.45f),
+					  1, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Canape(sf::Vector2f(580.0f, 440.0f),
-				   sf::Vector2f(0.6f, 0.6f),
-				   2, true);
+	o = NOUVEAU Canape(sf::VECTEUR_NB_VIRGULE(580.0f, 440.0f),
+					   sf::VECTEUR_NB_VIRGULE(0.6f, 0.6f),
+					   2, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Neon(sf::Vector2f(940.0f, -50.0f),
-				 sf::Vector2f(0.3f, 0.3f),
-				 3, true);
+	o = NOUVEAU Neon(sf::VECTEUR_NB_VIRGULE(940.0f, -50.0f),
+					 sf::VECTEUR_NB_VIRGULE(0.3f, 0.3f),
+					 3, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Neon(sf::Vector2f(440.0f, -50.0f),
-				 sf::Vector2f(0.3f, 0.3f),
-				 4, true);
+	o = NOUVEAU Neon(sf::VECTEUR_NB_VIRGULE(440.0f, -50.0f),
+					 sf::VECTEUR_NB_VIRGULE(0.3f, 0.3f),
+					 4, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Marteau(sf::Vector2f(1140.0f, 310.0f),
-					sf::Vector2f(0.1f, 0.1f),
-					5, true);
+	o = NOUVEAU Marteau(sf::VECTEUR_NB_VIRGULE(1140.0f, 310.0f),
+						sf::VECTEUR_NB_VIRGULE(0.1f, 0.1f),
+						5, VRAI);
 	contexte->ajouterAffichable(scene, o);
 
-	o = new Marteau(sf::Vector2f(1140.0f, 310.0f),
-					sf::Vector2f(0.1f, 0.1f),
-					6, true);
+	o = NOUVEAU Marteau(sf::VECTEUR_NB_VIRGULE(1140.0f, 310.0f),
+						sf::VECTEUR_NB_VIRGULE(0.1f, 0.1f),
+						6, VRAI);
 	contexte->ajouterAffichable(scene, o);
 }
 
 /// @brief Lance le clic sur l'objet sur lequel la souris est.
-/// @return true si un objet est cliquee
-bool Gestionnaire::checkSourisSurObjet()
+/// @return VRAI si un objet est cliquee
+BOOLEEN Gestionnaire::checkSourisSurObjet()
 {
 	// Pas le bouton gauche appuye
-	if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+	SI(!sf::SOURIS::EST_BOUTON_PRESSE(sf::SOURIS::Button::Left))
 	{
-		return false;
+		RETOUR FAUX;
 	}
 
 	// Recup position souris
-	sf::Vector2f sourisPosition = (sf::Vector2f)contexte->obtenirSourisPosition();
+	sf::VECTEUR_NB_VIRGULE sourisPosition = (sf::VECTEUR_NB_VIRGULE)contexte->obtenirSourisPosition();
 
 	// Recup tous les objets de la scene chargee
-	std::multiset<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
+	std::ENSEMBLE_MULTIPLE<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
 
 	// Parcours tous les objets pour savoir si la souris est dedans
 	Objet *objetTouche = nullptr;
-	for (auto rit = scene.rbegin(); rit != scene.rend(); ++rit)
+	POUR(auto rit = scene.rbegin(); rit != scene.rend(); ++rit)
 	{
 
-		if ((*rit)->obtenirVisible() && (*rit)->obtenirRectangle().contains(sourisPosition))
+		SI((*rit)->obtenirVisible() && (*rit)->obtenirRectangle().contains(sourisPosition))
 		{
 			objetTouche = (*rit);
-			break;
+			QUITTER;
 		}
 	}
 
-	if (objetTouche == nullptr)
-		return false;
+	SI(objetTouche == nullptr)
+	{
+		RETOUR FAUX;
+	}
 
 	objetTouche->clic();
-	return true;
+	RETOUR VRAI;
 }
 
-bool Gestionnaire::objetSelectionneSuivreSouris()
+BOOLEEN Gestionnaire::objetSelectionneSuivreSouris()
 {
 	Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
-	if (objetSelectionne != nullptr)
+	SI(objetSelectionne != nullptr)
 	{
-		objetSelectionne->definirPositionCentreSprite((sf::Vector2f)contexte->obtenirSourisPosition());
+		objetSelectionne->definirPositionCentreSprite((sf::VECTEUR_NB_VIRGULE)contexte->obtenirSourisPosition());
 	}
-	return true;
+	RETOUR VRAI;
 }
 
 /// @brief Set l'objet qui est en interaction avec le selectionne
 /// @return
-bool Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
+BOOLEEN Gestionnaire::trouveObjetEnInteractionAvecObjetSelectionne()
 {
 	// Pas le bouton gauche relache
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-		return false;
+	SI(sf::SOURIS::EST_BOUTON_PRESSE(sf::SOURIS::Button::Left))
+	RETOUR FAUX;
 
 	// Recup tous les objets de la scene chargee
-	std::multiset<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
+	std::ENSEMBLE_MULTIPLE<Objet *, CompareObjetPointeur> &scene = contexte->obtenirObjetSceneChargee();
 
 	Bougeable *objetSelectionne = contexte->obtenirObjetBougeableSelectionne();
-	if (objetSelectionne == nullptr)
-		return false;
+	SI(objetSelectionne == nullptr)
+	{
+		RETOUR FAUX;
+	}
 
 	// Parcours tous les objets pour savoir si la souris est dedans
-	for (Objet *x : scene)
+	POUR(Objet * x : scene)
 	{
-		if (x == objetSelectionne)
-			continue;
+		SI(x == objetSelectionne)
+		CONTINUER;
 
-		if (x->obtenirRectangle().intersects(objetSelectionne->obtenirRectangle()))
+		SI(x->obtenirRectangle().INTERSECTE(objetSelectionne->obtenirRectangle()))
 		{
 			contexte->definirObjetEnInteractionAvecObjetBougeableSelectionne(x);
-			return true;
+			RETOUR VRAI;
 		}
 	}
-	return false;
+	RETOUR FAUX;
 }
 
-bool Gestionnaire::interactionObjets()
+BOOLEEN Gestionnaire::interactionObjets()
 {
 	Objet *o1 = contexte->obtenirObjetBougeableSelectionne();
 	Objet *o2 = contexte->obtenirObjetEnInteractionAvecObjetBougeableSelectionne();
@@ -281,12 +284,12 @@ bool Gestionnaire::interactionObjets()
 	// Test la casssabilite et la consommabilite des objets
 	o2->estIphone();
 
-	return o1->estIphone();
+	RETOUR o1->estIphone();
 }
 
-void Gestionnaire::ajouteType(Objet *o, std::vector<Type> listMat)
+RIEN Gestionnaire::ajouteType(Objet *o, std::VECTEUR<Type> listMat)
 {
-	for (auto &mat : listMat)
+	POUR(auto &mat : listMat)
 	{
 		o->ajouterMateriaux(mat);
 	}

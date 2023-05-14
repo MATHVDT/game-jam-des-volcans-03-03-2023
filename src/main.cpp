@@ -1,4 +1,4 @@
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -7,7 +7,7 @@
 #include "../include/objet.hpp"
 #include "../include/Fond.hpp"
 
-int main()
+ENTIER PRINCIPAL()
 {
   Objet::initialisationTexture();
   Fond::initialisationTexture();
@@ -17,7 +17,7 @@ int main()
   manager->initScene();
   manager->enCours();
 
-  delete manager;
+  SUPPRIMER manager;
 
-  return 0;
+  RETOUR 0;
 }

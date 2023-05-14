@@ -1,36 +1,36 @@
 #include "../include/allumette.hpp"
 
-Allumette::Allumette(sf::Vector2f position,
-					 sf::Vector2f scale,
-					 uint couche,
-					 bool visible)
+Allumette::Allumette(sf::VECTEUR_NB_VIRGULE position,
+					 sf::VECTEUR_NB_VIRGULE scale,
+					 ENTIER_NON_SIGNE couche,
+					 BOOLEEN visible)
 	: Bougeable(position, scale, couche, visible), etat(0)
 {
-	_materiaux.push_back(feu);
+	_materiaux.AJOUTER_FIN(feu);
 	_affichable.definirTexture(*textureCarte["ressources/objets/allumette_range.png"]);
 }
 
-void Allumette::miseAJour()
+RIEN Allumette::miseAJour()
 {
-	if (_selectionnee == 0)
+	SI (_selectionnee == 0)
 		_affichable.definirTexture(*textureCarte["ressources/objets/allumette_range.png"]);
-	else if (_selectionnee == 1)
+	SINON SI (_selectionnee == 1)
 		_affichable.definirTexture(*textureCarte["ressources/objets/allumette.png"]);
 }
 
-bool Allumette::estIphone()
+BOOLEEN Allumette::estIphone()
 {
 
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), papier);
-	if (result1 != _materiaux.end())
+	auto result1 = std::TROUVER(_materiaux.DEBUT(), _materiaux.FIN(), papier);
+	SI (result1 != _materiaux.FIN())
 	{
-		return true;
+		RETOUR VRAI;
 	}
 	// implemneter la destruction
-	return false;
+	RETOUR FAUX;
 }
 
-void Allumette::clic()
+RIEN Allumette::clic()
 {
 	Bougeable::clic();
 	miseAJour();

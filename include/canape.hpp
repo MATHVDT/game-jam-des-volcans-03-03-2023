@@ -1,22 +1,22 @@
 #ifndef __CANAPE_HPP__
 #define __CANAPE_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "bougeable.hpp"
 
-class Canape : public Bougeable
+CLASSE Canape : PUBLIC Bougeable
 {
-private:
-	int etat;
-	void miseAJour();
+PRIVEE:
+	ENTIER etat;
+	RIEN miseAJour();
 
-public:
-	Canape(sf::Vector2f position, sf::Vector2f scale, uint couche, bool visible);
+PUBLIC:
+	Canape(sf::VECTEUR_NB_VIRGULE position, sf::VECTEUR_NB_VIRGULE scale, ENTIER_NON_SIGNE couche, BOOLEEN visible);
 
-	virtual ~Canape() override{};
-	void clic() override;
-	bool estIphone() override;
+	VIRTUEL ~Canape() SURCHARGE{};
+	RIEN clic() SURCHARGE;
+	BOOLEEN estIphone() SURCHARGE;
 };
 
 #endif

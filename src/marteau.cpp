@@ -1,35 +1,35 @@
 #include "../include/marteau.hpp"
 
-Marteau::Marteau(sf::Vector2f position,
-				 sf::Vector2f scale,
-				 uint couche,
-				 bool visible)
+Marteau::Marteau(sf::VECTEUR_NB_VIRGULE position,
+				 sf::VECTEUR_NB_VIRGULE scale,
+				 ENTIER_NON_SIGNE couche,
+				 BOOLEEN visible)
 	: Bougeable(position, scale, couche, visible), etat(0)
 {
-	_materiaux.push_back(cassant);
+	_materiaux.AJOUTER_FIN(cassant);
 	_affichable.definirTexture(*textureCarte["ressources/objets/brise_vitre_range.png"]);
 }
 
-void Marteau::miseAJour()
+RIEN Marteau::miseAJour()
 {
-	if (_selectionnee == 0)
+	SI (_selectionnee == 0)
 		_affichable.definirTexture(*textureCarte["ressources/objets/brise_vitre_range.png"]);
-	else if (_selectionnee == 1)
+	SINON SI (_selectionnee == 1)
 		_affichable.definirTexture(*textureCarte["ressources/objets/brise_vitre_sorti.png"]);
 }
 
-bool Marteau::estIphone()
+BOOLEEN Marteau::estIphone()
 {
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), neon);
-	if (result1 != _materiaux.end())
+	auto result1 = std::TROUVER(_materiaux.DEBUT(), _materiaux.FIN(), neon);
+	SI (result1 != _materiaux.FIN())
 	{
-		return true;
+		RETOUR VRAI;
 	}
 	// implemneter la destruction
-	return false;
+	RETOUR FAUX;
 }
 
-void Marteau::clic()
+RIEN Marteau::clic()
 {
 	Bougeable::clic();
 	miseAJour();

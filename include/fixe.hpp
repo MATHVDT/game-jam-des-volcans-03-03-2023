@@ -1,24 +1,24 @@
 #ifndef __FIXE_HPP__
 #define __FIXE_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "objet.hpp"
 
-class Fixe : public Objet
+CLASSE Fixe : PUBLIC Objet
 {
-private:
-    bool cassee;
+PRIVEE:
+    BOOLEEN cassee;
 
-public:
-    Fixe(sf::Vector2f position,
-         sf::Vector2f scale,
-         uint couche,
-         bool visible);
-    virtual ~Fixe() override;
+PUBLIC:
+    Fixe(sf::VECTEUR_NB_VIRGULE position,
+         sf::VECTEUR_NB_VIRGULE scale,
+         ENTIER_NON_SIGNE couche,
+         BOOLEEN visible);
+    VIRTUEL ~Fixe() SURCHARGE;
 
-    void clic() override = 0;
-    bool estIphone() override = 0;
+    RIEN clic() SURCHARGE = 0;
+    BOOLEEN estIphone() SURCHARGE = 0;
 };
 
 #endif

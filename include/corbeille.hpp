@@ -1,25 +1,25 @@
 #ifndef __CORBEILLE_HPP__
 #define __CORBEILLE_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "fixe.hpp"
 
-class Corbeille : public Fixe
+CLASSE Corbeille : PUBLIC Fixe
 {
-private:
-	int etat;
-	void miseAJour();
+PRIVEE:
+	ENTIER etat;
+	RIEN miseAJour();
 
-public:
-	Corbeille(sf::Vector2f position,
-			  sf::Vector2f scale,
-			  uint couche,
-			  bool visible);
-	virtual ~Corbeille() override;
+PUBLIC:
+	Corbeille(sf::VECTEUR_NB_VIRGULE position,
+			  sf::VECTEUR_NB_VIRGULE scale,
+			  ENTIER_NON_SIGNE couche,
+			  BOOLEEN visible);
+	VIRTUEL ~Corbeille() SURCHARGE;
 
-	void clic() override;
-	bool estIphone() override;
+	RIEN clic() SURCHARGE;
+	BOOLEEN estIphone() SURCHARGE;
 };
 
 #endif

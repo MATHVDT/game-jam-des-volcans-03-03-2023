@@ -1,56 +1,56 @@
 #ifndef __AFFICHABLE_HPP__
 #define __AFFICHABLE_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 
-class Affichable
+CLASSE Affichable
 {
-private:
-    sf::Sprite *_sprite;
-    uint _couche;
+PRIVEE:
+    sf::LUTIN *_lutin;
+    ENTIER_NON_SIGNE _couche;
 
-public: // Static
-    static bool compare(const Affichable &a1, const Affichable &a2);
+PUBLIC: // Static
+    STATIQUE BOOLEEN compare(CONSTANT Affichable &a1, CONSTANT Affichable &a2);
 
-public:
+PUBLIC:
     Affichable();
     ~Affichable();
 
-    uint obtenirCouche() const;
-    sf::Sprite *obtenirSprite() const;
-    const sf::Vector2f &obtenirSpritePosition() const;
+    ENTIER_NON_SIGNE obtenirCouche() CONSTANT;
+    sf::LUTIN *obtenirLutin() CONSTANT;
+    CONSTANT sf::VECTEUR_NB_VIRGULE &obtenirSpritePosition() CONSTANT;
 
-    void definirCouche(uint couche);
-    void definirScale(sf::Vector2f &scale);
-    void definirTexture(sf::Texture &texture);
-    void definirSpritePosition(const sf::Vector2f &posistion);
-    void definirPositionCentreSprite(const sf::Vector2f &posistion);
+    RIEN definirCouche(ENTIER_NON_SIGNE couche);
+    RIEN definirScale(sf::VECTEUR_NB_VIRGULE &scale);
+    RIEN definirTexture(sf::Texture &texture);
+    RIEN definirSpritePosition(CONSTANT sf::VECTEUR_NB_VIRGULE &posistion);
+    RIEN definirPositionCentreSprite(CONSTANT sf::VECTEUR_NB_VIRGULE &posistion);
 };
 
 /***************************************************/
 /*               Fonctions Operateurs              */
 /***************************************************/
-bool operator<(const Affichable &r1, const Affichable &r2);
-bool operator>(const Affichable &r1, const Affichable &r2);
-bool operator==(const Affichable &r1, const Affichable &r2);
-bool operator<=(const Affichable &r1, const Affichable &r2);
-bool operator>=(const Affichable &r1, const Affichable &r2);
+BOOLEEN operator<(CONSTANT Affichable &r1, CONSTANT Affichable &r2);
+BOOLEEN operator>(CONSTANT Affichable &r1, CONSTANT Affichable &r2);
+BOOLEEN operator==(CONSTANT Affichable &r1, CONSTANT Affichable &r2);
+BOOLEEN operator<=(CONSTANT Affichable &r1, CONSTANT Affichable &r2);
+BOOLEEN operator>=(CONSTANT Affichable &r1, CONSTANT Affichable &r2);
 
 /***************************************************/
-/*                 Méthodes inline                 */
+/*                 Méthodes EN_LIGNE                 */
 /***************************************************/
 
 // Fonction obtenir
-inline uint Affichable::obtenirCouche() const { return _couche; }
-inline sf::Sprite *Affichable::obtenirSprite() const { return _sprite; }
-inline const sf::Vector2f &Affichable::obtenirSpritePosition() const { return _sprite->getPosition(); }
+EN_LIGNE ENTIER_NON_SIGNE Affichable::obtenirCouche() CONSTANT { RETOUR _couche; }
+EN_LIGNE sf::LUTIN *Affichable::obtenirLutin() CONSTANT { RETOUR _lutin; }
+EN_LIGNE CONSTANT sf::VECTEUR_NB_VIRGULE &Affichable::obtenirSpritePosition() CONSTANT { RETOUR _lutin->OBTENIR_POSITION(); }
 
 // Fonction définir
-inline void Affichable::definirCouche(uint couche) { _couche = couche; }
-inline void Affichable::definirTexture(sf::Texture &texture) { _sprite->setTexture(texture); }
-inline void Affichable::definirSpritePosition(const sf::Vector2f &position) { _sprite->setPosition(position); }
-inline void Affichable::definirScale(sf::Vector2f &scale) { _sprite->setScale(scale); }
+EN_LIGNE RIEN Affichable::definirCouche(ENTIER_NON_SIGNE couche) { _couche = couche; }
+EN_LIGNE RIEN Affichable::definirTexture(sf::Texture &texture) { _lutin->setTexture(texture); }
+EN_LIGNE RIEN Affichable::definirSpritePosition(CONSTANT sf::VECTEUR_NB_VIRGULE &position) { _lutin->setPosition(position); }
+EN_LIGNE RIEN Affichable::definirScale(sf::VECTEUR_NB_VIRGULE &scale) { _lutin->setScale(scale); }
 
 #endif

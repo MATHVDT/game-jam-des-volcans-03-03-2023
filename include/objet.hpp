@@ -1,7 +1,7 @@
 #ifndef __OBJET_HPP__
 #define __OBJET_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "enum_type.hpp"
 #include <SFML/Graphics/Texture.hpp>
@@ -16,69 +16,69 @@
 #include <map>
 #include <string>
 
-class Objet
+CLASSE Objet
 {
 protected:
-    bool _visible;
-    sf::Rect<float> _rectangle;
+    BOOLEEN _visible;
+    sf::RECTANGLE<NB_VIRGULE> _rectangle;
     Affichable _affichable;
-    std::vector<Type> _materiaux;
+    std::VECTEUR<Type> _materiaux;
 
-    static std::map<std::string, sf::Texture *> textureCarte;
+    STATIQUE std::map<std::CHAINE, sf::Texture *> textureCarte;
 
-public: // Static
-    static std::map<std::string, sf::Texture *> &obtenirTextureMap();
-    static void initialisationTexture();
+PUBLIC: // Static
+    STATIQUE std::map<std::CHAINE, sf::Texture *> &obtenirTextureMap();
+    STATIQUE RIEN initialisationTexture();
 
-public:
-    Objet(sf::Vector2f position,
-          sf::Vector2f scale,
-          uint couche,
-          bool visible);
-    virtual ~Objet();
+PUBLIC:
+    Objet(sf::VECTEUR_NB_VIRGULE position,
+          sf::VECTEUR_NB_VIRGULE scale,
+          ENTIER_NON_SIGNE couche,
+          BOOLEEN visible);
+    VIRTUEL ~Objet();
 
-    virtual bool estIphone() = 0;
-    virtual void clic() = 0;
+    VIRTUEL BOOLEEN estIphone() = 0;
+    VIRTUEL RIEN clic() = 0;
 
-    bool obtenirVisible() const;
-    uint obtenirCouche() const;
-    sf::Sprite *obtenirSprite() const;
-    const sf::Rect<float> &obtenirRectangle();
-    const sf::Vector2f &obtenirPosition() const;
-    const std::vector<Type> obtenirMateriaux() const;
+    BOOLEEN obtenirVisible() CONSTANT;
+    ENTIER_NON_SIGNE obtenirCouche() CONSTANT;
+    sf::LUTIN *obtenirLutin() CONSTANT;
+    CONSTANT sf::RECTANGLE<NB_VIRGULE> &obtenirRectangle();
+    CONSTANT sf::VECTEUR_NB_VIRGULE &obtenirPosition() CONSTANT;
+    CONSTANT std::VECTEUR<Type> obtenirMateriaux() CONSTANT;
 
     // Fonction définir
-    void ajouterMateriaux(Type type);
+    RIEN ajouterMateriaux(Type type);
 
 protected:
-    void definirRectangle(float gauche, float haut);
-    void definirRectangle(float gauche, float haut,
-                          float largeur, float hauteur);
+    RIEN definirRectangle(NB_VIRGULE gauche, NB_VIRGULE haut);
+    RIEN definirRectangle(NB_VIRGULE gauche, NB_VIRGULE haut,
+                          NB_VIRGULE largeur, NB_VIRGULE hauteur);
 };
 
 /***************************************************/
 /*               Fonctions Operateurs              */
 /***************************************************/
-bool operator<(const Objet &r1, const Objet &r2);
-bool operator>(const Objet &r1, const Objet &r2);
-bool operator==(const Objet &r1, const Objet &r2);
-bool operator<=(const Objet &r1, const Objet &r2);
-bool operator>=(const Objet &r1, const Objet &r2);
+BOOLEEN operator<(CONSTANT Objet &r1, CONSTANT Objet &r2);
+BOOLEEN operator>(CONSTANT Objet &r1, CONSTANT Objet &r2);
+BOOLEEN operator==(CONSTANT Objet &r1, CONSTANT Objet &r2);
+BOOLEEN operator<=(CONSTANT Objet &r1, CONSTANT Objet &r2);
+BOOLEEN operator>=(CONSTANT Objet &r1, CONSTANT Objet &r2);
 
 struct CompareObjetPointeur
 {
-    bool operator()(Objet *o1, Objet *o2) const
+    BOOLEEN operator()(Objet *o1, Objet *o2) CONSTANT
     {
-        return o1->obtenirCouche() < o2->obtenirCouche();
+        RETOUR o1->obtenirCouche() < o2->obtenirCouche();
         ;
     }
 };
 
 /***************************************************/
-/*                 Méthodes inline                 */
+/*                 Méthodes EN_LIGNE                 */
 /***************************************************/
-inline sf::Sprite *Objet::obtenirSprite() const { return _affichable.obtenirSprite(); }
-inline bool Objet::obtenirVisible() const { return _visible; }
-inline uint Objet::obtenirCouche() const { return _affichable.obtenirCouche(); }
+EN_LIGNE sf::LUTIN *Objet::obtenirLutin() CONSTANT { RETOUR _affichable.obtenirLutin(); }
+EN_LIGNE BOOLEEN Objet::obtenirVisible() CONSTANT { RETOUR _visible; }
+EN_LIGNE ENTIER_NON_SIGNE Objet::obtenirCouche() CONSTANT { RETOUR _affichable.obtenirCouche(); }
 
 #endif

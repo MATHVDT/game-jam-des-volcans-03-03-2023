@@ -1,51 +1,50 @@
 #include "../include/Affichable.hpp"
 
 Affichable::Affichable()
-    : _sprite{new sf::Sprite()},
+    : _lutin{NOUVEAU sf::LUTIN()},
       _couche(0) {}
 
 Affichable::~Affichable()
 {
-    delete _sprite;
+    SUPPRIMER _lutin;
 }
 
-void Affichable::definirPositionCentreSprite(const sf::Vector2f &posistion)
+RIEN Affichable::definirPositionCentreSprite(CONSTANT sf::VECTEUR_NB_VIRGULE &posistion)
 {
-    float decalageHauteur = _sprite->getGlobalBounds().height / 2;
-    float decalageLargeur = _sprite->getGlobalBounds().width / 2;
+    NB_VIRGULE decalageHauteur = _lutin->OBTENIR_EXTREMITES_GLOBAL().height / 2;
+    NB_VIRGULE decalageLargeur = _lutin->OBTENIR_EXTREMITES_GLOBAL().width / 2;
 
-    definirSpritePosition(posistion - sf::Vector2f(decalageLargeur, decalageHauteur));
+    definirSpritePosition(posistion - sf::VECTEUR_NB_VIRGULE(decalageLargeur, decalageHauteur));
 }
 
-/// @brief Comparateur static
+/// @brief Comparateur STATIQUE
 /// @param a1
 /// @param a2
-/// @return
-bool Affichable::compare(const Affichable &a1, const Affichable &a2)
+BOOLEEN Affichable::compare(CONSTANT Affichable &a1, CONSTANT Affichable &a2)
 {
-    return a1.obtenirCouche() < a2.obtenirCouche();
+    RETOUR a1.obtenirCouche() < a2.obtenirCouche();
 }
 
 /***************************************************/
 /*               Fonctions Operateurs              */
 /***************************************************/
-bool operator<(const Affichable &r1, const Affichable &r2)
+BOOLEEN operator<(CONSTANT Affichable &r1, CONSTANT Affichable &r2)
 {
-    return r1.obtenirCouche() < r2.obtenirCouche();
+    RETOUR r1.obtenirCouche() < r2.obtenirCouche();
 }
-bool operator>(const Affichable &r1, const Affichable &r2)
+BOOLEEN operator>(CONSTANT Affichable &r1, CONSTANT Affichable &r2)
 {
-    return r1.obtenirCouche() > r2.obtenirCouche();
+    RETOUR r1.obtenirCouche() > r2.obtenirCouche();
 }
-bool operator==(const Affichable &r1, const Affichable &r2)
+BOOLEEN operator==(CONSTANT Affichable &r1, CONSTANT Affichable &r2)
 {
-    return r1.obtenirCouche() == r2.obtenirCouche();
+    RETOUR r1.obtenirCouche() == r2.obtenirCouche();
 }
-bool operator<=(const Affichable &r1, const Affichable &r2)
+BOOLEEN operator<=(CONSTANT Affichable &r1, CONSTANT Affichable &r2)
 {
-    return r1 < r2 || r1 == r2;
+    RETOUR r1 < r2 || r1 == r2;
 }
-bool operator>=(const Affichable &r1, const Affichable &r2)
+BOOLEEN operator>=(CONSTANT Affichable &r1, CONSTANT Affichable &r2)
 {
-    return r1 > r2 || r1 == r2;
+    RETOUR r1 > r2 || r1 == r2;
 }

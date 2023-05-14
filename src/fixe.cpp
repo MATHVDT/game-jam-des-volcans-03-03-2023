@@ -1,9 +1,9 @@
 #include "../include/fixe.hpp"
 
-Fixe::Fixe(sf::Vector2f position,
-           sf::Vector2f scale,
-           uint couche,
-           bool visible)
+Fixe::Fixe(sf::VECTEUR_NB_VIRGULE position,
+           sf::VECTEUR_NB_VIRGULE scale,
+           ENTIER_NON_SIGNE couche,
+           BOOLEEN visible)
     : Objet(position, scale, couche, visible) {}
 
 Fixe::~Fixe() {}

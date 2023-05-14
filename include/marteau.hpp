@@ -1,22 +1,22 @@
 #ifndef __MARTEAU_HPP__
 #define __MARTEAU_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "bougeable.hpp"
 
-class Marteau : public Bougeable
+CLASSE Marteau : PUBLIC Bougeable
 {
-private:
-	int etat;
-	void miseAJour();
+PRIVEE:
+	ENTIER etat;
+	RIEN miseAJour();
 
-public:
-	Marteau(sf::Vector2f position, sf::Vector2f scale, uint couche, bool visible);
+PUBLIC:
+	Marteau(sf::VECTEUR_NB_VIRGULE position, sf::VECTEUR_NB_VIRGULE scale, ENTIER_NON_SIGNE couche, BOOLEEN visible);
 
-	virtual ~Marteau() override{};
-	void clic() override;
-	bool estIphone() override;
+	VIRTUEL ~Marteau() SURCHARGE{};
+	RIEN clic() SURCHARGE;
+	BOOLEEN estIphone() SURCHARGE;
 };
 
 #endif

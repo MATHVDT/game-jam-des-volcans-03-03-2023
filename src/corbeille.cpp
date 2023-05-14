@@ -1,40 +1,40 @@
 #include "../include/corbeille.hpp"
 
-Corbeille::Corbeille(sf::Vector2f position,
-					 sf::Vector2f scale,
-					 uint couche,
-					 bool visible)
+Corbeille::Corbeille(sf::VECTEUR_NB_VIRGULE position,
+					 sf::VECTEUR_NB_VIRGULE scale,
+					 ENTIER_NON_SIGNE couche,
+					 BOOLEEN visible)
 	: Fixe(position, scale, couche, visible), etat(0)
 {
-	_materiaux.push_back(papier);
+	_materiaux.AJOUTER_FIN(papier);
 	_affichable.definirTexture(*textureCarte["ressources/objets/corbeille.png"]);
 }
 
 Corbeille::~Corbeille() {}
-void Corbeille::miseAJour()
+RIEN Corbeille::miseAJour()
 {
-	if (etat == 0)
+	SI (etat == 0)
 		_affichable.definirTexture(*textureCarte["ressources/objets/corbeille.png"]);
-	else if (etat == 1)
+	SINON SI (etat == 1)
 		_affichable.definirTexture(*textureCarte["ressources/objets/corbeille_brule.png"]);
-	else if (etat == 2)
+	SINON SI (etat == 2)
 		_affichable.definirTexture(*textureCarte["ressources/objets/corbeille_brule_beaucoup.png"]);
 }
-bool Corbeille::estIphone()
+BOOLEEN Corbeille::estIphone()
 {
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), feu);
-	auto result2 = std::find(_materiaux.begin(), _materiaux.end(), inflammable);
+	auto result1 = std::TROUVER(_materiaux.DEBUT(), _materiaux.FIN(), feu);
+	auto result2 = std::TROUVER(_materiaux.DEBUT(), _materiaux.FIN(), inflammable);
 
-	if (result1 != _materiaux.end())
+	SI (result1 != _materiaux.FIN())
 	{
-		if (result2 != _materiaux.end())
+		SI (result2 != _materiaux.FIN())
 		{
 			etat = 2;
 		}
-		else
+		SINON
 			etat = 1;
 	}
 	miseAJour();
-	return true;
+	RETOUR VRAI;
 }
-void Corbeille::clic() {}
+RIEN Corbeille::clic() {}

@@ -1,7 +1,7 @@
 #ifndef __FOND_HPP__
 #define __FOND_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include "enum_type.hpp"
 #include <SFML/Graphics/Texture.hpp>
@@ -15,29 +15,29 @@
 #include <map>
 #include <string>
 
-class Fond
+CLASSE Fond
 {
-private:
+PRIVEE:
     Affichable _affichable;
-    sf::Vector2f _position;
-    std::string _nom_piece;
+    sf::VECTEUR_NB_VIRGULE _position;
+    std::CHAINE _nom_piece;
 
-public: // Static
-    static std::map<std::string, sf::Texture *> texturesFond;
+PUBLIC: // Static
+    STATIQUE std::map<std::CHAINE, sf::Texture *> texturesFond;
 
-public: // Static
-    static std::map<std::string, sf::Texture *> &obtenirTexturesFond();
-    static void initialisationTexture();
+PUBLIC: // Static
+    STATIQUE std::map<std::CHAINE, sf::Texture *> &obtenirTexturesFond();
+    STATIQUE RIEN initialisationTexture();
 
-public:
-    Fond(std::string nom_piece, sf::Vector2f position, sf::Vector2f scale, uint couche);
-    ~Fond() = default;
+PUBLIC:
+    Fond(std::CHAINE nom_piece, sf::VECTEUR_NB_VIRGULE position, sf::VECTEUR_NB_VIRGULE scale, ENTIER_NON_SIGNE couche);
+    ~Fond() = DEFAUT;
 
-    void definirTexture(sf::Texture &texture);
+    RIEN definirTexture(sf::Texture &texture);
 
-    sf::Sprite *obtenirSprite() const;
+    sf::LUTIN *obtenirLutin() CONSTANT;
 };
 
-inline sf::Sprite *Fond::obtenirSprite() const { return _affichable.obtenirSprite(); }
+EN_LIGNE sf::LUTIN *Fond::obtenirLutin() CONSTANT { RETOUR _affichable.obtenirLutin(); }
 
 #endif

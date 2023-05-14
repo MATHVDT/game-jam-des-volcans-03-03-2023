@@ -1,29 +1,29 @@
 #include "../include/canape.hpp"
 
-Canape::Canape(sf::Vector2f position,
-			   sf::Vector2f scale,
-			   uint couche,
-			   bool visible)
+Canape::Canape(sf::VECTEUR_NB_VIRGULE position,
+			   sf::VECTEUR_NB_VIRGULE scale,
+			   ENTIER_NON_SIGNE couche,
+			   BOOLEEN visible)
 	: Bougeable(position, scale, couche, visible), etat(0)
 {
-	_materiaux.push_back(encombrant);
+	_materiaux.AJOUTER_FIN(encombrant);
 	_affichable.definirTexture(*textureCarte["ressources/objets/canape_ignifuge.png"]);
 }
 
-void Canape::miseAJour() {}
+RIEN Canape::miseAJour() {}
 
-bool Canape::estIphone()
+BOOLEEN Canape::estIphone()
 {
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), electricite);
-	if (result1 != _materiaux.end())
+	auto result1 = std::TROUVER(_materiaux.DEBUT(), _materiaux.FIN(), electricite);
+	SI (result1 != _materiaux.FIN())
 	{
-		return true;
+		RETOUR VRAI;
 	}
 	// implemneter la destruction
-	return false;
+	RETOUR FAUX;
 }
 
-void Canape::clic()
+RIEN Canape::clic()
 {
 	Bougeable::clic();
 	miseAJour();

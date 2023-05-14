@@ -1,25 +1,25 @@
 #include "../include/issue.hpp"
 
-Issue::Issue(sf::Vector2f position,
-			 sf::Vector2f scale,
-			 uint couche,
-			 bool visible)
-	: Fixe(position, scale, couche, visible), iphone(false)
+Issue::Issue(sf::VECTEUR_NB_VIRGULE position,
+			 sf::VECTEUR_NB_VIRGULE scale,
+			 ENTIER_NON_SIGNE couche,
+			 BOOLEEN visible)
+	: Fixe(position, scale, couche, visible), iphone(FAUX)
 {
-	_materiaux.push_back(issue_secours);
+	_materiaux.AJOUTER_FIN(issue_secours);
 	_affichable.definirTexture(*textureCarte["ressources/objets/issue_de_secours.png"]);
 }
 
 Issue::~Issue() {}
-void Issue::miseAJour() {}
+RIEN Issue::miseAJour() {}
 
-bool Issue::estIphone()
+BOOLEEN Issue::estIphone()
 {
-	auto result1 = std::find(_materiaux.begin(), _materiaux.end(), encombrant);
+	auto result1 = std::TROUVER(_materiaux.DEBUT(), _materiaux.FIN(), encombrant);
 
-	if (result1 != _materiaux.end())
+	SI (result1 != _materiaux.FIN())
 	{
 		miseAJour();
 	}
-	return false;
+	RETOUR FAUX;
 }

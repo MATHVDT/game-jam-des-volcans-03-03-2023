@@ -1,7 +1,7 @@
 #ifndef __CONTEXT_HPP__
 #define __CONTEXT_HPP__
 
-// #include "../FRsupEN.hpp"
+#include "../FRsupEN.hpp"
 
 #include <iostream>
 #include <vector>
@@ -15,97 +15,97 @@
 #include "../include/bougeable.hpp"
 #include "../include/Fond.hpp"
 
-class Bougeable;
-class Objet;
+CLASSE Bougeable;
+CLASSE Objet;
 
 #define NB_SCENES 6
 
-class Contexte
+CLASSE Contexte
 {
-private:
-    sf::RenderWindow _fenetre;
-    float _largeurFenetre;
-    float _hauteurFenetre;
+PRIVEE:
+    sf::FENETRE_RENDUE _fenetre;
+    NB_VIRGULE _largeurFenetre;
+    NB_VIRGULE _hauteurFenetre;
 
     Fond *_fond;
 
-    std::vector<std::multiset<Objet *, CompareObjetPointeur>> _tousLesObjets;
-    uint _sceneChargee;
+    std::VECTEUR<std::ENSEMBLE_MULTIPLE<Objet *, CompareObjetPointeur>> _tousLesObjets;
+    ENTIER_NON_SIGNE _sceneChargee;
 
-    bool _jeuEnCours;
-    sf::Event _evenement;
+    BOOLEEN _jeuEnCours;
+    sf::EVENEMENT _evenement;
 
     Bougeable *_objetBougeableSelectionne;
     Objet *_objetEnInteractionAvecObjetBougeableSelectionne;
 
-    uint _score;
+    ENTIER_NON_SIGNE _score;
 
-private: // Static
-    static Contexte *_instance;
+PRIVEE: // Static
+    STATIQUE Contexte *_instance;
 
-public:
-    static Contexte *obtenirInstance();
+PUBLIC:
+    STATIQUE Contexte *obtenirInstance();
 
-public:
+PUBLIC:
     Contexte();
     ~Contexte();
 
-    bool obtenirSonderEvenement();
-    void dessiner(const sf::Drawable &dessinable);
-    void dessiner(const sf::Drawable *dessinable);
-    void dessiner();
+    BOOLEEN obtenirSonderEvenement();
+    RIEN dessiner(CONSTANT sf::Drawable &dessinable);
+    RIEN dessiner(CONSTANT sf::Drawable *dessinable);
+    RIEN dessiner();
 
-    void afficherFenetre();
+    RIEN afficherFenetre();
 
-    void ajouterAffichable(int scene,
+    RIEN ajouterAffichable(ENTIER scene,
                            Objet *o);
 
     // Fonction obtenir
-    int obtenirSceneChargee() const;
-    void retirerAffichable(int scene,
+    ENTIER obtenirSceneChargee() CONSTANT;
+    RIEN retirerAffichable(ENTIER scene,
                            Objet *o);
 
-    void retirerAffichableSceneChargee(Objet *o);
+    RIEN retirerAffichableSceneChargee(Objet *o);
 
-    bool obtenirJeuEnCours() const;
-    std::multiset<Objet *, CompareObjetPointeur> &obtenirObjetSceneChargee();
-    const sf::Event &obtenirEvenement() const;
-    Bougeable *obtenirObjetBougeableSelectionne() const;
-    Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const;
-    const sf::Vector2f obtenirSourisPosition() const;
-    uint obtenirScore() const;
+    BOOLEEN obtenirJeuEnCours() CONSTANT;
+    std::ENSEMBLE_MULTIPLE<Objet *, CompareObjetPointeur> &obtenirObjetSceneChargee();
+    CONSTANT sf::EVENEMENT &obtenirEvenement() CONSTANT;
+    Bougeable *obtenirObjetBougeableSelectionne() CONSTANT;
+    Objet *obtenirObjetEnInteractionAvecObjetBougeableSelectionne() CONSTANT;
+    CONSTANT sf::VECTEUR_NB_VIRGULE obtenirSourisPosition() CONSTANT;
+    ENTIER_NON_SIGNE obtenirScore() CONSTANT;
 
-    void definirJeuEnCours(bool valeur = false);
-    void definirObjetBougeableSelectionne(Bougeable *o);
-    void definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o);
-    void definirScore(uint score);
-    void definirSceneChargee(uint scene);
+    RIEN definirJeuEnCours(BOOLEEN valeur = FAUX);
+    RIEN definirObjetBougeableSelectionne(Bougeable *o);
+    RIEN definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o);
+    RIEN definirScore(ENTIER_NON_SIGNE score);
+    RIEN definirSceneChargee(ENTIER_NON_SIGNE scene);
 };
 
 /***************************************************/
-/*                 Méthodes inline                 */
+/*                 Méthodes EN_LIGNE                 */
 /***************************************************/
 
 // Fonction obtenir
-inline bool Contexte::obtenirJeuEnCours() const { return _jeuEnCours; }
-inline const sf::Event &Contexte::obtenirEvenement() const { return _evenement; }
-inline std::multiset<Objet *, CompareObjetPointeur> &Contexte::obtenirObjetSceneChargee() { return _tousLesObjets[_sceneChargee]; }
-inline Bougeable *Contexte::obtenirObjetBougeableSelectionne() const { return _objetBougeableSelectionne; }
-inline Objet *Contexte::obtenirObjetEnInteractionAvecObjetBougeableSelectionne() const { return _objetEnInteractionAvecObjetBougeableSelectionne; }
-inline uint Contexte::obtenirScore() const { return _score; }
+EN_LIGNE BOOLEEN Contexte::obtenirJeuEnCours() CONSTANT { RETOUR _jeuEnCours; }
+EN_LIGNE CONSTANT sf::EVENEMENT &Contexte::obtenirEvenement() CONSTANT { RETOUR _evenement; }
+EN_LIGNE std::ENSEMBLE_MULTIPLE<Objet *, CompareObjetPointeur> &Contexte::obtenirObjetSceneChargee() { RETOUR _tousLesObjets[_sceneChargee]; }
+EN_LIGNE Bougeable *Contexte::obtenirObjetBougeableSelectionne() CONSTANT { RETOUR _objetBougeableSelectionne; }
+EN_LIGNE Objet *Contexte::obtenirObjetEnInteractionAvecObjetBougeableSelectionne() CONSTANT { RETOUR _objetEnInteractionAvecObjetBougeableSelectionne; }
+EN_LIGNE ENTIER_NON_SIGNE Contexte::obtenirScore() CONSTANT { RETOUR _score; }
 
 // Fonction définir
-inline void Contexte::definirJeuEnCours(bool valeur) { _jeuEnCours = valeur; }
-inline void Contexte::definirObjetBougeableSelectionne(Bougeable *o) { _objetBougeableSelectionne = o; }
-inline void Contexte::definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o) { _objetEnInteractionAvecObjetBougeableSelectionne = o; }
-inline void Contexte::definirScore(uint score) { _score += score; }
+EN_LIGNE RIEN Contexte::definirJeuEnCours(BOOLEEN valeur) { _jeuEnCours = valeur; }
+EN_LIGNE RIEN Contexte::definirObjetBougeableSelectionne(Bougeable *o) { _objetBougeableSelectionne = o; }
+EN_LIGNE RIEN Contexte::definirObjetEnInteractionAvecObjetBougeableSelectionne(Objet *o) { _objetEnInteractionAvecObjetBougeableSelectionne = o; }
+EN_LIGNE RIEN Contexte::definirScore(ENTIER_NON_SIGNE score) { _score += score; }
 
-inline void Contexte::definirSceneChargee(uint scene)
+EN_LIGNE RIEN Contexte::definirSceneChargee(ENTIER_NON_SIGNE scene)
 {
     _sceneChargee = scene;
 
-    std::string nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
-    _fond->obtenirSprite()->setTexture(*(Fond::texturesFond[nom_piece]));
+    std::CHAINE nom_piece = "ressources/fonds/piece_" + std::to_string(_sceneChargee) + ".png";
+    _fond->obtenirLutin()->setTexture(*(Fond::texturesFond[nom_piece]));
 }
 
 #endif
