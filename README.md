@@ -19,7 +19,7 @@ VILLEDIEU DE TORCY Mathieu
 **Compilation :** 
 ```bash
 CFAIRE=cmake && FAIRE=make
-$CFAIRE . && $FAIRE -j && ./clubSandwich.exe
+CFAIRE . && $FAIRE -j && ./clubSandwich.exe
 ```  
 
 ---  
