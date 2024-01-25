@@ -57,9 +57,9 @@ Buffet avec pizza :
 
 ### Samedi
 #### Petit-déjeuner 
-Pain au chocolat  
-Croissant  
-Brioche   
+Pains au chocolat  
+Croissants 🥐  
+Brioches   
 
 Boison :
 * Café 
@@ -70,21 +70,21 @@ Boison :
 
 #### Repas du midi 
 Buffet : 
-* Salade de pattes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
-* Salade de pattes (jambon, mozza, tomates séchées)  
+* Salade de pâtes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
+* Salade de pâtes (jambon, mozza, tomates séchées)  
 * Tranches de jambon  
 * Quiche épinard/chèvre
 * Cake tomates séchées
 * Cake jambon
-* Muffin banana bread
-* Banana bread  
+* Muffin ~~banana bread~~ pain aux bananes 
+* ~~Banana bread~~ Pain aux bananes 
 * Fromages (st-nectaire, cantal, bleu d'auvergne)
 * Pain
 
 #### Repas du soir
 Buffet :
-* Salade de pattes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
-* Salade de pattes (jambon, mozza, tomates séchées)  
+* Salade de pâtes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
+* Salade de pâtes (jambon, mozza, tomates séchées)  
 * Tranches de jambon  
 * Charcuterie
 * Rotie de boeuf
@@ -100,9 +100,9 @@ Buffet :
 
 ### Dimanche 
 #### Petit déjeuné 
-Pain au chocolat  
-Croissant  
-Brioche  
+Pains au chocolat  
+Croissants 🥐  
+Brioches  
 
 Boison :
 * Café 
@@ -113,15 +113,15 @@ Boison :
 
 #### Repas du midi 
 Buffet :   
-* Salade de pattes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
-* Salade de pattes (jambon, mozza, tomates séchées)  
+* Salade de pâtes (jambon, mozza, tomate cerise, tomates séchées, pesto)  
+* Salade de pâtes (jambon, mozza, tomates séchées)  
 * Tranches de jambon  
 * Quiche épinard/chèvre
 * Cake tomates séchées
 * Cake jambon
 * Poulet
-* Muffin ~~banana bread~~ pain aux bananes
-* Banana bread  
+* Muffin ~~banane bread~~ pain aux bananes 
+* ~~Banana bread~~ Pain aux bananes  
 * Fromages (st-nectaire, cantal)
 * Pain  
 
